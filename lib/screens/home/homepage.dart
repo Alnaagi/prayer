@@ -52,9 +52,30 @@ class _HomePageState extends State<HomePage> {
     print('Tahajjud End Time:\t${prayerTimes.tahajjudEndTime!}');
     print('Sehri End Time:\t${prayerTimes.sehri!}');
 
+    // Display prayer times for the Tomorrow date
+    print('\n***** Prayer Times');
+    print('Fajr Start Time:\t${prayerTimes1.fajrStartTime!}');
+    print('Fajr End Time:\t${prayerTimes1.fajrEndTime!}');
+    print('Sunrise Time:\t${prayerTimes1.sunrise!}');
+    print('Dhuhr Start Time:\t${prayerTimes1.dhuhrStartTime!}');
+    print('Dhuhr End Time:\t${prayerTimes1.dhuhrEndTime!}');
+    print('Asr Start Time:\t${prayerTimes1.asrStartTime!}');
+    print('Asr End Time:\t${prayerTimes1.asrEndTime!}');
+    print('Maghrib Start Time:\t${prayerTimes1.maghribStartTime!}');
+    print('Maghrib End Time:\t${prayerTimes1.maghribEndTime!}');
+    print('Isha Start Time:\t${prayerTimes1.ishaStartTime!}');
+    print('Isha End Time:\t${prayerTimes1.ishaEndTime!}');
+    print('Next Day Fajr Time:\t${prayerTimes1.fajrStartTime!}');
+    print('Tahajjud End Time:\t${prayerTimes1.tahajjudEndTime!}');
+    print('Sehri End Time:\t${prayerTimes1.sehri!}');
+
     // Display convenience utilities for prayer times
     String current = prayerTimes.currentPrayer();
     String next = prayerTimes.nextPrayer();
+
+    // if (current == PrayerType.fajr) {
+    //   PrayerType.fajr = "Fajr";
+    // }
     print('\n***** Convenience Utilities');
     print('Current Prayer:\t$current\t${prayerTimes.timeForPrayer(current)}');
     print('Next Prayer:\t$next\t${prayerTimes.timeForPrayer(next)}');
@@ -69,44 +90,184 @@ class _HomePageState extends State<HomePage> {
     print('\n***** Qibla Direction');
     double qiblaDirection = Qibla.qibla(coordinates);
     print('Qibla Direction:\t$qiblaDirection degrees');
+
+// to add or subtract any difference or custom
+    int add_Fajrtime = 7;
+    int add_Dhuhrtime = 7;
+    int add_Asrtime = 7;
+    int add_Maghribtime = 7;
+    int add_Ishatime = 7;
+    ImageProvider logo = const AssetImage("assets/images/hourburj.png");
+    //media size
+    var media = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.brown.shade300,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45),
-                child: Text(
-                  'Current Prayer:\t$current\t${prayerTimes.timeForPrayer(current)}',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: logo, fit: BoxFit.fill),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: media.height * 0.08,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Current Prayer:\f $current\f${prayerTimes.timeForPrayer(current)}',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: media.width * 0.05,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Next Prayer:\t$next\t${prayerTimes.date.hour}:${prayerTimes.date.minute}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 7,
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+                SizedBox(
+                  height: media.height * 0.05,
+                ),
+                Container(
+                  height: media.height * 0.1,
+                  width: media.width * .9,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Fajr Time:\t${prayerTimes.fajrStartTime!.hour}:${prayerTimes.fajrStartTime!.minute}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45),
-                child: Text(
-                  'Next Prayer:\t$next\t${prayerTimes.timeForPrayer(next)}',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
+                SizedBox(
+                  height: media.height * 0.01,
+                ),
+                Container(
+                  height: media.height * 0.1,
+                  width: media.width * .9,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      prayerTimes.asrStartTime.toString(),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: media.height * 0.01,
+                ),
+                Container(
+                  height: media.height * 0.1,
+                  width: media.width * .9,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Asr Start Time:\t${prayerTimes.asrStartTime!}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: media.height * 0.01,
+                ),
+                Container(
+                  height: media.height * 0.1,
+                  width: media.width * .9,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Maghrib Start Time:\t${prayerTimes.maghribStartTime!}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: media.height * 0.01,
+                ),
+                Container(
+                  height: media.height * 0.1,
+                  width: media.width * .9,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Isha Start Time:\t${prayerTimes.ishaStartTime!}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
