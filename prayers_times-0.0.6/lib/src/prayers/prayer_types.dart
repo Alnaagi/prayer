@@ -3,22 +3,22 @@
 /// This class defines constants for various Islamic prayers, including their Arabic names.
 class PrayerType {
   /// Fajr prayer.
-  static const String fajr = 'Fajr';
+  static const String fajr = 'الفجر';
 
   /// Sunrise prayer.
-  static const String sunrise = 'Sunrise';
+  static const String sunrise = 'الشروق';
 
   /// Dhuhr (noon) prayer.
-  static const String dhuhr = 'dhuhr';
+  static const String dhuhr = 'الظهر';
 
   /// Asr (afternoon) prayer.
-  static const String asr = 'Asr';
+  static const String asr = 'العصر';
 
   /// Maghrib (evening) prayer.
-  static const String maghrib = 'Maghrib';
+  static const String maghrib = 'المغرب';
 
   /// Isha (night) prayer.
-  static const String isha = 'Isha';
+  static const String isha = 'العشاء';
 
   /// Isha prayer performed before midnight.
   static const String ishaBefore = 'Ishabefore';
@@ -30,7 +30,7 @@ class PrayerType {
   static const String none = 'none';
 
   /// Sehri type.
-  static const String sehri = 'sehri';
+  static const String sehri = 'السحور';
 
   ///  middle Of The Night Prayer.
   static const String middleOfTheNight = 'Middle of the Night';
