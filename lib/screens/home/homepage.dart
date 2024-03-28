@@ -107,37 +107,59 @@ class _HomePageState extends State<HomePage> {
         ),
         child: SafeArea(
           child: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: media.height * 0.08,
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Current Prayer:\f $current\f${prayerTimes.timeForPrayer(current)}',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontFamily: "Poppins",
-                            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: media.height * 0.08,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Container(
+                      width: 170,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          'Current Prayer:\f$current\f${prayerTimes.timeForPrayer(current)}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: "Poppins",
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      width: media.width * 0.05,
+                    ),
+                    Container(
+                      width: 170,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          'Next Prayer:\f$next\f${prayerTimes.timeForPrayer(next)}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
                   SizedBox(
-                    width: media.width * 0.05,
+                    height: media.height * 0.05,
                   ),
                   Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -145,127 +167,130 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        'Next Prayer:\t$next\t${prayerTimes.date.hour}:${prayerTimes.date.minute}',
+                        '\t${prayerTimes.fajrStartTime!}\t الفجر',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 7,
+                          fontSize: 20,
                           fontFamily: "Poppins",
                         ),
                       ),
                     ),
                   ),
-                ]),
-                SizedBox(
-                  height: media.height * 0.05,
-                ),
-                Container(
-                  height: media.height * 0.1,
-                  width: media.width * .9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                  SizedBox(
+                    height: media.height * 0.01,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Fajr Time:\t${prayerTimes.fajrStartTime!.hour}:${prayerTimes.fajrStartTime!.minute}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: "Poppins",
+                  Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        '\t${prayerTimes.fajrStartTime!}\t الشروق',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: media.height * 0.01,
-                ),
-                Container(
-                  height: media.height * 0.1,
-                  width: media.width * .9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                  SizedBox(
+                    height: media.height * 0.01,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      prayerTimes.asrStartTime.toString(),
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: "Poppins",
+                  Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        '\t${prayerTimes.dhuhrStartTime!}\t الظهر',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: media.height * 0.01,
-                ),
-                Container(
-                  height: media.height * 0.1,
-                  width: media.width * .9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                  SizedBox(
+                    height: media.height * 0.01,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Asr Start Time:\t${prayerTimes.asrStartTime!}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: "Poppins",
+                  Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        '\t${prayerTimes.asrStartTime!}\t العصر',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: media.height * 0.01,
-                ),
-                Container(
-                  height: media.height * 0.1,
-                  width: media.width * .9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                  SizedBox(
+                    height: media.height * 0.01,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Maghrib Start Time:\t${prayerTimes.maghribStartTime!}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: "Poppins",
+                  Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        '\t${prayerTimes.maghribStartTime!}\t المغرب',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: media.height * 0.01,
-                ),
-                Container(
-                  height: media.height * 0.1,
-                  width: media.width * .9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+                  SizedBox(
+                    height: media.height * 0.01,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Isha Start Time:\t${prayerTimes.ishaStartTime!}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: "Poppins",
+                  Container(
+                    height: media.height * 0.1,
+                    width: media.width * .9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        '\t${prayerTimes.ishaStartTime!}\t العشاء',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: media.height * 0.2,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
