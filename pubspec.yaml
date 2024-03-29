@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   prayers_times:
     path: prayers_times-0.0.6
+  smooth_compass_plus:
+    path: smooth_compass_plus-0.0.1+4
+  flutter_compass: ^0.8.0
+  carousel_slider: ^4.2.1
+  animated_flip_counter: ^0.3.2
 
 dev_dependencies:
   flutter_test:

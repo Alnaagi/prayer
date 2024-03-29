@@ -114,4 +114,18 @@ class PrayerCalculationMethod {
   static PrayerCalculationParameters other() {
     return PrayerCalculationParameters("Other", 0, 0);
   }
+
+  /// Dubai calculation method.
+  static PrayerCalculationParameters custom() {
+    PrayerCalculationParameters params =
+        PrayerCalculationParameters("custom", 18, 18);
+    params.methodAdjustments = {
+      'fajr': -1,
+      'sunrise': 0,
+      'dhuhr': 4,
+      'asr': -1,
+      'maghrib': 3
+    };
+    return params;
+  }
 }

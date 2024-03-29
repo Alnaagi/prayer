@@ -21,10 +21,10 @@ class PrayerType {
   static const String isha = 'العشاء';
 
   /// Isha prayer performed before midnight.
-  static const String ishaBefore = 'Ishabefore';
+  static const String ishaBefore = 'العشاء';
 
   /// Fajr prayer performed after midnight.
-  static const String fajrAfter = 'Fajrafter';
+  static const String fajrAfter = 'الفجر';
 
   /// No specific prayer type.
   static const String none = 'none';

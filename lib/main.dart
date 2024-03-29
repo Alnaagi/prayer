@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(const AssetImage("assets/images/hourburj.png"), context);
+    precacheImage(const AssetImage("assets/images/sand.png"), context);
+    precacheImage(const AssetImage("assets/images/rus4.png"), context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeBar(),
