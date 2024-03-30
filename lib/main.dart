@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     precacheImage(const AssetImage("assets/images/sand.png"), context);
     precacheImage(const AssetImage("assets/images/rus4.png"), context);
 
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeBar(),
     );

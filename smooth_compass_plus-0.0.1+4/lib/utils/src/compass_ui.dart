@@ -25,7 +25,7 @@ class SmoothCompassWidget extends StatefulWidget {
   final Widget? errorLocationPermissionWidget;
 
   const SmoothCompassWidget(
-      {Key? key,
+      {super.key,
       this.compassBuilder,
       this.compassAsset,
       this.rotationSpeed = 400,
@@ -34,8 +34,7 @@ class SmoothCompassWidget extends StatefulWidget {
       this.isQiblahCompass = false,
       this.errorLocationServiceWidget,
       this.errorLocationPermissionWidget,
-      this.loadingAnimation})
-      : super(key: key);
+      this.loadingAnimation});
 
   @override
   State<SmoothCompassWidget> createState() => _SmoothCompassWidgetState();
@@ -151,7 +150,10 @@ class _SmoothCompassWidgetState extends State<SmoothCompassWidget> {
                                     ConnectionState.waiting) {
                                   return widget.loadingAnimation ??
                                       const Center(
-                                        child: CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(
+                                          backgroundColor: Colors.white38,
+                                          color: Colors.white,
+                                        ),
                                       );
                                 } else {
                                   return StreamBuilder<CompassModel>(
@@ -175,7 +177,11 @@ class _SmoothCompassWidgetState extends State<SmoothCompassWidget> {
                                           return widget.loadingAnimation ??
                                               const Center(
                                                 child:
-                                                    CircularProgressIndicator(),
+                                                    CircularProgressIndicator(
+                                                  backgroundColor:
+                                                      Colors.white38,
+                                                  color: Colors.white,
+                                                ),
                                               );
                                         }
                                         if (snapshot.hasError) {

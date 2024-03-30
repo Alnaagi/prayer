@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:flutter/widgets.dart';
 import 'package:prayer/common/azkar_widget.dart';
 
 class AfterPrayerPage extends StatefulWidget {
@@ -91,7 +88,7 @@ class _AfterPrayerPageState extends State<AfterPrayerPage> {
     },
   ];
 
-  double _value = 0.0;
+  final double _value = 0.0;
   double value = 1;
   ImageProvider logo = const AssetImage("assets/images/sand.png");
   @override

@@ -1,17 +1,18 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:prayer/common/prayer_widget.dart';
 import 'package:prayers_times/prayers_times.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageCopy extends StatefulWidget {
+  const HomePageCopy({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageCopy> createState() => _HomePageCopyState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageCopyState extends State<HomePageCopy> {
   @override
   Widget build(BuildContext context) {
     // Define the geographical coordinates for the location
@@ -102,31 +103,69 @@ class _HomePageState extends State<HomePage> {
     int addMaghribtime = 7;
     int addIshatime = 7;
     ImageProvider logo = const AssetImage("assets/images/hourburj.png");
+
+    bool isha_ActiveColor = false;
+    bool maghrib_ActiveColor = false;
+    bool asr_ActiveColor = false;
+    bool dhuhr_ActiveColor = false;
+    bool sunrise_ActiveColor = false;
+    bool fajr_ActiveColor = false;
+
+    // if prayer time is now the function will output
+    DateTime date = DateTime.now();
+    if (date.isAfter(prayerTimes.ishaStartTime!)) {
+      print("isha");
+      isha_ActiveColor = !isha_ActiveColor;
+    } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
+      print("maghrib");
+      maghrib_ActiveColor = !maghrib_ActiveColor;
+    } else if (date.isAfter(prayerTimes.asrStartTime!)) {
+      print("asr");
+      asr_ActiveColor = !asr_ActiveColor;
+    } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
+      print("dhuhr");
+      dhuhr_ActiveColor = !dhuhr_ActiveColor;
+    } else if (date.isAfter(prayerTimes.sunrise!)) {
+      print("sunrise");
+      sunrise_ActiveColor = !sunrise_ActiveColor;
+    } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
+      print("fajr");
+      fajr_ActiveColor = !fajr_ActiveColor;
+    } else {
+      print("isha");
+      isha_ActiveColor = !isha_ActiveColor;
+    }
     //media size
     List listArr = [
       {
         "Name": '\tالفجر',
         "Time": "${prayerTimes.fajrStartTime!}",
+        "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
         "Name": '\tالشروق',
         "Time": "\t${prayerTimes.sunrise!}",
+        "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
         "Name": '\tالظهر',
         "Time": "\t${prayerTimes.dhuhrStartTime!}",
+        "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
         "Name": '\tالعصر',
         "Time": "\t${prayerTimes.asrStartTime!}",
+        "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
         "Name": '\tالمغرب',
         "Time": "\t${prayerTimes.maghribStartTime!}",
+        "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
         "Name": '\tالعشاء',
         "Time": "\t${prayerTimes.ishaStartTime!}",
+        "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
       },
     ];
 
@@ -145,56 +184,88 @@ class _HomePageState extends State<HomePage> {
     ];
     var media = MediaQuery.of(context).size;
 
-    var currentprayertime = "";
-    DateTime Datenowtime = DateTime.now();
+    // var dt = DateTime.parse('2021-10-04 05:01:00.000Z');
+    // print(dt.year);
+    // print(dt.month);
+    // print('${dt.hour}' + ":" + '${dt.minute}');
+    // print(dt.minute);
+    // print(dt.second);
+
+    // String dateString =
+    //     "'${DateTime.now().year.toString()}' +'${DateTime.now().month.toString()}' + '${DateTime.now().day.toString()}' + '20:48:52' ";
+
+    // DateTime dateTime = format.parse(dateString);
+    //  intl.DateFormat format = new intl.DateFormat.yMd();
+
+    // print(dateTime);
+    // print(DateTime.now().day);
+
+    // String datetest = "2024-03-31 23:49:00.000";
+    // intl.DateFormat format2 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    // DateTime date2Time = format2.parse(datetest);
+    // print(date2Time);
+
+    // bool currentprayertime = false;
+    // DateTime Testtime = DateTime.now();
+
+    // DateTime Datenowtime = DateTime.now();
+    // if (Datenowtime.isAfter(date2Time)) {
+    //   currentprayertime = !currentprayertime;
+    //   print(date2Time);
+    //   print("true");
+    // } else
+    //   print("false");
+
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(image: logo, fit: BoxFit.fill),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    height: 150,
-                    child: GridView.builder(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 0),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        childAspectRatio: 0.85,
-                        // crossAxisSpacing: 1,
-                        mainAxisSpacing: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: listArrCurrent.length,
-                      itemBuilder: (context, index) {
-                        var obj = listArrCurrent[index] as Map? ?? {};
-                        return PrayerCurrent(obj: obj);
-                      },
+        height: media.height,
+        width: media.width,
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(image: logo, fit: BoxFit.fill),
+        // ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  height: 150,
+                  child: GridView.builder(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      childAspectRatio: 0.85,
+                      // crossAxisSpacing: 1,
+                      mainAxisSpacing: 10,
                     ),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: listArrCurrent.length,
+                    itemBuilder: (context, index) {
+                      var obj = listArrCurrent[index] as Map? ?? {};
+                      return PrayerCurrent(obj: obj);
+                    },
                   ),
-                ],
-              ),
-              ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: listArr.length,
-                itemBuilder: (context, index) {
-                  var obj = listArr[index] as Map? ?? {};
-                  return PrayerWidget(obj: obj);
-                },
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: listArr.length,
+              itemBuilder: (context, index) {
+                var obj = listArr[index] as Map? ?? {};
+                return PrayerWidget(obj: obj);
+              },
+            ),
+          ],
         ),
       ),
     );

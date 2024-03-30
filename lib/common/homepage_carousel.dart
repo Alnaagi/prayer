@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:prayer/common/bottomappbar_widget.dart';
-import 'package:prayer/common/homepage_carousel.dart';
 import 'package:prayer/screens/home/azkar.dart';
 import 'package:prayer/screens/home/homepage.dart';
 import 'package:prayer/screens/home/homepage_copy.dart';
@@ -8,161 +8,81 @@ import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:prayer/screens/home/settings.dart';
 
-class HomeBar extends StatefulWidget {
-  const HomeBar({
+class HomeCarousel extends StatefulWidget {
+  const HomeCarousel({
     super.key,
   });
 
   @override
-  State<HomeBar> createState() => _HomeBarState();
+  State<HomeCarousel> createState() => _HomeCarouselState();
 }
 
-class _HomeBarState extends State<HomeBar> {
+class _HomeCarouselState extends State<HomeCarousel> {
   final CarouselController _controller = CarouselController();
-  int selectTab = 0;
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index % listArr.length;
-    });
-  }
+  int _current = 1;
 
-  List<Widget> listArr = [
-    const HomePageCopy(),
-    const HomeCarousel(),
-    const QiblaPage(),
-    const SettingsPage()
+  List<Widget> imgList = [
+    HomePageCopy(),
+    HomePageCopy(),
+    HomePageCopy(),
   ];
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    // var media = MediaQuery.of(context).size;
-
+    ImageProvider logo = const AssetImage("assets/images/hourburj.png");
+    var media = MediaQuery.of(context).size;
     return Scaffold(
-      extendBody: true,
-      // backgroundColor: Colors.transparent,
-      // extendBodyBehindAppBar: true,
-      bottomNavigationBar: BottomAppBar(
-        height: 80,
-        surfaceTintColor: Colors.transparent,
-        color: Colors.transparent,
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 5,
-                  offset: Offset(0, -2),
-                )
-              ],
-              borderRadius: BorderRadius.all(Radius.circular(10))
-              // BorderRadius.only(
-              //     topLeft: Radius.circular(40), topRight: Radius.circular(40))
-              ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: BottomTabWidget(
-                  icon: "assets/images/clock.png",
-                  selectIcon: "assets/images/clock.png",
-                  // icon: Icons.home_outlined,
-                  // selectIcon: Icons.home_rounded,
-                  isActive: selectTab == 0,
-                  onTap: () {
-                    selectTab = 0;
-                    _selectedIndex = selectTab;
-                    if (mounted) {
-                      setState(() {});
-                    }
-                    _controller.jumpToPage(_selectedIndex);
-                  },
-                ),
-              ),
-              Expanded(
-                child: BottomTabWidget(
-                  icon: "assets/images/book.png",
-                  selectIcon: "assets/images/book.png",
-                  isActive: selectTab == 1,
-                  onTap: () {
-                    selectTab = 1;
-                    _selectedIndex = selectTab;
-                    if (mounted) {
-                      setState(() {});
-                    }
-                    _controller.jumpToPage(_selectedIndex);
-                  },
-                ),
-              ),
-              Expanded(
-                child: BottomTabWidget(
-                  icon: "assets/images/qibla-compass.png",
-                  selectIcon: "assets/images/qibla-compass.png",
-                  isActive: selectTab == 2,
-                  onTap: () {
-                    selectTab = 2;
-                    _selectedIndex = selectTab;
-                    if (mounted) {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => QiblaPage(),
-                      //     ));
-
-                      setState(() {});
-                    }
-                    _controller.jumpToPage(_selectedIndex);
-                  },
-                ),
-              ),
-              Expanded(
-                child: BottomTabWidget(
-                  icon: "assets/images/setting.png",
-                  selectIcon: "assets/images/setting.png",
-                  isActive: selectTab == 3,
-                  onTap: () {
-                    selectTab = 3;
-                    _selectedIndex = selectTab;
-                    if (mounted) {
-                      setState(() {});
-                    }
-                    _controller.jumpToPage(_selectedIndex);
-                  },
-                ),
-              ),
-            ],
-          ),
+      body: Container(
+        height: media.height,
+        width: media.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: logo, fit: BoxFit.fill),
         ),
-      ),
-      body: Row(
-        children: [
-          Expanded(
-            child: CarouselSlider(
+        child: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Stack(children: [
+            CarouselSlider(
+              items: imgList,
               carouselController: _controller,
-              items: listArr,
               options: CarouselOptions(
-                scrollPhysics: const NeverScrollableScrollPhysics(),
-                enableInfiniteScroll: false,
-                aspectRatio: 0.1,
-                viewportFraction: 1,
-                // onScrolled: (value) {
-                //   setState(() {});
-                // },
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    selectTab = index;
-                  });
-                },
+                  enableInfiniteScroll: false,
+                  // enlargeCenterPage: true,
+                  aspectRatio: 0.1,
+                  viewportFraction: 1,
+                  initialPage: 1,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
+            ),
+            Positioned(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 1.78,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: imgList.asMap().entries.map((entry) {
+                  return GestureDetector(
+                    onTap: () => _controller.animateToPage(entry.key),
+                    child: Container(
+                      width: 10.0,
+                      height: 10.0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: (Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.black
+                                  : Colors.white)
+                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                    ),
+                  );
+                }).toList(),
               ),
             ),
-          ),
-        ],
+          ]),
+        ),
       ),
     );
   }

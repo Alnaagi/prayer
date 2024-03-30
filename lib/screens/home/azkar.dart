@@ -17,26 +17,26 @@ class _AzkarPageState extends State<AzkarPage> {
         length: 3,
         initialIndex: 2,
         child: Scaffold(
-          backgroundColor: Color.fromARGB(255, 191, 120, 73),
+          backgroundColor: const Color.fromARGB(255, 191, 120, 73),
           appBar: AppBar(
             forceMaterialTransparency: true,
             centerTitle: true,
             shadowColor: Colors.black,
-            title: Text(
+            title: const Text(
               "الأذكار",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 26,
                   fontWeight: FontWeight.bold),
             ),
-            bottom: TabBar(
+            bottom: const TabBar(
               dividerColor: Colors.black87,
               dividerHeight: .8,
               indicatorColor: Colors.black87,
               indicatorWeight: 2,
               tabs: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     "أذكار الصباح",
                     style: TextStyle(
@@ -46,7 +46,7 @@ class _AzkarPageState extends State<AzkarPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     "أذكار المساء",
                     style: TextStyle(
@@ -56,7 +56,7 @@ class _AzkarPageState extends State<AzkarPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     "أذكار بعد الصلاة",
                     style: TextStyle(
@@ -68,7 +68,7 @@ class _AzkarPageState extends State<AzkarPage> {
               ],
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               MorningPage(),
               AfternoonPage(),

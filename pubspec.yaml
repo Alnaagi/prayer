@@ -41,6 +41,7 @@ dependencies:
   flutter_compass: ^0.8.0
   carousel_slider: ^4.2.1
   animated_flip_counter: ^0.3.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

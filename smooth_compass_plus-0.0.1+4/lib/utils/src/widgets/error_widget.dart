@@ -6,11 +6,10 @@ class CustomErrorWidget extends StatelessWidget {
   final String title;
 
   const CustomErrorWidget(
-      {Key? key,
+      {super.key,
       required this.onTap,
       required this.title,
-      required this.errMsg})
-      : super(key: key);
+      required this.errMsg});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class CustomErrorWidget extends StatelessWidget {
               onPressed: onTap,
               child: Text(
                 title,
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
           ),

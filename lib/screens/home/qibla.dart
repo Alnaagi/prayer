@@ -1,8 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:smooth_compass_plus/utils/src/compass_ui.dart';
 
 class QiblaPage extends StatefulWidget {
@@ -62,7 +60,7 @@ class _QiblaPageState extends State<QiblaPage> {
                                             ? Colors.black12
                                             : Colors.white38,
                                         spreadRadius: 5,
-                                        offset: Offset(2, 4))
+                                        offset: const Offset(2, 4))
                                   ],
                                 ),
                               ))),

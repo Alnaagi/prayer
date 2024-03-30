@@ -23,7 +23,7 @@ class AzkarWidget extends StatelessWidget {
               // border:
               //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     blurRadius: 10,
                     color: Colors.white70,
@@ -36,12 +36,12 @@ class AzkarWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Text(
                       obj["basmala"],
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black54,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
@@ -52,12 +52,12 @@ class AzkarWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Text(
                       obj["Alzikr"],
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
@@ -68,12 +68,12 @@ class AzkarWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Text(
                       obj["benefit"],
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black54,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
