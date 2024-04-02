@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:prayer/common/bottomappbar_widget.dart';
-import 'package:prayer/screens/home/azkar.dart';
-import 'package:prayer/screens/home/homepage.dart';
-import 'package:prayer/screens/home/homepage_copy.dart';
-import 'package:prayer/screens/home/qibla.dart';
+import 'package:prayer/common/homepage_refresh.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:prayer/screens/home/settings.dart';
+import 'package:prayer/screens/home/homepage_left.dart';
+import 'package:prayer/screens/home/homepage_right.dart';
 
 class HomeCarousel extends StatefulWidget {
   const HomeCarousel({
@@ -22,14 +19,20 @@ class _HomeCarouselState extends State<HomeCarousel> {
   int _current = 1;
 
   List<Widget> imgList = [
-    HomePageCopy(),
-    HomePageCopy(),
-    HomePageCopy(),
+    HomePageleft(),
+    HomepageRefresh(),
+    HomePageRight(),
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    ImageProvider logo = const AssetImage("assets/images/hourburj.png");
+    ImageProvider logo = const AssetImage("assets/images/home1.jpg");
     var media = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -58,7 +61,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
             ),
             Positioned(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 1.78,
+              height: MediaQuery.of(context).size.height * 1.759,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: imgList.asMap().entries.map((entry) {

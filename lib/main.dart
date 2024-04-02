@@ -1,8 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-
-import 'package:prayer/screens/home_bar.dart';
+import 'package:prayer/common/locationaddress.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +16,9 @@ class MyApp extends StatelessWidget {
     precacheImage(const AssetImage("assets/images/sand.png"), context);
     precacheImage(const AssetImage("assets/images/rus4.png"), context);
 
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeBar(),
+      home: LocationAddress(),
     );
   }
 }

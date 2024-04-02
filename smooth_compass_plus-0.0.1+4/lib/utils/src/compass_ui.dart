@@ -61,11 +61,23 @@ class _SmoothCompassWidgetState extends State<SmoothCompassWidget> {
                     child: CircularProgressIndicator(),
                   );
           }
-          if (!snapshot.data!) {
-            return const Center(
-                child: FittedBox(
+          if (snapshot.data == null) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.18,
+                ),
+                FittedBox(
                     fit: BoxFit.scaleDown,
-                    child: Text("هذا الجهاز لا يدعم البوصلة")));
+                    child: Text(
+                      "هذا الجهاز لا يدعم البوصلة",
+                      style: TextStyle(
+                          color: Colors.brown.shade700,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    )),
+              ],
+            );
           }
 
           /// start compass stream

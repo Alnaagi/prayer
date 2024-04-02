@@ -13,6 +13,7 @@ class AzkarPage extends StatefulWidget {
 class _AzkarPageState extends State<AzkarPage> {
   @override
   Widget build(BuildContext context) {
+    ImageProvider logo = const AssetImage("assets/images/home4.jpg");
     return DefaultTabController(
         length: 3,
         initialIndex: 2,
@@ -36,7 +37,7 @@ class _AzkarPageState extends State<AzkarPage> {
               indicatorWeight: 2,
               tabs: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 6),
                   child: Text(
                     "أذكار الصباح",
                     style: TextStyle(
@@ -46,7 +47,7 @@ class _AzkarPageState extends State<AzkarPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 6),
                   child: Text(
                     "أذكار المساء",
                     style: TextStyle(
@@ -56,7 +57,7 @@ class _AzkarPageState extends State<AzkarPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 6),
                   child: Text(
                     "أذكار بعد الصلاة",
                     style: TextStyle(
@@ -68,12 +69,17 @@ class _AzkarPageState extends State<AzkarPage> {
               ],
             ),
           ),
-          body: const TabBarView(
-            children: [
-              MorningPage(),
-              AfternoonPage(),
-              AfterPrayerPage(),
-            ],
+          body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(image: logo, fit: BoxFit.fill),
+            ),
+            child: const TabBarView(
+              children: [
+                MorningPage(),
+                AfternoonPage(),
+                AfterPrayerPage(),
+              ],
+            ),
           ),
         ));
   }

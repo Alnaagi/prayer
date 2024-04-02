@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prayer/common/bottomappbar_widget.dart';
 import 'package:prayer/common/homepage_carousel.dart';
 import 'package:prayer/screens/home/azkar.dart';
-import 'package:prayer/screens/home/homepage.dart';
-import 'package:prayer/screens/home/homepage_copy.dart';
+
 import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:prayer/screens/home/settings.dart';
@@ -28,8 +27,8 @@ class _HomeBarState extends State<HomeBar> {
   }
 
   List<Widget> listArr = [
-    const HomePageCopy(),
     const HomeCarousel(),
+    const AzkarPage(),
     const QiblaPage(),
     const SettingsPage()
   ];
@@ -47,7 +46,7 @@ class _HomeBarState extends State<HomeBar> {
       // backgroundColor: Colors.transparent,
       // extendBodyBehindAppBar: true,
       bottomNavigationBar: BottomAppBar(
-        height: 80,
+        height: 90,
         surfaceTintColor: Colors.transparent,
         color: Colors.transparent,
         padding: const EdgeInsets.all(10),
@@ -56,9 +55,10 @@ class _HomeBarState extends State<HomeBar> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black26,
+                  color: Colors.black38,
                   blurRadius: 5,
-                  offset: Offset(0, -2),
+                  spreadRadius: 1.5,
+                  offset: Offset(0, 0),
                 )
               ],
               borderRadius: BorderRadius.all(Radius.circular(10))

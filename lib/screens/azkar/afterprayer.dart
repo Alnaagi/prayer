@@ -88,23 +88,18 @@ class _AfterPrayerPageState extends State<AfterPrayerPage> {
     },
   ];
 
-  final double _value = 0.0;
   double value = 1;
   ImageProvider logo = const AssetImage("assets/images/sand.png");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(image: logo, fit: BoxFit.fill),
-        ),
-        child: ListView.builder(
-          itemCount: listArr.length,
-          itemBuilder: (context, index) {
-            var obj = listArr[index] as Map? ?? {};
-            return AzkarWidget(obj: obj);
-          },
-        ),
+      backgroundColor: Colors.transparent,
+      body: ListView.builder(
+        itemCount: listArr.length,
+        itemBuilder: (context, index) {
+          var obj = listArr[index] as Map? ?? {};
+          return AzkarWidget(obj: obj);
+        },
       ),
     );
   }
