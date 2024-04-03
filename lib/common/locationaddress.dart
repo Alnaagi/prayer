@@ -142,6 +142,7 @@ class _LocationAddressState extends State<LocationAddress> {
           });
         } else {
           // Handle API request failure
+          // _getTimeZoneFromLookupService_BackUp();
           print('Error fetching time zone: ${response.statusCode}');
         }
       } catch (e) {
@@ -162,6 +163,28 @@ class _LocationAddressState extends State<LocationAddress> {
       setState(() {
         timeZone = timeZoneData[
             "zoneName"]; // Assuming the API returns time zone ID in 'timeZoneId' key
+      });
+    } else {
+      // Handle API request failure
+      // _getTimeZoneFromLookupService_BackUp();
+      print('Error fetching time zone: ${response.statusCode}');
+    }
+  }
+
+  Future<void> _getTimeZoneFromLookupService_BackUp() async {
+    final url =
+        Uri.parse('$timeZoneLookupUrl_BackUp&q=$latitudeloc%2C$longitudeloc');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final timeZoneData = jsonDecode(response.body);
+      print("**************Backup is Working*****************");
+      setState(() {
+        timeZone = timeZoneData[{
+          "timezone": {"name"}
+        }];
+
+        // Assuming the API returns time zone ID in 'timeZoneId' key
       });
     } else {
       // Handle API request failure

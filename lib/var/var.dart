@@ -6,17 +6,18 @@ String locationName1 = "";
 String locationName2 = "";
 String locationName3 = "";
 String locationName4 = "";
+String apikey = "";
+String timeZoneLookupUrl_BackUp =
+    "https://api.opencagedata.com/geocode/v1/json?f098de6d8d1444fd965b9ba0fa3b1e62";
+
 bool isFetchingData = false;
 // late Duration Beforemidnight2;
 // late Duration afterdifference;
-bool isFetchingData2 = false;
+
 bool isFetchingData3 = false;
 String test = "";
 bool changetimer = false;
-bool differenceActive = false;
-bool MidnightActive = false;
-bool middiffActive = false;
-bool midswitch = false;
+
 var headingtest;
 
 // print("$latitude,$longitude");
@@ -65,4 +66,5 @@ var headingtest;
 //     // print(durationToString(afterdifference.inMinutes));
 //     // print(durationToString(Beforemidnight.inMinutes));
 
+   
    

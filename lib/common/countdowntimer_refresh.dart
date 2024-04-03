@@ -1,15 +1,27 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' as intl;
+
 import 'package:prayer/var/var.dart';
 import 'package:flutter/material.dart';
 
 import 'package:prayers_times/prayers_times.dart';
 
+bool MidnightActive = false;
+bool middiffActive = false;
+bool differenceActive = false;
+bool isFetchingData2 = false;
+
 class CountTimerPrayer extends StatefulWidget {
   @override
   _CountTimerPrayerState createState() => _CountTimerPrayerState();
 }
+
+// bool isFetchingData2 = false;
+// bool differenceActive = false;
+// bool MidnightActive = false;
+// bool middiffActive = false;
+// bool midswitch = false;
 
 class _CountTimerPrayerState extends State<CountTimerPrayer> {
   Timer? _timer;
@@ -59,7 +71,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 
 // Specify the calculation parameters for prayer times
     PrayerCalculationParameters params = PrayerCalculationMethod.custom();
-
+    params.madhab = PrayerMadhab.shafi;
 // Create a PrayerTimes instance for the specified location
     PrayerTimes prayerTimes = PrayerTimes(
       coordinates: coordinates,
@@ -90,7 +102,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     DateTime PrayerCurrentTime = format2.parse(Currentprayer);
 
     final timenowago = DateTime.now();
-    final difference = PrayerCurrentTime.difference(timenowago);
+    final difference = timenowago.difference(PrayerCurrentTime);
 
 ///////////////////////////////////
 //////////// Next prayer ////////// بقي
@@ -115,12 +127,49 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     ////////////////////////////////
 //////// if after midnight to fajr /////  بقي غدا
     String tomorrowprayer =
-        "${now.year}-${now.month}-${now.day} ${prayerTimes1.timeForPrayer(next)}:00.000";
+        "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(next)}:00.000";
     intl.DateFormat format5 = new intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime tomorrow_prayer = format5.parse(tomorrowprayer);
 
     final nowwww = DateTime.now();
     final Aftermidnight = tomorrow_prayer.difference(nowwww);
+
+    String tomorrowprayer2 =
+        "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
+    intl.DateFormat format6 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime tomorrow_prayer2 = format6.parse(tomorrowprayer2);
+
+    // final nowwww2 = DateTime.now();
+    // final Aftermidnight2 = DateTime.now()
+    //     .subtract(Duration(days: nowwww2.day, hours: PrayerNextTime.hour));
+
+    final nowwww2 = DateTime.now();
+    final Aftermidnight2 = DateTime(nowwww.year, now.month, now.day,
+            nowwww2.hour, nowwww2.minute, now.second)
+        .subtract(Duration(
+            hours: prayerTimes.asrEndTime!.minute,
+            minutes: prayerTimes.asrEndTime!.minute));
+///////////////////////////////////
+//////////// current prayer2 /////// مضى
+    String Currentprayer2 =
+        "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
+    intl.DateFormat format8 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime PrayerCurrentTime22 = format8.parse(Currentprayer2);
+
+    final timenowago2 = DateTime.now();
+    final difference2 = PrayerCurrentTime22.difference(timenowago2);
+
+///////////////////////////////////
+//////////// Next prayer2 ////////// بقي
+    String Nextprayer2 =
+        "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(next)}:00.000";
+    intl.DateFormat format9 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime PrayerNextTime2 = format9.parse(Nextprayer2);
+
+    final timenowafter2 = DateTime.now();
+    final afterdifference2 = PrayerNextTime.difference(timenowafter2);
+
+    // final test = nowwww2.difference();
 
     String durationToString(int minutes) {
       var d = Duration(
@@ -130,47 +179,106 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}:${parts[2].padLeft(2, '0')}';
     }
 
-    print(durationToString(difference.inSeconds));
-    print(durationToString(afterdifference.inSeconds));
-    print(durationToString(Beforemidnight.inSeconds));
-    print(durationToString(Aftermidnight.inSeconds));
+    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+    print(
+        "${durationToString(difference.inSeconds).substring(0, 8)} difference");
+    print(
+        "${durationToString(afterdifference.inSeconds).substring(0, 8)} afterdifference");
+    print(
+        "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
+    print(
+        "${durationToString(Aftermidnight.inSeconds).substring(0, 8)} Aftermidnight");
+    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
 
-    print("difference${difference.inMinutes}");
-    print("afterdifference${afterdifference.inMinutes}");
-    print("Beforemidnight${Beforemidnight.inMinutes}");
-    print("Aftermidnight${Aftermidnight.inMinutes}");
+    // print(durationToString(afterdifference.inSeconds));
+    // print(durationToString(Beforemidnight.inSeconds));
+    // print(durationToString(Aftermidnight.inSeconds));
+
+    // print("difference${difference.inMinutes}");
+    // print("afterdifference${afterdifference.inMinutes}");
+    // print("Beforemidnight${Beforemidnight.inMinutes}");
+    // print("Aftermidnight${Aftermidnight.inMinutes}");
+    // print("Current*******${difference2.inMinutes}");
+    // print("Next*******${test}");
+    // print("Next*******${PrayerNextTime2}");
+    // print("Next*******${difference2}");
 
 ////////////////////////////////////////////////////////////////////////
 
-    if (difference.inMinutes <= Beforemidnight.inMinutes &&
-        difference.inMinutes <= afterdifference.inMinutes) {
-      print("${durationToString(difference.inMinutes)}مضى ");
-      MidnightActive = false;
-      differenceActive = true;
-    } else if (difference >= afterdifference &&
-        afterdifference.inMinutes >= Aftermidnight.inMinutes) {
-      print("${afterdifference.inMinutes}بقي ");
-      MidnightActive = false;
-      differenceActive = false;
-    } else if (Beforemidnight.inMinutes <= Aftermidnight.inMinutes &&
-        Beforemidnight.inMinutes < difference.inMinutes) {
-      print("${durationToString(Beforemidnight.inMinutes)}مضى ");
-      MidnightActive = true;
-      middiffActive = true;
-    } else {
-      print("${durationToString(Aftermidnight.inMinutes)}بقي ");
+    if (Aftermidnight.inMinutes >= Beforemidnight.inMinutes) {
       MidnightActive = true;
       middiffActive = false;
-    }
 
-//////////////////////////////////////////////////////////////////////////
+      print(
+          "${durationToString(Aftermidnight.inSeconds)} بقي علي صلاة ${next} ");
+    } else if (difference.inMinutes <= Aftermidnight.inMinutes) {
+      print("${Aftermidnight.inSeconds} مضى علي صلاة ${current} ");
+      MidnightActive = false;
+      differenceActive = true;
+    } else if (Aftermidnight.inMinutes <= difference.inMinutes &&
+        Beforemidnight.inMinutes < afterdifference.inMinutes) {
+      print("${durationToString(Aftermidnight.inSeconds)}بقي sunshine ");
+      MidnightActive = true;
+      differenceActive = true;
+    } else if (Aftermidnight.inMinutes >= difference.inMinutes) {
+      print("${durationToString(difference.inSeconds)}مضى ***");
+      MidnightActive = false;
+      middiffActive = false;
+      differenceActive = true;
+    } else if (afterdifference.inMinutes >= Beforemidnight.inMinutes &&
+        difference.inMinutes <= afterdifference.inMinutes) {
+      print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*****");
+      MidnightActive = false;
+      middiffActive = false;
+      differenceActive = true;
+      // }
+      // //  else if (afterdifference.inMinutes >= Aftermidnight.inMinutes &&
+      // //     difference.inMinutes <= afterdifference.inMinutes) {
+
+      // // }
+      // else if (afterdifference.inMinutes >= Beforemidnight.inMinutes &&
+      //     difference.inMinutes <= afterdifference.inMinutes) {
+      //   print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*aaa****");
+      //   MidnightActive = false;
+      //   middiffActive = false;
+      //   differenceActive = true;
+    } else
+      MidnightActive = false;
+    differenceActive = true;
+    print("finish");
+    // MidnightActive = true;
+    // MidnightActive = false;
+    // middiffActive = false;
+    // differenceActive = true;
+    // print(
+    // "${durationToString(((DateTime.now().minute + PrayerCurrentTime.minute) + PrayerNextTime.minute.toString()))}بقي ****a**ASR******");
+    print(PrayerNextTime);
+    print(PrayerCurrentTime);
+    // middiffActive = false;
+    // differenceActive = false;
+
+    // TimeOfDay yourTime = TimeOfDay.fromDateTime(PrayerCurrentTime);
+    // TimeOfDay nowTime = TimeOfDay.now();
+    // double _doubleYourTime =
+    //     yourTime.hour.toDouble() + (yourTime.minute.toDouble() / 60);
+    // double _doubleNowTime =
+    //     nowTime.hour.toDouble() + (nowTime.minute.toDouble() / 60);
+
+    // double _timeDiff = _doubleYourTime - _doubleNowTime;
+
+    // int _hr = _timeDiff.truncate();
+    // double _minute = (_timeDiff - _timeDiff.truncate()) * 60;
+
+    // print('Here your Happy $_hr Hour and also $_minute min');
+
     return isFetchingData2
         ? CircularProgressIndicator()
         : InkWell(
             onTap: () {
-              if (MidnightActive == true) setState(() {});
-              if (differenceActive == true) {}
-              setState(() {});
+              MidnightActive = !MidnightActive;
+              // if (MidnightActive == true) setState(() {});
+              // if (differenceActive == true) {}
+              // setState(() {});
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -305,53 +413,53 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //   return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}:${parts[2].padLeft(2, '0')}';
 // }
 
-  //  if (difference.inMinutes <= Beforemidnight.inMinutes &&
-  //       difference.inMinutes <= afterdifference.inMinutes) {
-  //     print("${durationToString(difference.inSeconds)}مضى ");
-  //     changetimer = true;
-  //     return Column(
-  //       children: [
-  //         Text(
-  //           "مضى على صلاة ${current}",
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontSize: 25,
-  //           ),
-  //         ),
-  //         Text(
-  //           "${durationToString(difference.inSeconds).substring(1, 8)}",
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontSize: 50,
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   } else if (difference.inMinutes >= afterdifference.inMinutes &&
-  //       afterdifference.inMinutes >= Aftermidnight.inMinutes) {
-  //     print("${durationToString(afterdifference.inSeconds)}بقي ");
-  //     changetimer = false;
-  //     return Column(
-  //       children: [
-  //         Text(
-  //           "بقي على صلاة ${next}",
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontSize: 25,
-  //           ),
-  //         ),
-  //         Text(
-  //           "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontSize: 50,
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   } else if (Beforemidnight <= Aftermidnight &&
-  //       Beforemidnight.inMinutes < difference.inMinutes) {
-  //     print("${durationToString(Beforemidnight.inSeconds)}مضى ");
-  //   } else {
-  //     print("${durationToString(Aftermidnight.inSeconds)}بقي ");
-  //   }
+//  if (difference.inMinutes <= Beforemidnight.inMinutes &&
+//       difference.inMinutes <= afterdifference.inMinutes) {
+//     print("${durationToString(difference.inSeconds)}مضى ");
+//     changetimer = true;
+//     return Column(
+//       children: [
+//         Text(
+//           "مضى على صلاة ${current}",
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontSize: 25,
+//           ),
+//         ),
+//         Text(
+//           "${durationToString(difference.inSeconds).substring(1, 8)}",
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontSize: 50,
+//           ),
+//         ),
+//       ],
+//     );
+//   } else if (difference.inMinutes >= afterdifference.inMinutes &&
+//       afterdifference.inMinutes >= Aftermidnight.inMinutes) {
+//     print("${durationToString(afterdifference.inSeconds)}بقي ");
+//     changetimer = false;
+//     return Column(
+//       children: [
+//         Text(
+//           "بقي على صلاة ${next}",
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontSize: 25,
+//           ),
+//         ),
+//         Text(
+//           "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontSize: 50,
+//           ),
+//         ),
+//       ],
+//     );
+//   } else if (Beforemidnight <= Aftermidnight &&
+//       Beforemidnight.inMinutes < difference.inMinutes) {
+//     print("${durationToString(Beforemidnight.inSeconds)}مضى ");
+//   } else {
+//     print("${durationToString(Aftermidnight.inSeconds)}بقي ");
+//   }

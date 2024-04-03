@@ -51,6 +51,12 @@ class _HomePageCopyState extends State<HomePageCopy> {
 // Display convenience utilities for prayer times
     // String current = prayerTimes.currentPrayer();
     // String next = prayerTimes.nextPrayer();
+    // print(prayerTimes.timeForPrayer(current));
+
+    // String Test555 = prayerTimes.timeForPrayer(current).toString();
+    // print("$Test555/test");
+    // DateTime testtime = DateTime.parse(Test555);
+    // print(testtime);
 
     // print("$latitude,$longitude");
     // Define the geographical coordinates for the location
