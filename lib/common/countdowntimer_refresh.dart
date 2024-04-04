@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:prayer/screens/azkar/afterprayer.dart';
 
 import 'package:prayer/var/var.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
   }
 
   void _startTimer() {
-    const refreshDuration = Duration(seconds: 1);
+    const refreshDuration = Duration(milliseconds: 500);
 
     _timer = Timer.periodic(refreshDuration, (_) async {
       setState(() {
@@ -68,6 +69,10 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
   @override
   Widget build(BuildContext context) {
     Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
+    @override
+    void initState() {
+      super.initState();
+    }
 
 // Specify the calculation parameters for prayer times
     PrayerCalculationParameters params = PrayerCalculationMethod.custom();
@@ -187,7 +192,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     print(
         "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
     print(
-        "${durationToString(Aftermidnight.inSeconds).substring(0, 8)} Aftermidnight");
+        "${durationToString(Aftermidnight.inSeconds).substring(1, 9)} Aftermidnight");
     print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
 
     // print(durationToString(afterdifference.inSeconds));
@@ -205,18 +210,18 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 
 ////////////////////////////////////////////////////////////////////////
 
-    if (Aftermidnight.inMinutes >= Beforemidnight.inMinutes) {
+    if (Aftermidnight.inDays >= Beforemidnight.inDays) {
       MidnightActive = true;
       middiffActive = false;
 
       print(
           "${durationToString(Aftermidnight.inSeconds)} بقي علي صلاة ${next} ");
     } else if (difference.inMinutes <= Aftermidnight.inMinutes) {
-      print("${Aftermidnight.inSeconds} مضى علي صلاة ${current} ");
+      print("${Aftermidnight.inSeconds} مضى علي ***صلاة ${current} ");
       MidnightActive = false;
       differenceActive = true;
     } else if (Aftermidnight.inMinutes <= difference.inMinutes &&
-        Beforemidnight.inMinutes < afterdifference.inMinutes) {
+        Beforemidnight.inMinutes <= afterdifference.inMinutes) {
       print("${durationToString(Aftermidnight.inSeconds)}بقي sunshine ");
       MidnightActive = true;
       differenceActive = true;
@@ -231,45 +236,24 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       MidnightActive = false;
       middiffActive = false;
       differenceActive = true;
-      // }
-      // //  else if (afterdifference.inMinutes >= Aftermidnight.inMinutes &&
-      // //     difference.inMinutes <= afterdifference.inMinutes) {
+    } else if (difference.inMinutes <= Aftermidnight.inMinutes &&
+        afterdifference.inMinutes >= Beforemidnight.inMinutes) {
+      MidnightActive = true;
+      middiffActive = false;
+      // differenceActive = true;
+      print("finish0");
+    } else if (afterdifference.inDays >= Beforemidnight.inDays) {
+      MidnightActive = true;
+      middiffActive = false;
 
-      // // }
-      // else if (afterdifference.inMinutes >= Beforemidnight.inMinutes &&
-      //     difference.inMinutes <= afterdifference.inMinutes) {
-      //   print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*aaa****");
-      //   MidnightActive = false;
-      //   middiffActive = false;
-      //   differenceActive = true;
-    } else
+      print("finish1");
+    } else {
       MidnightActive = false;
-    differenceActive = true;
-    print("finish");
-    // MidnightActive = true;
-    // MidnightActive = false;
-    // middiffActive = false;
-    // differenceActive = true;
-    // print(
-    // "${durationToString(((DateTime.now().minute + PrayerCurrentTime.minute) + PrayerNextTime.minute.toString()))}بقي ****a**ASR******");
-    print(PrayerNextTime);
-    print(PrayerCurrentTime);
-    // middiffActive = false;
-    // differenceActive = false;
+      differenceActive = true;
+    }
 
-    // TimeOfDay yourTime = TimeOfDay.fromDateTime(PrayerCurrentTime);
-    // TimeOfDay nowTime = TimeOfDay.now();
-    // double _doubleYourTime =
-    //     yourTime.hour.toDouble() + (yourTime.minute.toDouble() / 60);
-    // double _doubleNowTime =
-    //     nowTime.hour.toDouble() + (nowTime.minute.toDouble() / 60);
-
-    // double _timeDiff = _doubleYourTime - _doubleNowTime;
-
-    // int _hr = _timeDiff.truncate();
-    // double _minute = (_timeDiff - _timeDiff.truncate()) * 60;
-
-    // print('Here your Happy $_hr Hour and also $_minute min');
+    // print(PrayerNextTime);
+    // print(PrayerCurrentTime);
 
     return isFetchingData2
         ? CircularProgressIndicator()
@@ -323,7 +307,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                             ),
                                           ),
                                           Text(
-                                            "${durationToString(Beforemidnight.inSeconds).substring(1, 8)}",
+                                            "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 50,
@@ -362,7 +346,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                             ),
                                           ),
                                           Text(
-                                            "${durationToString(difference.inSeconds).substring(1, 8)}",
+                                            "${durationToString(difference.inSeconds).substring(0, 8)}",
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 50,
@@ -463,3 +447,42 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //   } else {
 //     print("${durationToString(Aftermidnight.inSeconds)}بقي ");
 //   }
+
+
+  // }
+    // //  else if (afterdifference.inMinutes >= Aftermidnight.inMinutes &&
+    // //     difference.inMinutes <= afterdifference.inMinutes) {
+
+    // // }
+    // else if (afterdifference.inMinutes >= Beforemidnight.inMinutes &&
+    //     difference.inMinutes <= afterdifference.inMinutes) {
+    //   print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*aaa****");
+    //   MidnightActive = false;
+    //   middiffActive = false;
+    //   differenceActive = true;
+
+     //   MidnightActive = false;
+    // differenceActive = true;
+    // MidnightActive = true;
+    // MidnightActive = false;
+    // middiffActive = false;
+    // differenceActive = true;
+    // print(
+    // "${durationToString(((DateTime.now().minute + PrayerCurrentTime.minute) + PrayerNextTime.minute.toString()))}بقي ****a**ASR******");
+
+    // middiffActive = false;
+    // differenceActive = false;
+
+    // TimeOfDay yourTime = TimeOfDay.fromDateTime(PrayerCurrentTime);
+    // TimeOfDay nowTime = TimeOfDay.now();
+    // double _doubleYourTime =
+    //     yourTime.hour.toDouble() + (yourTime.minute.toDouble() / 60);
+    // double _doubleNowTime =
+    //     nowTime.hour.toDouble() + (nowTime.minute.toDouble() / 60);
+
+    // double _timeDiff = _doubleYourTime - _doubleNowTime;
+
+    // int _hr = _timeDiff.truncate();
+    // double _minute = (_timeDiff - _timeDiff.truncate()) * 60;
+
+    // print('Here your Happy $_hr Hour and also $_minute min');
