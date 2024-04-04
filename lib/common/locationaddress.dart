@@ -31,12 +31,12 @@ class _LocationAddressState extends State<LocationAddress> {
   StreamSubscription<Position>? locationSubscription;
   @override
   void initState() {
-    _getLocation();
+    // _getLocation();
     // _listenForLocationChanges();
     // _listenForLocationChanges();
     // _getLocationData();
-    _listenForLocationChanges();
-    _getTimeZoneFromLookupService_atlaunch();
+    _listenForLocationChanges2();
+    // _getTimeZoneFromLookupService_atlaunch();
     super.initState();
 
     // _listenForLocationChanges();
@@ -76,7 +76,7 @@ class _LocationAddressState extends State<LocationAddress> {
 
   void _listenForLocationChanges() {
     // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 30), (timer) async {
+    timer = Timer.periodic(Duration(seconds: 500), (timer) async {
       try {
         final position2 = await Geolocator.getCurrentPosition(
             // timeLimit: Duration(seconds: 10),
@@ -190,6 +190,41 @@ class _LocationAddressState extends State<LocationAddress> {
       // Handle API request failure
       print('Error fetching time zone: ${response.statusCode}');
     }
+  }
+
+  void _listenForLocationChanges2() {
+    // Location stream for continuous updates (if available)
+    timer = Timer.periodic(Duration(seconds: 1), (timer) async {
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+
+        if (permission == LocationPermission.deniedForever) {
+          Geolocator.openAppSettings();
+          // Permission denied forever, handle error
+          errorMessage =
+              "Location permissions are permanently denied. Please enable them from app settings.";
+          return;
+        }
+      }
+      try {
+        final position2 = await Geolocator.getCurrentPosition(
+            // timeLimit: Duration(seconds: 10),
+            desiredAccuracy: LocationAccuracy.best);
+        setState(() {
+          latitudeloc = position2.latitude;
+          longitudeloc = position2.longitude;
+
+          _getLocationData();
+          // _listenForLocationChanges(); // Call your location data processing function here
+          timer.cancel();
+        });
+      } catch (e) {
+        setState(() {
+          errorMessage = "Error getting location: $e";
+        });
+      }
+    });
   }
 
   @override

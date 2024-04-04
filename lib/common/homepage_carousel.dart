@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:prayer/common/homepage_refresh.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:prayer/screens/home/homepage_left.dart';
+import 'package:prayer/screens/home/homepage_middle.dart';
 import 'package:prayer/screens/home/homepage_right.dart';
 
 class HomeCarousel extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
 
   List<Widget> imgList = [
     HomePageleft(),
-    HomepageRefresh(),
+    HomePageCopy(),
     HomePageRight(),
   ];
 

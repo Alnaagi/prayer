@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:prayer/screens/azkar/afterprayer.dart';
@@ -41,7 +42,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
   }
 
   void _startTimer() {
-    const refreshDuration = Duration(milliseconds: 500);
+    const refreshDuration = Duration(milliseconds: 1000);
 
     _timer = Timer.periodic(refreshDuration, (_) async {
       setState(() {
@@ -105,6 +106,10 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
     intl.DateFormat format2 = new intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime PrayerCurrentTime = format2.parse(Currentprayer);
+
+    testtimecurrent = PrayerCurrentTime;
+    // print(PrayerCurrentTime);
+    // print(Currentprayer);
 
     final timenowago = DateTime.now();
     final difference = timenowago.difference(PrayerCurrentTime);
@@ -254,6 +259,15 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 
     // print(PrayerNextTime);
     // print(PrayerCurrentTime);
+
+    if (now.isAtSameMomentAs(testtimecurrent)) {
+      AwesomeNotifications().createNotification(
+          content: NotificationContent(
+              id: 1,
+              channelKey: "prayer_channel",
+              title: "اذان صلاة ${current}",
+              body: "حان الان الوقت لأذان صلاة ${current}"));
+    }
 
     return isFetchingData2
         ? CircularProgressIndicator()

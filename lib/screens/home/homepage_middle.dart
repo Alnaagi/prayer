@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,11 @@ import 'package:prayer/common/countdowntimer_refresh.dart';
 
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
+
+int time = 0;
+Timer? timer;
+Timer? timer2;
+bool mainpage = false;
 
 class HomePageCopy extends StatefulWidget {
   const HomePageCopy({super.key});
@@ -17,14 +23,52 @@ class HomePageCopy extends StatefulWidget {
 class _HomePageCopyState extends State<HomePageCopy> {
   @override
   void initState() {
+    _homepagerefresh();
+    _timercanceler();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer2?.cancel();
+    super.dispose();
   }
 
   bool aftertext = false;
   // bool changetimer = false;
 
+  void _homepagerefresh() {
+    // Location stream for continuous updates (if available)
+    timer = Timer.periodic(Duration(seconds: 2), (_) async {
+      print("Refresh///////");
+      setState(() {
+        mainpage = false;
+      });
+    });
+  }
+
+  void _timercanceler() async {
+    timer2 = Timer.periodic(Duration(seconds: 10), (timer2) async {
+      print("Canceled///////");
+      setState(() {
+        mainpage = false;
+        timer?.cancel();
+      });
+
+      timer?.cancel();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    // while (time <= 500) {
+    //   print("object");
+    //   setState(() {
+    //     time++;
+    //     print("object");
+    //   });
+    // }
+
     Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
 
 // Specify the calculation parameters for prayer times
@@ -117,9 +161,9 @@ class _HomePageCopyState extends State<HomePageCopy> {
     } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
       // print("fajr");
       fajr_ActiveColor = !fajr_ActiveColor;
-    } else {
+    } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
       // print("isha");
-      isha_ActiveColor = !isha_ActiveColor;
+      isha_ActiveColor = false;
     }
     //media size
     List listArr = [
@@ -154,7 +198,9 @@ class _HomePageCopyState extends State<HomePageCopy> {
         "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
       },
     ];
-
+    setState(() {
+      aftertext = false;
+    });
     // //current PrayerTime
     // List listArrCurrent = [
     //   {
@@ -236,72 +282,74 @@ class _HomePageCopyState extends State<HomePageCopy> {
     //   print(durationToString(afterdifference.inMinutes));
     // }
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Container(
-        height: media.height,
-        width: media.width,
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(image: logo, fit: BoxFit.fill),
-        // ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    changetimer = !changetimer;
-                  });
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 4,
-                      sigmaY: 4,
+    return mainpage
+        ? CircularProgressIndicator()
+        : Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Container(
+              height: media.height,
+              width: media.width,
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(image: logo, fit: BoxFit.fill),
+              // ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 50,
                     ),
-                    child: Container(
-                      height: media.height * .22,
-                      width: media.width * .93,
-                      decoration: BoxDecoration(
-                        // color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(15),
-                        // border:
-                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          changetimer = !changetimer;
+                        });
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                            sigmaX: 4,
+                            sigmaY: 4,
+                          ),
+                          child: Container(
+                            height: media.height * .22,
+                            width: media.width * .93,
+                            decoration: BoxDecoration(
+                              // color: Colors.yellow,
+                              borderRadius: BorderRadius.circular(15),
+                              // border:
+                              //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: const [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: Colors.white70,
-                              spreadRadius: 5,
-                              offset: Offset(2, 4))
-                        ],
-                      ),
-                      child: Center(
-                        child: CountTimerPrayer(),
+                              boxShadow: const [
+                                BoxShadow(
+                                    blurRadius: 10,
+                                    color: Colors.white70,
+                                    spreadRadius: 5,
+                                    offset: Offset(2, 4))
+                              ],
+                            ),
+                            child: Center(
+                              child: CountTimerPrayer(),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shrinkWrap: true,
+                      itemCount: listArr.length,
+                      itemBuilder: (context, index) {
+                        var obj = listArr[index] as Map? ?? {};
+                        return PrayerWidget(obj: obj);
+                      },
+                    ),
+                  ],
                 ),
               ),
-              ListView.builder(
-                scrollDirection: Axis.vertical,
-                padding: EdgeInsets.symmetric(vertical: 12),
-                shrinkWrap: true,
-                itemCount: listArr.length,
-                itemBuilder: (context, index) {
-                  var obj = listArr[index] as Map? ?? {};
-                  return PrayerWidget(obj: obj);
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
   }
 }
 

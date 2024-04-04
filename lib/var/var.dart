@@ -10,7 +10,8 @@ String apikey = "";
 String timeZoneLookupUrl_BackUp =
     "https://api.opencagedata.com/geocode/v1/json?f098de6d8d1444fd965b9ba0fa3b1e62";
 
-bool isFetchingData = false;
+DateTime testtimecurrent = DateTime.now();
+
 // late Duration Beforemidnight2;
 // late Duration afterdifference;
 
