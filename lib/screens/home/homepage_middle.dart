@@ -30,8 +30,9 @@ class _HomePageCopyState extends State<HomePageCopy> {
 
   @override
   void dispose() {
-    timer2?.cancel();
     super.dispose();
+    timer?.cancel();
+    timer2?.cancel();
   }
 
   bool aftertext = false;

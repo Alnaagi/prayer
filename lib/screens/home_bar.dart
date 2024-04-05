@@ -5,6 +5,7 @@ import 'package:prayer/screens/home/azkar.dart';
 
 import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:prayer/screens/home/azkarcarousel.dart';
 import 'package:prayer/screens/home/settings.dart';
 
 class HomeBar extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomeBarState extends State<HomeBar> {
 
   List<Widget> listArr = [
     const HomeCarousel(),
-    const AzkarPage(),
+    const AzkarCarousel(),
     const QiblaPage(),
     const SettingsPage()
   ];

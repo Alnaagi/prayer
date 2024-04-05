@@ -89,22 +89,120 @@ class _AfternoonPageState extends State<AfternoonPage> {
   ];
 
   double value = 1;
-  ImageProvider logo = const AssetImage("assets/images/sand.png");
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: ListView.builder(
-        itemCount: listArr.length,
-        itemBuilder: (context, index) {
-          var obj = listArr[index] as Map? ?? {};
-          return AzkarWidget(obj: obj);
-        },
+    var media = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      physics: ScrollPhysics(),
+      child: Column(
+        children: [
+          SizedBox(
+            height: media.height,
+            child: ListView.builder(
+              // physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: listArr.length,
+              itemBuilder: (context, index) {
+                var obj = listArr[index] as Map? ?? {};
+                return AzkarWidget(obj: obj);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
+
+
+// body: Column(
+      //   children: [
+      //     Align(
+      //       alignment: Alignment.center,
+      //       child: Padding(
+      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      //         child: Text(
+      //           "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ",
+      //           style: TextStyle(
+      //               color: Colors.black54,
+      //               fontSize: 20,
+      //               fontWeight: FontWeight.bold),
+      //           textDirection: TextDirection.rtl,
+      //         ),
+      //       ),
+      //     ),
+      //     Align(
+      //       alignment: Alignment.centerRight,
+      //       child: Padding(
+      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      //         child: Text(
+      //           "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسى - البقرة 255].",
+      //           style: TextStyle(
+      //               color: Colors.black,
+      //               fontSize: 20,
+      //               fontWeight: FontWeight.bold),
+      //           textDirection: TextDirection.rtl,
+      //         ),
+      //       ),
+      //     ),
+      //     Align(
+      //       alignment: Alignment.centerRight,
+      //       child: Padding(
+      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      //         child: Text(
+      //           "",
+      //           style: TextStyle(
+      //               color: Colors.black,
+      //               fontSize: 20,
+      //               fontWeight: FontWeight.bold),
+      //           textDirection: TextDirection.rtl,
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+
+
+
+// Center(
+//         child: InkWell(
+//           splashColor: Colors.yellow,
+//           onTap: () {
+//             setState(() {
+//               _value += value;
+//             });
+//           },
+//           child: AnimatedFlipCounter(
+//             value: _value,
+
+//             // Use "infix" to show a value between negative sign and number
+//             // infix: ' \$',
+//             // fractionDigits: 2,
+//             // wholeDigits: 8,
+//             // hideLeadingZeroes: true,
+//             // Some languages like French use comma as decimal separator
+//             // decimalSeparator: ',',
+//             // thousandSeparator: '.',
+//             padding: const EdgeInsets.all(8),
+//             textStyle: TextStyle(
+//               fontSize: 48,
+//               fontWeight: FontWeight.bold,
+//               // letterSpacing: -8.0,
+//               color: Colors.green,
+//               shadows: const [
+//                 BoxShadow(
+//                   color: Colors.black54,
+//                   offset: Offset(2, 3),
+//                   blurRadius: 4,
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
 
 
 // body: Column(

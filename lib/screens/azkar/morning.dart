@@ -89,17 +89,28 @@ class _MorningPageState extends State<MorningPage> {
   ];
 
   double value = 1;
-  ImageProvider logo = const AssetImage("assets/images/sand.png");
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: ListView.builder(
-        itemCount: listArr.length,
-        itemBuilder: (context, index) {
-          var obj = listArr[index] as Map? ?? {};
-          return AzkarWidget(obj: obj);
-        },
+    var media = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      physics: ScrollPhysics(),
+      child: Column(
+        children: [
+          SizedBox(
+            height: media.height,
+            child: ListView.builder(
+              // physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: listArr.length,
+              itemBuilder: (context, index) {
+                var obj = listArr[index] as Map? ?? {};
+                return AzkarWidget(obj: obj);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

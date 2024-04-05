@@ -1,14 +1,22 @@
 import 'dart:ui';
 
+import 'package:animated_flip_counter/animated_flip_counter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AzkarWidget extends StatelessWidget {
+class AzkarWidget extends StatefulWidget {
   const AzkarWidget({super.key, required this.obj});
   final Map obj;
+
+  @override
+  State<AzkarWidget> createState() => _AzkarWidgetState();
+}
+
+class _AzkarWidgetState extends State<AzkarWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: BackdropFilter(
@@ -31,53 +39,92 @@ class AzkarWidget extends StatelessWidget {
                     offset: Offset(2, 4))
               ],
             ),
-            child: Column(
+            child: Stack(
+              alignment: Alignment.bottomLeft,
               children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
+                Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        child: Text(
+                          widget.obj["basmala"],
+                          style: const TextStyle(
+                              color: Colors.black54,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal),
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ),
                     ),
-                    child: Text(
-                      obj["basmala"],
-                      style: const TextStyle(
-                          color: Colors.black54,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                      textDirection: TextDirection.rtl,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ),
+                        child: Text(
+                          widget.obj["Alzikr"],
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ),
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        child: Text(
+                          widget.obj["benefit"],
+                          style: const TextStyle(
+                              color: Colors.black54,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
+                InkWell(
+                  onTap: () {
+                    if (widget.obj["int"] > 0)
+                      setState(() {
+                        widget.obj["int"] = widget.obj["int"] - 1;
+                      });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(6),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+                    width: 45,
+                    height: 55.5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                      ),
+                      color: Colors.black45,
                     ),
-                    child: Text(
-                      obj["Alzikr"],
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                      textDirection: TextDirection.rtl,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                    ),
-                    child: Text(
-                      obj["benefit"],
-                      style: const TextStyle(
-                          color: Colors.black54,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                      textDirection: TextDirection.rtl,
+                    child: AnimatedFlipCounter(
+                      value: widget.obj["int"],
+                      // Use "infix" to show a value between negative sign and number
+
+                      // Some languages like French use comma as decimal separator
+
+                      // padding: const EdgeInsets.all(0),
+                      textStyle: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
