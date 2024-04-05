@@ -14,7 +14,8 @@ class _AfterPrayerPageState extends State<AfterPrayerPage> {
       "basmala": "",
       "Alzikr":
           "أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله.\fاللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام . ",
-      "benefit": "",
+      "benefit":
+          "من قالها حين يصبح أجير من الجن حتى يمسى ومن قالها حين يمسى أجير من الجن حتى يصبح.",
       "int": 1
     },
     {
@@ -111,7 +112,7 @@ class _AfterPrayerPageState extends State<AfterPrayerPage> {
       child: Column(
         children: [
           SizedBox(
-            height: media.height,
+            height: media.height / 1.178,
             child: ListView.builder(
               // physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,

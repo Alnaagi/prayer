@@ -53,7 +53,7 @@ class _AzkarCarouselState extends State<AzkarCarousel> {
               Column(
                 children: [
                   SizedBox(
-                    height: 85,
+                    height: media.height / 7.5,
                   ),
                   Expanded(
                     child: SizedBox(
@@ -70,8 +70,8 @@ class _AzkarCarouselState extends State<AzkarCarousel> {
                 ],
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 42),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 13.5, vertical: 49.5),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: BackdropFilter(
@@ -80,7 +80,7 @@ class _AzkarCarouselState extends State<AzkarCarousel> {
                       sigmaY: 10,
                     ),
                     child: Container(
-                      height: 80,
+                      height: media.height * 0.1,
                       decoration: BoxDecoration(
                         // color: Colors.yellow,
                         borderRadius: BorderRadius.circular(15),
@@ -97,37 +97,39 @@ class _AzkarCarouselState extends State<AzkarCarousel> {
                         ],
                       ),
                       child: TabBar(
+                        indicatorPadding: EdgeInsets.symmetric(horizontal: 15),
+                        labelPadding:
+                            EdgeInsets.symmetric(horizontal: 0, vertical: 20),
                         indicatorColor: Colors.black,
                         tabs: [
-                          Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Text(
-                                "أذكار الصباح",
-                                style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              "أذكار المساء",
+                              "أذكار الصباح",
                               style: TextStyle(
                                   color: Colors.black87,
-                                  fontSize: 18,
+                                  fontSize: media.width * 0.048,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(
+                              "أذكار المساء",
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: media.width * 0.048,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 1),
                             child: Text(
                               "أذكار بعد الصلاة",
                               style: TextStyle(
+                                  letterSpacing: 0.05,
                                   color: Colors.black87,
-                                  fontSize: 16,
+                                  fontSize: media.width * 0.045,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),

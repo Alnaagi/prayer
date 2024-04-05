@@ -43,15 +43,15 @@ class _HomeCarouselState extends State<HomeCarousel> {
           image: DecorationImage(image: logo, fit: BoxFit.fill),
         ),
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Stack(children: [
+          child: Column(children: [
             CarouselSlider(
               items: imgList,
               carouselController: _controller,
               options: CarouselOptions(
                   enableInfiniteScroll: false,
                   // enlargeCenterPage: true,
-                  aspectRatio: 0.1,
+                  height: media.height * 0.87,
+                  // aspectRatio: media.width / media.height * 1.15,
                   viewportFraction: 1,
                   initialPage: 1,
                   onPageChanged: (index, reason) {
@@ -60,30 +60,25 @@ class _HomeCarouselState extends State<HomeCarousel> {
                     });
                   }),
             ),
-            Positioned(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 1.759,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: imgList.asMap().entries.map((entry) {
-                  return GestureDetector(
-                    onTap: () => _controller.animateToPage(entry.key),
-                    child: Container(
-                      width: 10.0,
-                      height: 10.0,
-                      margin:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Colors.black
-                                  : Colors.white)
-                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                    ),
-                  );
-                }).toList(),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: imgList.asMap().entries.map((entry) {
+                return GestureDetector(
+                  onTap: () => _controller.animateToPage(entry.key),
+                  child: Container(
+                    width: 10.0,
+                    height: 10.0,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 4.0),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: (Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black
+                                : Colors.white)
+                            .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                  ),
+                );
+              }).toList(),
             ),
           ]),
         ),

@@ -24,15 +24,8 @@ class _HomePageCopyState extends State<HomePageCopy> {
   @override
   void initState() {
     _homepagerefresh();
-    _timercanceler();
-    super.initState();
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-    timer2?.cancel();
+    super.initState();
   }
 
   bool aftertext = false;
@@ -40,24 +33,36 @@ class _HomePageCopyState extends State<HomePageCopy> {
 
   void _homepagerefresh() {
     // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 2), (_) async {
+    timer = Timer.periodic(Duration(seconds: 3), (_) async {
       print("Refresh///////");
-      setState(() {
-        mainpage = false;
-      });
+
+      _timercanceler();
+      if (mounted) {
+        setState(() {
+          mainpage = false;
+        });
+      }
     });
   }
 
   void _timercanceler() async {
-    timer2 = Timer.periodic(Duration(seconds: 10), (timer2) async {
-      print("Canceled///////");
-      setState(() {
-        mainpage = false;
-        timer?.cancel();
-      });
-
-      timer?.cancel();
+    timer2 = Timer.periodic(Duration(seconds: 5), (timer2) async {
+      if (mounted) {
+        setState(() {
+          mainpage = false;
+          print("Canceled///////");
+          timer?.cancel();
+        });
+      }
+      timer2.cancel();
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+    timer2?.cancel();
   }
 
   @override
@@ -296,8 +301,8 @@ class _HomePageCopyState extends State<HomePageCopy> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: media.height * 0.06,
                     ),
                     InkWell(
                       onTap: () {
@@ -337,6 +342,7 @@ class _HomePageCopyState extends State<HomePageCopy> {
                       ),
                     ),
                     ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       padding: EdgeInsets.symmetric(vertical: 12),
                       shrinkWrap: true,

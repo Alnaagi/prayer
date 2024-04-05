@@ -15,76 +15,89 @@ class _AfternoonPageState extends State<AfternoonPage> {
       "Alzikr":
           "أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله.\fاللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام . ",
       "benefit": "",
+      "int": 1
     },
     {
       "basmala": "",
       "Alzikr":
           "لا إلهَ إلاّ اللّهُ وحدَهُ لا شريكَ لهُ، لهُ المُـلْكُ ولهُ الحَمْد، وهوَ على كلّ شَيءٍ قَدير، اللّهُـمَّ لا مانِعَ لِما أَعْطَـيْت، وَلا مُعْطِـيَ لِما مَنَـعْت، وَلا يَنْفَـعُ ذا الجَـدِّ مِنْـكَ الجَـد.",
       "benefit": "",
+      "int": 1
     },
     {
       "basmala": "",
       "Alzikr":
           "لا إلهَ إلاّ اللّه, وحدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمد، وهوَ على كلّ شيءٍ قدير، لا حَـوْلَ وَلا قـوَّةَ إِلاّ بِاللهِ، لا إلهَ إلاّ اللّـه، وَلا نَعْـبُـدُ إِلاّ إيّـاه, لَهُ النِّعْـمَةُ وَلَهُ الفَضْل وَلَهُ الثَّـناءُ الحَـسَن، لا إلهَ إلاّ اللّهُ مخْلِصـينَ لَـهُ الدِّينَ وَلَوْ كَـرِهَ الكـافِرون.",
       "benefit": "",
+      "int": 1
     },
     {
       "basmala": "",
       "Alzikr": "سُـبْحانَ اللهِ، والحَمْـدُ لله ، واللهُ أكْـبَر. ",
       "benefit": "",
+      "int": 33
     },
     {
       "basmala": "",
       "Alzikr":
           "لا إلهَ إلاّ اللّهُ وَحْـدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمْد، وهُوَ على كُلّ شَيءٍ قَـدير.",
       "benefit": "",
+      "int": 1
     },
     {
       "basmala": "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم",
       "Alzikr":
           "قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.",
       "benefit": "ثلاث مرات",
+      "int": 3
     },
     {
       "basmala": "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم",
       "Alzikr":
           "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ.",
       "benefit": "ثلاث مرات",
+      "int": 3
     },
     {
       "basmala": "بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم",
       "Alzikr":
           "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.",
       "benefit": "ثلاث مرات",
+      "int": 3
     },
     {
       "basmala": "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ",
       "Alzikr":
           "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ.",
       "benefit": "",
+      "int": 1
     },
     {
       "basmala": "",
       "Alzikr":
           "لا إلهَ إلاّ اللّهُ وحْـدَهُ لا شريكَ لهُ، لهُ المُلكُ ولهُ الحَمْد، يُحيـي وَيُمـيتُ وهُوَ على كُلّ شيءٍ قدير.",
       "benefit": "عَشْر مَرّات بَعْدَ المَغْرِب وَالصّـبْح.",
+      "int": 10
     },
     {
       "basmala": "",
       "Alzikr":
           "اللّهُـمَّ إِنِّـي أَسْأَلُـكَ عِلْمـاً نافِعـاً وَرِزْقـاً طَيِّـباً ، وَعَمَـلاً مُتَقَـبَّلاً. ",
       "benefit": "بَعْد السّلامِ من صَلاةِ الفَجْر.",
+      "int": 1
     },
     {
       "basmala": "",
       "Alzikr": "اللَّهُمَّ أَجِرْنِي مِنْ النَّار.",
       "benefit": "بعد صلاة الصبح والمغرب.",
+      "int": 7
     },
     {
       "basmala": "",
       "Alzikr":
           "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ. ",
       "benefit": "",
+      "int": 1
     },
   ];
 
@@ -98,7 +111,7 @@ class _AfternoonPageState extends State<AfternoonPage> {
       child: Column(
         children: [
           SizedBox(
-            height: media.height,
+            height: media.height / 1.16,
             child: ListView.builder(
               // physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,
@@ -115,178 +128,3 @@ class _AfternoonPageState extends State<AfternoonPage> {
     );
   }
 }
-
-
-
-// body: Column(
-      //   children: [
-      //     Align(
-      //       alignment: Alignment.center,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ",
-      //           style: TextStyle(
-      //               color: Colors.black54,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //     Align(
-      //       alignment: Alignment.centerRight,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسى - البقرة 255].",
-      //           style: TextStyle(
-      //               color: Colors.black,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //     Align(
-      //       alignment: Alignment.centerRight,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "",
-      //           style: TextStyle(
-      //               color: Colors.black,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
-
-
-
-// Center(
-//         child: InkWell(
-//           splashColor: Colors.yellow,
-//           onTap: () {
-//             setState(() {
-//               _value += value;
-//             });
-//           },
-//           child: AnimatedFlipCounter(
-//             value: _value,
-
-//             // Use "infix" to show a value between negative sign and number
-//             // infix: ' \$',
-//             // fractionDigits: 2,
-//             // wholeDigits: 8,
-//             // hideLeadingZeroes: true,
-//             // Some languages like French use comma as decimal separator
-//             // decimalSeparator: ',',
-//             // thousandSeparator: '.',
-//             padding: const EdgeInsets.all(8),
-//             textStyle: TextStyle(
-//               fontSize: 48,
-//               fontWeight: FontWeight.bold,
-//               // letterSpacing: -8.0,
-//               color: Colors.green,
-//               shadows: const [
-//                 BoxShadow(
-//                   color: Colors.black54,
-//                   offset: Offset(2, 3),
-//                   blurRadius: 4,
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-
-
-// body: Column(
-      //   children: [
-      //     Align(
-      //       alignment: Alignment.center,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ",
-      //           style: TextStyle(
-      //               color: Colors.black54,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //     Align(
-      //       alignment: Alignment.centerRight,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسى - البقرة 255].",
-      //           style: TextStyle(
-      //               color: Colors.black,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //     Align(
-      //       alignment: Alignment.centerRight,
-      //       child: Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      //         child: Text(
-      //           "",
-      //           style: TextStyle(
-      //               color: Colors.black,
-      //               fontSize: 20,
-      //               fontWeight: FontWeight.bold),
-      //           textDirection: TextDirection.rtl,
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
-
-
-
-// Center(
-//         child: InkWell(
-//           splashColor: Colors.yellow,
-//           onTap: () {
-//             setState(() {
-//               _value += value;
-//             });
-//           },
-//           child: AnimatedFlipCounter(
-//             value: _value,
-
-//             // Use "infix" to show a value between negative sign and number
-//             // infix: ' \$',
-//             // fractionDigits: 2,
-//             // wholeDigits: 8,
-//             // hideLeadingZeroes: true,
-//             // Some languages like French use comma as decimal separator
-//             // decimalSeparator: ',',
-//             // thousandSeparator: '.',
-//             padding: const EdgeInsets.all(8),
-//             textStyle: TextStyle(
-//               fontSize: 48,
-//               fontWeight: FontWeight.bold,
-//               // letterSpacing: -8.0,
-//               color: Colors.green,
-//               shadows: const [
-//                 BoxShadow(
-//                   color: Colors.black54,
-//                   offset: Offset(2, 3),
-//                   blurRadius: 4,
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),

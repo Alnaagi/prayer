@@ -13,6 +13,7 @@ class PrayerWidget extends StatefulWidget {
 class _PrayerWidgetState extends State<PrayerWidget> {
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
       child: ClipRRect(
@@ -23,9 +24,8 @@ class _PrayerWidgetState extends State<PrayerWidget> {
             sigmaY: 4,
           ),
           child: Container(
-            height: 70,
+            height: media.height * 0.088,
             decoration: BoxDecoration(
-              // color: Colors.yellow,
               borderRadius: BorderRadius.circular(15),
               // border:
               //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
@@ -63,22 +63,6 @@ class _PrayerWidgetState extends State<PrayerWidget> {
                     textDirection: TextDirection.rtl,
                   ),
                 ),
-                // Align(
-                //   alignment: Alignment.center,
-                //   child: Padding(
-                //     padding: EdgeInsets.symmetric(
-                //       horizontal: 10,
-                //     ),
-                //     child: Text(
-                //       obj["benefit"],
-                //       style: TextStyle(
-                //           color: Colors.black54,
-                //           fontSize: 20,
-                //           fontWeight: FontWeight.bold),
-                //       textDirection: TextDirection.rtl,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
