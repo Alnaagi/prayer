@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:hijri/hijri_calendar.dart';
+import 'package:prayer/common/locationaddress.dart';
 
 import 'package:prayer/common/prayer_widget_refresh.dart';
 import 'package:prayer/common/countdowntimer_refresh.dart';
@@ -8,6 +10,7 @@ import 'package:prayer/common/countdowntimer_refresh.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
+var _today = HijriCalendar.now();
 int time = 0;
 Timer? timer;
 Timer? timer2;
@@ -23,9 +26,17 @@ class HomePageCopy extends StatefulWidget {
 class _HomePageCopyState extends State<HomePageCopy> {
   @override
   void initState() {
-    _homepagerefresh();
-
+    // _homepagerefresh();
+    // _timercanceler();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    timer?.cancel();
+    timer2?.cancel();
   }
 
   bool aftertext = false;
@@ -33,10 +44,9 @@ class _HomePageCopyState extends State<HomePageCopy> {
 
   void _homepagerefresh() {
     // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 3), (_) async {
+    timer = Timer.periodic(Duration(milliseconds: 800), (_) async {
       print("Refresh///////");
 
-      _timercanceler();
       if (mounted) {
         setState(() {
           mainpage = false;
@@ -46,164 +56,53 @@ class _HomePageCopyState extends State<HomePageCopy> {
   }
 
   void _timercanceler() async {
-    timer2 = Timer.periodic(Duration(seconds: 5), (timer2) async {
+    timer2 = Timer.periodic(Duration(seconds: 10), (_) async {
+      timer?.cancel();
       if (mounted) {
         setState(() {
           mainpage = false;
           print("Canceled///////");
-          timer?.cancel();
         });
       }
-      timer2.cancel();
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-    timer2?.cancel();
-  }
-
+  // List listArr = [
+  //     {
+  //       "Name": '\tالفجر',
+  //       "Time": "${prayerTimes.fajrStartTime!}",
+  //       "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //     {
+  //       "Name": '\tالشروق',
+  //       "Time": "\t${prayerTimes.sunrise!}",
+  //       "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //     {
+  //       "Name": '\tالظهر',
+  //       "Time": "\t${prayerTimes.dhuhrStartTime!}",
+  //       "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //     {
+  //       "Name": '\tالعصر',
+  //       "Time": "\t${prayerTimes.asrStartTime!}",
+  //       "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //     {
+  //       "Name": '\tالمغرب',
+  //       "Time": "\t${prayerTimes.maghribStartTime!}",
+  //       "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //     {
+  //       "Name": '\tالعشاء',
+  //       "Time": "\t${prayerTimes.ishaStartTime!}",
+  //       "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
+  //     },
+  //   ];
   @override
   Widget build(BuildContext context) {
-    // while (time <= 500) {
-    //   print("object");
-    //   setState(() {
-    //     time++;
-    //     print("object");
-    //   });
-    // }
-
-    Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
-
-// Specify the calculation parameters for prayer times
-    PrayerCalculationParameters params = PrayerCalculationMethod.custom();
-    params.madhab = PrayerMadhab.shafi;
-// Create a PrayerTimes instance for the specified location
-    PrayerTimes prayerTimes = PrayerTimes(
-      coordinates: coordinates,
-      calculationParameters: params,
-      precision: true,
-      locationName: timeZone,
-    );
-
-    // final now = DateTime.now();
-    // DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
-    // PrayerTimes prayerTimes1 = PrayerTimes(
-    //   coordinates: coordinates,
-    //   calculationParameters: params,
-    //   dateTime: tomorrow,
-    //   precision: true,
-    //   locationName: timeZone,
-    // );
-
-// Display convenience utilities for prayer times
-    // String current = prayerTimes.currentPrayer();
-    // String next = prayerTimes.nextPrayer();
-    // print(prayerTimes.timeForPrayer(current));
-
-    // String Test555 = prayerTimes.timeForPrayer(current).toString();
-    // print("$Test555/test");
-    // DateTime testtime = DateTime.parse(Test555);
-    // print(testtime);
-
-    // print("$latitude,$longitude");
-    // Define the geographical coordinates for the location
-    // Coordinates(latitudeloc, longitudeloc);
-    // print(latitudeloc);
-    // print(longitudeloc);
-    // print(timeZone);
-    // // Specify the calculation parameters for prayer times
-    // PrayerCalculationParameters params = PrayerCalculationMethod.custom();
-    // params.madhab = PrayerMadhab.shafi;
-
-    // // Create a PrayerTimes instance for the specified location
-    // PrayerTimes prayerTimes = PrayerTimes(
-    //   coordinates: coordinates,
-    //   calculationParameters: params,
-    //   precision: true,
-    //   locationName: timeZone,
-    // );
-
-    // final now = DateTime.now();
-    // DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
-    // PrayerTimes prayerTimes1 = PrayerTimes(
-    //   coordinates: coordinates,
-    //   calculationParameters: params,
-    //   dateTime: tomorrow,
-    //   precision: true,
-    //   locationName: timeZone,
-    // );
-
-    // // Display convenience utilities for prayer times
-    // String current = prayerTimes.currentPrayer();
-    // String next = prayerTimes.nextPrayer();
-
-    bool isha_ActiveColor = false;
-    bool maghrib_ActiveColor = false;
-    bool asr_ActiveColor = false;
-    bool dhuhr_ActiveColor = false;
-    bool sunrise_ActiveColor = false;
-    bool fajr_ActiveColor = false;
-
-    // if prayer time is now the function will output
-    DateTime date = DateTime.now();
-    if (date.isAfter(prayerTimes.ishaStartTime!)) {
-      // print("isha");
-      isha_ActiveColor = !isha_ActiveColor;
-    } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
-      // print("maghrib");
-      maghrib_ActiveColor = !maghrib_ActiveColor;
-    } else if (date.isAfter(prayerTimes.asrStartTime!)) {
-      // print("asr");
-      asr_ActiveColor = !asr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
-      // print("dhuhr");
-      dhuhr_ActiveColor = !dhuhr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.sunrise!)) {
-      // print("sunrise");
-      sunrise_ActiveColor = !sunrise_ActiveColor;
-    } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
-      // print("fajr");
-      fajr_ActiveColor = !fajr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
-      // print("isha");
-      isha_ActiveColor = false;
-    }
     //media size
-    List listArr = [
-      {
-        "Name": '\tالفجر',
-        "Time": "${prayerTimes.fajrStartTime!}",
-        "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالشروق',
-        "Time": "\t${prayerTimes.sunrise!}",
-        "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالظهر',
-        "Time": "\t${prayerTimes.dhuhrStartTime!}",
-        "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالعصر',
-        "Time": "\t${prayerTimes.asrStartTime!}",
-        "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالمغرب',
-        "Time": "\t${prayerTimes.maghribStartTime!}",
-        "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالعشاء',
-        "Time": "\t${prayerTimes.ishaStartTime!}",
-        "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
-      },
-    ];
+
     setState(() {
       aftertext = false;
     });
@@ -341,17 +240,7 @@ class _HomePageCopyState extends State<HomePageCopy> {
                         ),
                       ),
                     ),
-                    ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      shrinkWrap: true,
-                      itemCount: listArr.length,
-                      itemBuilder: (context, index) {
-                        var obj = listArr[index] as Map? ?? {};
-                        return PrayerWidget(obj: obj);
-                      },
-                    ),
+                    PrayerWidget(),
                   ],
                 ),
               ),

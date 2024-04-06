@@ -16,6 +16,11 @@ public final class GeneratedPluginRegistrant {
   private static final String TAG = "GeneratedPluginRegistrant";
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     try {
+      flutterEngine.getPlugins().add(new com.hemanthraj.fluttercompass.FlutterCompassPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_compass, com.hemanthraj.fluttercompass.FlutterCompassPlugin", e);
+    }
+    try {
       flutterEngine.getPlugins().add(new cl.ceisufro.fluttersensors.FlutterSensorsPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin flutter_sensors, cl.ceisufro.fluttersensors.FlutterSensorsPlugin", e);

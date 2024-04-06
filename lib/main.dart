@@ -2,8 +2,11 @@
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/controller/notif_controller.dart';
+import 'package:prayer/screens/home_bar.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
@@ -19,11 +22,12 @@ void main() async {
         channelGroupKey: "prayer_channel_group",
         channelGroupName: "prayer Group")
   ]);
-  bool isAllowedToSendNotifications =
-      await AwesomeNotifications().isNotificationAllowed();
-  if (!isAllowedToSendNotifications) {
-    AwesomeNotifications().requestPermissionToSendNotifications();
-  }
+  // bool isAllowedToSendNotifications =
+  //     await AwesomeNotifications().isNotificationAllowed();
+  // if (!isAllowedToSendNotifications) {
+  //   AwesomeNotifications().requestPermissionToSendNotifications();
+  // }
+
   runApp(const MyApp());
 }
 
@@ -35,15 +39,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Future<void> _getLocation() async {
+    await Permission.notification.request();
+    await Permission.location.request();
+    // print(Permission.location.status);
+    // print(Permission.notification.status);
+  }
+
   @override
   void initState() {
-    AwesomeNotifications().setListeners(
-      onActionReceivedMethod: NotificationController.onActionReceivedMethod,
-      onNotificationDisplayedMethod:
-          NotificationController.onNotificationDisplayedMethod,
-      onDismissActionReceivedMethod:
-          NotificationController.onDismissActionReceivedMethod,
-    );
+    _getLocation();
+
     super.initState();
   }
 

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
@@ -53,6 +54,7 @@ class _HomePageleftState extends State<HomePageleft> {
               ),
               InkWell(
                 onTap: () {
+                  _openAnimatedDialog(context);
                   setState(() {});
                 },
                 child: ClipRRect(
@@ -79,17 +81,44 @@ class _HomePageleftState extends State<HomePageleft> {
                               offset: Offset(2, 4))
                         ],
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Sunnah Times'),
-                          Text(
-                              'Middle of the Night:\t${sunnahInsights.middleOfTheNight}'),
-                          Text(
-                              'Last Third of the Night:\t${sunnahInsights.lastThirdOfTheNight}'),
-                          Text(
-                              'Qibla Direction:\t${(qiblaDirection).round()} degrees'),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Sunnah Times',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              'Middle of the Night:\t${sunnahInsights.middleOfTheNight}',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            Text(
+                              'Last Third of the Night:\t${sunnahInsights.lastThirdOfTheNight}',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            Text(
+                              'Qibla Direction:\t${(qiblaDirection).round()} degrees',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -101,4 +130,35 @@ class _HomePageleftState extends State<HomePageleft> {
       ),
     );
   }
+}
+
+void _openAnimatedDialog(BuildContext context) {
+  showGeneralDialog(
+    barrierLabel: "",
+    barrierDismissible: true,
+    context: context,
+    pageBuilder: (context, animation, secondaryAnimation) {
+      return BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 4,
+            sigmaY: 4,
+          ),
+          child: Container());
+    },
+    transitionDuration: Duration(milliseconds: 250),
+    transitionBuilder: (context, a1, a2, child) {
+      return ScaleTransition(
+          scale: Tween(begin: 0.5, end: 1.0).animate(a1),
+          child: FadeTransition(
+            opacity: Tween(begin: 0.5, end: 1.0).animate(a1),
+            child: AlertDialog(
+              title: Text("Hello"),
+              content: Text("Hello"),
+              shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none),
+            ),
+          ));
+    },
+  );
 }

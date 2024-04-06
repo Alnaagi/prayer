@@ -17,9 +17,11 @@ bool middiffActive = false;
 bool differenceActive = false;
 bool isFetchingData2 = false;
 
-class CountTimerPrayer extends StatefulWidget {
+class NextDatePage extends StatefulWidget {
+  const NextDatePage({super.key});
+
   @override
-  _CountTimerPrayerState createState() => _CountTimerPrayerState();
+  State<NextDatePage> createState() => _NextDatePageState();
 }
 
 // bool isFetchingData2 = false;
@@ -28,7 +30,7 @@ class CountTimerPrayer extends StatefulWidget {
 // bool middiffActive = false;
 // bool midswitch = false;
 
-class _CountTimerPrayerState extends State<CountTimerPrayer> {
+class _NextDatePageState extends State<NextDatePage> {
   Timer? _timer;
   // Flag to indicate data fetching state
 
@@ -271,136 +273,30 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
               title: "اذان صلاة ${current}",
               body: "حان الان الوقت لأذان صلاة ${current}"));
     }
-    var _format = HijriCalendar.now();
+    // DateTime tommorow = DateTime(
+    //     now.year, now.month, now.day + 1, now.hour, now.minute, now.second);
+    var _format = HijriCalendar.fromDate(tomorrow);
 
-    print(_format.toFormat("mm dd yy")); //09 14 39
     return isFetchingData2
         ? CircularProgressIndicator()
-        : InkWell(
-            onTap: () {
-              MidnightActive = !MidnightActive;
-              // if (MidnightActive == true) setState(() {});
-              // if (differenceActive == true) {}
-              // setState(() {});
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.arrow_back_ios_rounded),
-                SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            Text(
-                              "${locationName}-${locationName2}-${locationName3}",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Stack(
-                        children: [
-                          MidnightActive
-                              ? Container(
-                                  child: middiffActive
-                                      ? Column(
-                                          children: [
-                                            Text(
-                                              "مضى على صلاة ${current}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Column(
-                                          children: [
-                                            Text(
-                                              "بقي على صلاة ${next}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(Aftermidnight.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                )
-                              : Container(
-                                  child: differenceActive
-                                      ? Column(
-                                          children: [
-                                            Text(
-                                              "مضى على صلاة ${current}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(difference.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Column(
-                                          children: [
-                                            Text(
-                                              "بقي على صلاة ${next}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                ),
-                        ],
-                      ),
-                      Text(
-                        _format.fullDate(),
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(Icons.arrow_forward_ios_rounded),
-              ],
-            ),
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      HijriCalendar.language = "ar";
+                    });
+                  },
+                  child: Icon(Icons.arrow_back_ios_rounded)),
+              Text(
+                _format.fullDate(),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
           );
   }
 }
