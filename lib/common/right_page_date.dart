@@ -14,38 +14,16 @@ Timer? timer2;
 Timer? timerazan;
 bool mainpage2 = false;
 
-bool timera = false;
-
-// class Refreshgood {
-//   static Future maingood() async {
-//     mainpage2 = true;
-//     print("goodr");
-//   }
-// }
-
-class PrayerWidget extends StatefulWidget {
-  const PrayerWidget({
+class PrayerWidgetRight extends StatefulWidget {
+  const PrayerWidgetRight({
     super.key,
   });
 
   @override
-  State<PrayerWidget> createState() => _PrayerWidgetState();
+  State<PrayerWidgetRight> createState() => _PrayerWidgetRightState();
 }
 
-class _PrayerWidgetState extends State<PrayerWidget> {
-  @override
-  void initState() {
-    _homepagerefresh();
-
-    // TODO: implement initState
-    super.initState();
-  }
-
-  // static Future testinggood() async {
-  //   mainpage2 = false;
-  //   print("good222");
-  // }
-
+class _PrayerWidgetRightState extends State<PrayerWidgetRight> {
   // void initState() {
   //   _homepagerefresh();
   //   _timercanceler();
@@ -53,43 +31,42 @@ class _PrayerWidgetState extends State<PrayerWidget> {
   //   super.initState();
   // }
 
-  @override
-  void dispose() {
-    super.dispose();
+  // @override
+  // void dispose() {
+  //   super.dispose();
 
-    timer?.cancel();
-    timer2?.cancel();
-  }
+  //   timer?.cancel();
+  //   timer2?.cancel();
+  // }
 
-  bool aftertext = false;
-  // bool changetimer = false;
+  // bool aftertext = false;
+  // // bool changetimer = false;
 
-  void _homepagerefresh() {
-    // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(milliseconds: 100), (_) async {
-      // print("Refresh///////");
+  // void _homepagerefresh() {
+  //   // Location stream for continuous updates (if available)
+  //   timer = Timer.periodic(Duration(microseconds: 1), (_) async {
+  //     // print("Refresh///////");
 
-      if (mounted) {
-        setState(() {
-          mainpage2 = false;
-          timer?.cancel();
-          _timercanceler();
-        });
-      }
-    });
-  }
+  //     if (mounted) {
+  //       setState(() {
+  //         mainpage2 = false;
+  //         timer?.cancel();
+  //       });
+  //     }
+  //   });
+  // }
 
-  void _timercanceler() async {
-    timer2 = Timer.periodic(Duration(seconds: 5), (_) async {
-      if (mounted) {
-        setState(() {
-          mainpage2 = false;
-          print("Canceled///////");
-          // timer2?.cancel();
-        });
-      }
-    });
-  }
+  // void _timercanceler() async {
+  //   timer2 = Timer.periodic(Duration(seconds: 3), (_) async {
+  //     if (mounted) {
+  //       setState(() {
+  //         mainpage2 = false;
+  //         // print("Canceled///////");
+  //         // timer2?.cancel();
+  //       });
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -127,252 +104,126 @@ class _PrayerWidgetState extends State<PrayerWidget> {
       locationName: timeZone,
     );
 
-//     DateTime tomorrow2 = DateTime(now.year, now.month, now.day + 2);
-//     PrayerTimes prayerTimes2 = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       dateTime: tomorrow2,
-//       precision: true,
-//       locationName: timeZone,
-//     );
+    // DateTime tomorrow2 = DateTime(now.year, now.month, now.day + 2);
+    // PrayerTimes prayerTimes2 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow2,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     DateTime tomorrow3 = DateTime(now.year, now.month, now.day + 3);
-//     PrayerTimes prayerTimes3 = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       dateTime: tomorrow3,
-//       precision: true,
-//       locationName: timeZone,
-//     );
+    // DateTime tomorrow3 = DateTime(now.year, now.month, now.day + 3);
+    // PrayerTimes prayerTimes3 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow3,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     DateTime tomorrow4 = DateTime(now.year, now.month, now.day + 4);
-//     PrayerTimes prayerTimes4 = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       dateTime: tomorrow4,
-//       precision: true,
-//       locationName: timeZone,
-//     );
+    // DateTime tomorrow4 = DateTime(now.year, now.month, now.day + 4);
+    // PrayerTimes prayerTimes4 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow4,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     DateTime tomorrow5 = DateTime(now.year, now.month, now.day + 5);
-//     PrayerTimes prayerTimes5 = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       dateTime: tomorrow5,
-//       precision: true,
-//       locationName: timeZone,
-//     );
+    // DateTime tomorrow5 = DateTime(now.year, now.month, now.day + 5);
+    // PrayerTimes prayerTimes5 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow5,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     DateTime tomorrow6 = DateTime(now.year, now.month, now.day + 6);
-//     PrayerTimes prayerTimes6 = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       dateTime: tomorrow6,
-//       precision: true,
-//       locationName: timeZone,
-//     );
+    // DateTime tomorrow6 = DateTime(now.year, now.month, now.day + 6);
+    // PrayerTimes prayerTimes6 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow6,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-// // Display convenience utilities for prayer times
-//     // String current = prayerTimes.currentPrayer();
-//     // String next = prayerTimes.nextPrayer();
-//     // print(prayerTimes.timeForPrayer(current));
+// Display convenience utilities for prayer times
+    // String current = prayerTimes.currentPrayer();
+    // String next = prayerTimes.nextPrayer();
+    // print(prayerTimes.timeForPrayer(current));
 
-//     // String Test555 = prayerTimes.timeForPrayer(current).toString();
-//     // print("$Test555/test");
-//     // DateTime testtime = DateTime.parse(Test555);
-//     // print(testtime);
+    // String Test555 = prayerTimes.timeForPrayer(current).toString();
+    // print("$Test555/test");
+    // DateTime testtime = DateTime.parse(Test555);
+    // print(testtime);
 
-//     // print("$latitude,$longitude");
-//     // Define the geographical coordinates for the location
-//     // Coordinates(latitudeloc, longitudeloc);
-//     // print(latitudeloc);
-//     // print(longitudeloc);
-//     // print(timeZone);
-//     // // Specify the calculation parameters for prayer times
-//     // PrayerCalculationParameters params = PrayerCalculationMethod.custom();
-//     // params.madhab = PrayerMadhab.shafi;
+    // print("$latitude,$longitude");
+    // Define the geographical coordinates for the location
+    // Coordinates(latitudeloc, longitudeloc);
+    // print(latitudeloc);
+    // print(longitudeloc);
+    // print(timeZone);
+    // // Specify the calculation parameters for prayer times
+    // PrayerCalculationParameters params = PrayerCalculationMethod.custom();
+    // params.madhab = PrayerMadhab.shafi;
 
-//     // // Create a PrayerTimes instance for the specified location
-//     // PrayerTimes prayerTimes = PrayerTimes(
-//     //   coordinates: coordinates,
-//     //   calculationParameters: params,
-//     //   precision: true,
-//     //   locationName: timeZone,
-//     // );
+    // // Create a PrayerTimes instance for the specified location
+    // PrayerTimes prayerTimes = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     // final now = DateTime.now();
-//     // DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
-//     // PrayerTimes prayerTimes1 = PrayerTimes(
-//     //   coordinates: coordinates,
-//     //   calculationParameters: params,
-//     //   dateTime: tomorrow,
-//     //   precision: true,
-//     //   locationName: timeZone,
-//     // );
+    // final now = DateTime.now();
+    // DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
+    // PrayerTimes prayerTimes1 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
-//     // // Display convenience utilities for prayer times
-//     String current = prayerTimes.currentPrayer();
-//     String next = prayerTimes.nextPrayer();
+    // // // Display convenience utilities for prayer times
+    // String current = prayerTimes.currentPrayer();
+    // String next = prayerTimes.nextPrayer();
 
-    bool isha_ActiveColor = false;
-    bool maghrib_ActiveColor = false;
-    bool asr_ActiveColor = false;
-    bool dhuhr_ActiveColor = false;
-    bool sunrise_ActiveColor = false;
-    bool fajr_ActiveColor = false;
+    // bool isha_ActiveColor = false;
+    // bool maghrib_ActiveColor = false;
+    // bool asr_ActiveColor = false;
+    // bool dhuhr_ActiveColor = false;
+    // bool sunrise_ActiveColor = false;
+    // bool fajr_ActiveColor = false;
 
-    // if prayer time is now the function will output
-    DateTime date = DateTime.now();
-    if (date.isAfter(prayerTimes.ishaStartTime!)) {
-      // print("isha");
-      isha_ActiveColor = !isha_ActiveColor;
-    } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
-      // print("maghrib");
-      maghrib_ActiveColor = !maghrib_ActiveColor;
-    } else if (date.isAfter(prayerTimes.asrStartTime!)) {
-      // print("asr");
-      asr_ActiveColor = !asr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
-      // print("dhuhr");
-      dhuhr_ActiveColor = !dhuhr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.sunrise!)) {
-      // print("sunrise");
-      sunrise_ActiveColor = !sunrise_ActiveColor;
-    } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
-      // print("fajr");
-      fajr_ActiveColor = !fajr_ActiveColor;
-    } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
-      // print("isha");
-      isha_ActiveColor = false;
-    }
+    // // if prayer time is now the function will output
+    // DateTime date = DateTime.now();
+    // if (date.isAfter(prayerTimes.ishaStartTime!)) {
+    //   // print("isha");
+    //   isha_ActiveColor = !isha_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
+    //   // print("maghrib");
+    //   maghrib_ActiveColor = !maghrib_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.asrStartTime!)) {
+    //   // print("asr");
+    //   asr_ActiveColor = !asr_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
+    //   // print("dhuhr");
+    //   dhuhr_ActiveColor = !dhuhr_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.sunrise!)) {
+    //   // print("sunrise");
+    //   sunrise_ActiveColor = !sunrise_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
+    //   // print("fajr");
+    //   fajr_ActiveColor = !fajr_ActiveColor;
+    // } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
+    //   // print("isha");
+    //   isha_ActiveColor = false;
+    // }
 
-    //media size
-    List listArr = [
-      {
-        "Name": '\tالفجر',
-        "Time": "${prayerTimes.fajrStartTime!}",
-        "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالشروق',
-        "Time": "\t${prayerTimes.sunrise!}",
-        "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالظهر',
-        "Time": "\t${prayerTimes.dhuhrStartTime!}",
-        "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالعصر',
-        "Time": "\t${prayerTimes.asrStartTime!}",
-        "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالمغرب',
-        "Time": "\t${prayerTimes.maghribStartTime!}",
-        "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
-      },
-      {
-        "Name": '\tالعشاء',
-        "Time": "\t${prayerTimes.ishaStartTime!}",
-        "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
-      },
-    ];
-
-    Future goodprint() async {
-      print("goodr656");
-    }
-
-    print("goodr65\\\\\\\\6");
-    var media = MediaQuery.of(context).size;
-
-    return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      scrollDirection: Axis.vertical,
-      padding: EdgeInsets.symmetric(vertical: 12),
-      shrinkWrap: true,
-      itemCount: listArr.length,
-      itemBuilder: (context, index) {
-        var obj = listArr[index] as Map? ?? {};
-        // return
-        //  PrayerWidget(obj: obj);
-        return PrayerWidget2(obj: obj);
-      },
-    );
-  }
-}
-
-class PrayerWidget2 extends StatelessWidget {
-  const PrayerWidget2({super.key, required this.obj});
-  final Map obj;
-  @override
-  Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 4,
-            sigmaY: 4,
-          ),
-          child: Container(
-            height: media.height * 0.088,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              // border:
-              //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
-
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 0,
-                    color: obj["activeColor"],
-                    spreadRadius: 5,
-                    offset: Offset(2, 4))
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    obj["Time"],
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    obj["Name"],
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-//    void AzanToday() {
+//     void AzanToday() {
 // //////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////
 //       AwesomeNotifications().createNotification(
@@ -1077,3 +928,119 @@ class PrayerWidget2 extends StatelessWidget {
 //     }
 
 //     AzanToday1();
+
+    //media size
+    List listArr = [
+      {
+        "Name": '\tالفجر',
+        "Time": "${prayerTimes1.fajrStartTime!}",
+        "activeColor": Colors.white70,
+      },
+      {
+        "Name": '\tالشروق',
+        "Time": "\t${prayerTimes1.sunrise!}",
+        "activeColor": Colors.white70,
+      },
+      {
+        "Name": '\tالظهر',
+        "Time": "\t${prayerTimes1.dhuhrStartTime!}",
+        "activeColor": Colors.white70,
+      },
+      {
+        "Name": '\tالعصر',
+        "Time": "\t${prayerTimes1.asrStartTime!}",
+        "activeColor": Colors.white70,
+      },
+      {
+        "Name": '\tالمغرب',
+        "Time": "\t${prayerTimes1.maghribStartTime!}",
+        "activeColor": Colors.white70,
+      },
+      {
+        "Name": '\tالعشاء',
+        "Time": "\t${prayerTimes1.ishaStartTime!}",
+        "activeColor": Colors.white70,
+      },
+    ];
+
+    var media = MediaQuery.of(context).size;
+
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      padding: EdgeInsets.symmetric(vertical: 12),
+      shrinkWrap: true,
+      itemCount: listArr.length,
+      itemBuilder: (context, index) {
+        var obj = listArr[index] as Map? ?? {};
+        // return
+        //  PrayerWidget(obj: obj);
+        return PrayerWidgetRight2(obj: obj);
+      },
+    );
+  }
+}
+
+class PrayerWidgetRight2 extends StatelessWidget {
+  const PrayerWidgetRight2({super.key, required this.obj});
+  final Map obj;
+  @override
+  Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 4,
+            sigmaY: 4,
+          ),
+          child: Container(
+            height: media.height * 0.088,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              // border:
+              //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 0,
+                    color: obj["activeColor"],
+                    spreadRadius: 5,
+                    offset: Offset(2, 4))
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    obj["Time"],
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    obj["Name"],
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

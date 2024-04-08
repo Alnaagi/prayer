@@ -32,14 +32,14 @@ class _HomePageleftState extends State<HomePageleft> {
 
     // Calculate and display Sunnah times
     SunnahInsights sunnahInsights = SunnahInsights(prayerTimes);
-    print('\n***** Sunnah Times');
-    print('Middle of the Night:\t${sunnahInsights.middleOfTheNight}');
-    print('Last Third of the Night:\t${sunnahInsights.lastThirdOfTheNight}');
+    // print('\n***** Sunnah Times');
+    // print('Middle of the Night:\t${sunnahInsights.middleOfTheNight}');
+    // print('Last Third of the Night:\t${sunnahInsights.lastThirdOfTheNight}');
 
     // Determine and display Qibla direction
-    print('\n***** Qibla Direction');
+    // print('\n***** Qibla Direction');
     double qiblaDirection = Qibla.qibla(coordinates);
-    print('Qibla Direction:\t$qiblaDirection degrees');
+    // print('Qibla Direction:\t$qiblaDirection degrees');
 
     var media = MediaQuery.of(context).size;
 

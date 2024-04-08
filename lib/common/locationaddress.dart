@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:prayer/common/prayer_widget_refresh.dart';
+import 'package:prayer/controller/notif_schedule.dart';
+import 'package:prayer/controller/test2.dart';
 import 'package:prayer/screens/home_bar.dart';
-import 'package:prayer/var/var.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Replace 'YOUR_TIMEZONE_API_URL' with the actual URL of the time zone lookup service
@@ -43,6 +46,7 @@ class _LocationAddressState extends State<LocationAddress> {
   String errorMessage = "";
   Timer? timer;
   Timer? timer2;
+  Timer? timer3;
   StreamSubscription<Position>? locationSubscription;
   @override
   void initState() {
@@ -92,7 +96,7 @@ class _LocationAddressState extends State<LocationAddress> {
 
   void _listenForLocationChanges() {
     // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 3), (timer) async {
+    timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       try {
         final position2 = await Geolocator.getCurrentPosition(
             // timeLimit: Duration(seconds: 10),
@@ -102,6 +106,7 @@ class _LocationAddressState extends State<LocationAddress> {
           longitudeloc = position2.longitude;
           updateLocation();
           _getLocationData();
+          _getTimeZoneFromLookupService_atlaunch();
           // timer.cancel();
           // _listenForLocationChanges(); // Call your location data processing function here
         });
@@ -146,8 +151,8 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(Duration(seconds: 30), (timer) async {
-      print('Error fetching time zone*************:');
+    timer2 = Timer.periodic(Duration(seconds: 10), (timer) async {
+      // print('Error fetching time zone*************:');
       try {
         final url =
             Uri.parse('$timeZoneLookupUrl&lat=$latitudeloc&lng=$longitudeloc');
@@ -157,16 +162,22 @@ class _LocationAddressState extends State<LocationAddress> {
           final timeZoneData = jsonDecode(response.body);
           setState(() {
             timeZone = timeZoneData["zoneName"];
+            print("Good");
+            // Refreshgood.maingood();
+            test2.Notif2();
+
             updateTimeZone();
+            timer.cancel();
             timer2
                 ?.cancel(); // Assuming the API returns time zone ID in 'timeZoneId' key
           });
 
           updateTimeZone();
         } else {
+          _getTimeZoneFromLookupService_BackUp();
           // Handle API request failure
           // _getTimeZoneFromLookupService_BackUp();
-          print('Error fetching time zone: ${response.statusCode}');
+          // print('Error fetching time zone: ${response.statusCode}');
         }
       } catch (e) {
         setState(() {
@@ -188,9 +199,10 @@ class _LocationAddressState extends State<LocationAddress> {
         updateTimeZone(); // Assuming the API returns time zone ID in 'timeZoneId' key
       });
     } else {
-      // Handle API request failure
+      // Handle A
+      //PI request failure
       // _getTimeZoneFromLookupService_BackUp();
-      print('Error fetching time zone: ${response.statusCode}');
+      // print('Error fetching time zone: ${response.statusCode}');
     }
   }
 
@@ -201,7 +213,7 @@ class _LocationAddressState extends State<LocationAddress> {
 
     if (response.statusCode == 200) {
       final timeZoneData = jsonDecode(response.body);
-      print("**************Backup is Working*****************");
+      // print("**************Backup is Working*****************");
       updateTimeZone();
       setState(() {
         timeZone = timeZoneData[{
@@ -212,44 +224,44 @@ class _LocationAddressState extends State<LocationAddress> {
       });
     } else {
       // Handle API request failure
-      print('Error fetching time zone: ${response.statusCode}');
+      // print('Error fetching time zone: ${response.statusCode}');
     }
   }
 
-  void _listenForLocationChanges2() {
-    // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 1), (timer) async {
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
+  // void _listenForLocationChanges2() {
+  //   // Location stream for continuous updates (if available)
+  //   timer3 = Timer.periodic(Duration(seconds: 1), (timer3) async {
+  //     LocationPermission permission = await Geolocator.checkPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       permission = await Geolocator.requestPermission();
 
-        if (permission == LocationPermission.deniedForever) {
-          Geolocator.openAppSettings();
-          // Permission denied forever, handle error
-          errorMessage =
-              "Location permissions are permanently denied. Please enable them from app settings.";
-          return;
-        }
-      }
-      try {
-        final position2 = await Geolocator.getCurrentPosition(
-            // timeLimit: Duration(seconds: 10),
-            desiredAccuracy: LocationAccuracy.best);
-        setState(() {
-          latitudeloc = position2.latitude;
-          longitudeloc = position2.longitude;
+  //       if (permission == LocationPermission.deniedForever) {
+  //         Geolocator.openAppSettings();
+  //         // Permission denied forever, handle error
+  //         errorMessage =
+  //             "Location permissions are permanently denied. Please enable them from app settings.";
+  //         return;
+  //       }
+  //     }
+  //     try {
+  //       final position2 = await Geolocator.getCurrentPosition(
+  //           // timeLimit: Duration(seconds: 10),
+  //           desiredAccuracy: LocationAccuracy.best);
+  //       setState(() {
+  //         latitudeloc = position2.latitude;
+  //         longitudeloc = position2.longitude;
 
-          _getLocationData();
-          // _listenForLocationChanges(); // Call your location data processing function here
-          timer.cancel();
-        });
-      } catch (e) {
-        setState(() {
-          errorMessage = "Error getting location: $e";
-        });
-      }
-    });
-  }
+  //         _getLocationData();
+  //         // _listenForLocationChanges(); // Call your location data processing function here
+  //         timer3.cancel();
+  //       });
+  //     } catch (e) {
+  //       setState(() {
+  //         errorMessage = "Error getting location: $e";
+  //       });
+  //     }
+  //   });
+  // }
 
   void loadData() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

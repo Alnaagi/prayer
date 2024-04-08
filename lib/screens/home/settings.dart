@@ -1,10 +1,25 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget {
+DateTime scheduleTime = DateTime.now();
+
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var date = DateTime.now();
     var media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -29,6 +44,29 @@ class SettingsPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 print('tapped');
+
+                                AwesomeNotifications().createNotification(
+                                    content: NotificationContent(
+                                      id: 99,
+                                      channelKey: 'prayer_channel',
+                                      title: '   اذان صلاة ',
+                                      body: '   لأذان صلاة ',
+                                      wakeUpScreen: true,
+
+                                      // category: NotificationCategory.Reminder,
+                                      payload: {'uuid': 'uuid-test'},
+                                      // autoDismissible: false,
+                                    ),
+                                    schedule: NotificationCalendar.fromDate(
+                                        date: DateTime(
+                                            date.year,
+                                            date.month,
+                                            date.day,
+                                            date.hour,
+                                            date.minute,
+                                            date.second + 5),
+                                        preciseAlarm: true,
+                                        allowWhileIdle: true));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
@@ -48,6 +86,29 @@ class SettingsPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 print('tapped');
+
+                                AwesomeNotifications().createNotification(
+                                    content: NotificationContent(
+                                      id: 88,
+                                      channelKey: 'Prayer_reminder',
+                                      title: "reminder",
+                                      body: 'reminder',
+                                      wakeUpScreen: true,
+
+                                      // category: NotificationCategory.Reminder,
+                                      payload: {'uuid': 'uuid-test'},
+                                      // autoDismissible: false,
+                                    ),
+                                    schedule: NotificationCalendar.fromDate(
+                                        date: DateTime(
+                                            date.year,
+                                            date.month,
+                                            date.day,
+                                            date.hour,
+                                            date.minute,
+                                            date.second + 5),
+                                        preciseAlarm: true,
+                                        allowWhileIdle: true));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
@@ -67,6 +128,29 @@ class SettingsPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 print('tapped');
+
+                                AwesomeNotifications().createNotification(
+                                    content: NotificationContent(
+                                      id: 77,
+                                      channelKey: 'Prayer_igama',
+                                      title: "igama",
+                                      body: 'igama',
+                                      wakeUpScreen: true,
+
+                                      // category: NotificationCategory.Reminder,
+                                      payload: {'uuid': 'uuid-test'},
+                                      // autoDismissible: false,
+                                    ),
+                                    schedule: NotificationCalendar.fromDate(
+                                        date: DateTime(
+                                            date.year,
+                                            date.month,
+                                            date.day,
+                                            date.hour,
+                                            date.minute,
+                                            date.second + 5),
+                                        preciseAlarm: true,
+                                        allowWhileIdle: true));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
@@ -86,6 +170,28 @@ class SettingsPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 print('tapped');
+                                AwesomeNotifications().createNotification(
+                                    content: NotificationContent(
+                                      id: 66,
+                                      channelKey: 'Prayer_Water',
+                                      title: "water",
+                                      body: 'water',
+                                      wakeUpScreen: true,
+
+                                      // category: NotificationCategory.Reminder,
+                                      payload: {'uuid': 'uuid-test2'},
+                                      // autoDismissible: false,
+                                    ),
+                                    schedule: NotificationCalendar.fromDate(
+                                        date: DateTime(
+                                            date.year,
+                                            date.month,
+                                            date.day,
+                                            date.hour,
+                                            date.minute,
+                                            date.second + 5),
+                                        preciseAlarm: true,
+                                        allowWhileIdle: true));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
@@ -105,6 +211,7 @@ class SettingsPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 print('tapped');
+                                AwesomeNotifications().cancelAll();
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),

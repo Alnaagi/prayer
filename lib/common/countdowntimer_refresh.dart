@@ -58,7 +58,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
         });
       } catch (error) {
         // Handle network errors gracefully (e.g., display an error message)
-        print('Error fetching data: $error');
+        // print('Error fetching data: $error');
       }
     });
   }
@@ -192,16 +192,16 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}:${parts[2].padLeft(2, '0')}';
     }
 
-    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
-    print(
-        "${durationToString(difference.inSeconds).substring(0, 8)} difference");
-    print(
-        "${durationToString(afterdifference.inSeconds).substring(0, 8)} afterdifference");
-    print(
-        "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
-    print(
-        "${durationToString(Aftermidnight.inSeconds).substring(1, 9)} Aftermidnight");
-    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+    // print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+    // print(
+    //     "${durationToString(difference.inSeconds).substring(0, 8)} difference");
+    // print(
+    //     "${durationToString(afterdifference.inSeconds).substring(0, 8)} afterdifference");
+    // print(
+    //     "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
+    // print(
+    //     "${durationToString(Aftermidnight.inSeconds).substring(1, 9)} Aftermidnight");
+    // print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
 
     // print(durationToString(afterdifference.inSeconds));
     // print(durationToString(Beforemidnight.inSeconds));
@@ -222,25 +222,25 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       MidnightActive = true;
       middiffActive = false;
 
-      print(
-          "${durationToString(Aftermidnight.inSeconds)} بقي علي صلاة ${next} ");
+      // print(
+      //     "${durationToString(Aftermidnight.inSeconds)} بقي علي صلاة ${next} ");
     } else if (difference.inMinutes <= Aftermidnight.inMinutes) {
-      print("${Aftermidnight.inSeconds} مضى علي ***صلاة ${current} ");
+      // print("${Aftermidnight.inSeconds} مضى علي ***صلاة ${current} ");
       MidnightActive = false;
       differenceActive = true;
     } else if (Aftermidnight.inMinutes <= difference.inMinutes &&
         Beforemidnight.inMinutes <= afterdifference.inMinutes) {
-      print("${durationToString(Aftermidnight.inSeconds)}بقي sunshine ");
+      // print("${durationToString(Aftermidnight.inSeconds)}بقي sunshine ");
       MidnightActive = true;
       differenceActive = true;
     } else if (Aftermidnight.inMinutes >= difference.inMinutes) {
-      print("${durationToString(difference.inSeconds)}مضى ***");
+      // print("${durationToString(difference.inSeconds)}مضى ***");
       MidnightActive = false;
       middiffActive = false;
       differenceActive = true;
     } else if (afterdifference.inMinutes >= Beforemidnight.inMinutes &&
         difference.inMinutes <= afterdifference.inMinutes) {
-      print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*****");
+      // print("${durationToString(Aftermidnight.inSeconds)}مضى *****aaa*****");
       MidnightActive = false;
       middiffActive = false;
       differenceActive = true;
@@ -249,12 +249,12 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       MidnightActive = true;
       middiffActive = false;
       // differenceActive = true;
-      print("finish0");
+      // print("finish0");
     } else if (afterdifference.inDays >= Beforemidnight.inDays) {
       MidnightActive = true;
       middiffActive = false;
 
-      print("finish1");
+      // print("finish1");
     } else {
       MidnightActive = false;
       differenceActive = true;
@@ -263,17 +263,9 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     // print(PrayerNextTime);
     // print(PrayerCurrentTime);
 
-    if (now.isAtSameMomentAs(testtimecurrent)) {
-      AwesomeNotifications().createNotification(
-          content: NotificationContent(
-              id: 1,
-              channelKey: "prayer_channel",
-              title: "اذان صلاة ${current}",
-              body: "حان الان الوقت لأذان صلاة ${current}"));
-    }
     var _format = HijriCalendar.now();
-
-    print(_format.toFormat("mm dd yy")); //09 14 39
+    var media = MediaQuery.of(context).size;
+    // print(_format.toFormat("mm dd yy")); //09 14 39
     return isFetchingData2
         ? CircularProgressIndicator()
         : InkWell(
@@ -283,122 +275,128 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
               // if (differenceActive == true) {}
               // setState(() {});
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.arrow_back_ios_rounded),
-                SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            Text(
-                              "${locationName}-${locationName2}-${locationName3}",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ],
-                        ),
+                // Icon(Icons.location_on_outlined),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: SizedBox(
+                    height: media.height / 20,
+                    child: TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.black54,
                       ),
-                      Stack(
-                        children: [
-                          MidnightActive
-                              ? Container(
-                                  child: middiffActive
-                                      ? Column(
-                                          children: [
-                                            Text(
-                                              "مضى على صلاة ${current}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Column(
-                                          children: [
-                                            Text(
-                                              "بقي على صلاة ${next}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(Aftermidnight.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                )
-                              : Container(
-                                  child: differenceActive
-                                      ? Column(
-                                          children: [
-                                            Text(
-                                              "مضى على صلاة ${current}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(difference.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Column(
-                                          children: [
-                                            Text(
-                                              "بقي على صلاة ${next}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 50,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                ),
-                        ],
-                      ),
-                      Text(
-                        _format.fullDate(),
+                      label: Text(
+                        "${locationName}-${locationName2}-${locationName3}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal),
+                            color: Colors.black, fontSize: media.height / 50),
                       ),
-                    ],
+                    ),
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios_rounded),
+                Stack(
+                  children: [
+                    MidnightActive
+                        ? Container(
+                            child: middiffActive
+                                ? Column(
+                                    children: [
+                                      Text(
+                                        "مضى على صلاة ${current}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 25,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 50,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      Text(
+                                        "بقي على صلاة ${next}",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: media.height / 30,
+                                            height: media.height * 0.0011),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(
+                                          "${durationToString(Aftermidnight.inSeconds).substring(0, 8)}",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: media.height / 16,
+                                              height: media.height * 0.0010),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                          )
+                        : Container(
+                            child: differenceActive
+                                ? Column(
+                                    children: [
+                                      Text(
+                                        "مضى على صلاة ${current}",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: media.height / 30,
+                                            height: media.height * 0.0011),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(
+                                          "${durationToString(difference.inSeconds).substring(0, 8)}",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: media.height / 16,
+                                              height: media.height * 0.0010),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      Text(
+                                        "بقي على صلاة ${next}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 25,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 50,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                          ),
+                  ],
+                ),
+                Text(
+                  _format.fullDate(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.normal),
+                ),
               ],
             ),
           );

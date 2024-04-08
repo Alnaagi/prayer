@@ -1,23 +1,76 @@
-// ignore_for_file: avoid_print
-
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/locationaddress.dart';
-import 'package:prayer/controller/notif_controller.dart';
-import 'package:prayer/screens/home_bar.dart';
-import 'package:prayer/var/var.dart';
-import 'package:prayers_times/prayers_times.dart';
 
 void main() async {
   await AwesomeNotifications().initialize(null, [
     NotificationChannel(
+        importance: NotificationImportance.Max,
+        defaultPrivacy: NotificationPrivacy.Public,
+        // defaultRingtoneType: DefaultRingtoneType.Notification,
+        defaultColor: Colors.transparent,
+        vibrationPattern: lowVibrationPattern,
+        locked: true,
+        soundSource: 'resource://raw/res_water',
+        enableVibration: true,
+        playSound: true,
+        channelGroupKey: "prayer_channel_group4",
+        channelKey: "Prayer_Water",
+        channelName: "Prayer Water Remind",
+        channelDescription: "Water sound for Prayer app"),
+    NotificationChannel(
+        importance: NotificationImportance.Max,
+        defaultPrivacy: NotificationPrivacy.Public,
+        // defaultRingtoneType: DefaultRingtoneType.Notification,
+        defaultColor: Colors.transparent,
+        vibrationPattern: mediumVibrationPattern,
+        locked: true,
+        soundSource: 'resource://raw/res_igama',
+        enableVibration: true,
+        playSound: true,
+        channelGroupKey: "prayer_channel_group3",
+        channelKey: "Prayer_igama",
+        channelName: "Prayer istigfar Remind",
+        channelDescription: "istigfar for Prayer app"),
+    NotificationChannel(
+        importance: NotificationImportance.Max,
+        defaultPrivacy: NotificationPrivacy.Public,
+        // defaultRingtoneType: DefaultRingtoneType.Notification,
+        defaultColor: Colors.transparent,
+        vibrationPattern: mediumVibrationPattern,
+        locked: true,
+        soundSource: 'resource://raw/res_istigfar',
+        enableVibration: true,
+        playSound: true,
+        channelGroupKey: "prayer_channel_group2",
+        channelKey: "Prayer_reminder",
+        channelName: "Prayer istigfar Remind",
+        channelDescription: "istigfar for Prayer app"),
+    NotificationChannel(
+        importance: NotificationImportance.Max,
+        defaultPrivacy: NotificationPrivacy.Public,
+        // defaultRingtoneType: DefaultRingtoneType.Notification,
+        defaultColor: Colors.transparent,
+        vibrationPattern: highVibrationPattern,
+        locked: true,
+        soundSource: 'resource://raw/res_azan',
+        enableVibration: true,
+        playSound: true,
         channelGroupKey: "prayer_channel_group",
         channelKey: "prayer_channel",
         channelName: "Prayer Notif",
         channelDescription: "Testing Notif for Prayer app")
   ], channelGroups: [
+    NotificationChannelGroup(
+        channelGroupKey: "prayer_channel_group4",
+        channelGroupName: "prayer Group4"),
+    NotificationChannelGroup(
+        channelGroupKey: "prayer_channel_group3",
+        channelGroupName: "prayer Group3"),
+    NotificationChannelGroup(
+        channelGroupKey: "prayer_channel_group2",
+        channelGroupName: "prayer Group2"),
     NotificationChannelGroup(
         channelGroupKey: "prayer_channel_group",
         channelGroupName: "prayer Group")
@@ -26,7 +79,8 @@ void main() async {
   //     await AwesomeNotifications().isNotificationAllowed();
   // if (!isAllowedToSendNotifications) {
   //   AwesomeNotifications().requestPermissionToSendNotifications();
-  // }
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await LocalNotifications.init();
 
   runApp(const MyApp());
 }
@@ -40,73 +94,28 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Future<void> _getLocation() async {
-    await Permission.notification.request();
     await Permission.location.request();
+    await Permission.notification.request();
+
     // print(Permission.location.status);
     // print(Permission.notification.status);
   }
 
   @override
   void initState() {
-    _getLocation();
-
     super.initState();
+    _getLocation();
+  }
+
+  void didChangeDependencies() {
+    precacheImage(const AssetImage("assets/images/sand.png"), context);
+    precacheImage(const AssetImage("assets/images/rus4.png"), context);
+
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-//     Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
-
-// // Specify the calculation parameters for prayer times
-//     PrayerCalculationParameters params = PrayerCalculationMethod.custom();
-//     params.madhab = PrayerMadhab.shafi;
-// // Create a PrayerTimes instance for the specified location
-//     PrayerTimes prayerTimes = PrayerTimes(
-//       coordinates: coordinates,
-//       calculationParameters: params,
-//       precision: true,
-//       locationName: timeZone,
-//     );
-
-//     // Display convenience utilities for prayer times
-//     String current = prayerTimes.currentPrayer();
-//     String next = prayerTimes.nextPrayer();
-
-    // if prayer time is now the function will output
-    // DateTime date = DateTime.now();
-    // if (date.isAfter(prayerTimes.ishaStartTime!)) {
-    //   // print("isha");
-    //   isha_ActiveColor = !isha_ActiveColor;
-    //   // AwesomeNotifications().createNotification(
-    //   //     content: NotificationContent(
-    //   //         id: 1,
-    //   //         channelKey: "prayer_channel",
-    //   //         title: "اذان صلاة العشاء",
-    //   //         body: "حان الان الوقت لأذان صلاة العشاء"));
-    // } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
-    //   // print("maghrib");
-    //   maghrib_ActiveColor = !maghrib_ActiveColor;
-    // } else if (date.isAfter(prayerTimes.asrStartTime!)) {
-    //   // print("asr");
-    //   asr_ActiveColor = !asr_ActiveColor;
-    // } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
-    //   // print("dhuhr");
-    //   dhuhr_ActiveColor = !dhuhr_ActiveColor;
-    // } else if (date.isAfter(prayerTimes.sunrise!)) {
-    //   // print("sunrise");
-    //   sunrise_ActiveColor = !sunrise_ActiveColor;
-    // } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
-    //   // print("fajr");
-    //   fajr_ActiveColor = !fajr_ActiveColor;
-    // } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
-    //   // print("isha");
-    //   isha_ActiveColor = false;
-    // }
-
-    precacheImage(const AssetImage("assets/images/hourburj.png"), context);
-    precacheImage(const AssetImage("assets/images/sand.png"), context);
-    precacheImage(const AssetImage("assets/images/rus4.png"), context);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LocationAddress(),
