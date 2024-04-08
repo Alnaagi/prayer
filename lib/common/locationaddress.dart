@@ -151,7 +151,7 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(Duration(seconds: 10), (timer) async {
+    timer2 = Timer.periodic(Duration(seconds: 3), (timer) async {
       // print('Error fetching time zone*************:');
       try {
         final url =
@@ -164,7 +164,6 @@ class _LocationAddressState extends State<LocationAddress> {
             timeZone = timeZoneData["zoneName"];
             print("Good");
             // Refreshgood.maingood();
-            test2.Notif2();
 
             updateTimeZone();
             timer.cancel();
@@ -289,6 +288,7 @@ class _LocationAddressState extends State<LocationAddress> {
     setState(() {
       prefs.setString("timeZone", timeZone);
     });
+    await Notifgood();
   }
 
   void updateLocationName() async {
@@ -298,6 +298,10 @@ class _LocationAddressState extends State<LocationAddress> {
       prefs.setString("locationName2", locationName2);
       prefs.setString("locationName3", locationName3);
     });
+  }
+
+  Future Notifgood() async {
+    await test2.Notif2();
   }
 
   @override

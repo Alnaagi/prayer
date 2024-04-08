@@ -90,23 +90,28 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 10,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الفجر',
           body: 'بقي على أذان صلاة الفجر 5 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          criticalAlert: true,
+          displayOnBackground: true,
+          displayOnForeground: true,
+          actionType: ActionType.SilentBackgroundAction,
+          category: NotificationCategory.Service,
           payload: null,
           // autoDismissible: false,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.fajrStartTime!.hour,
-                prayerTimes.fajrStartTime!.minute - 5),
-            preciseAlarm: true,
+        schedule: NotificationCalendar(
+            timeZone: timeZone,
+            // repeats: true,
+
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.fajrStartTime!.hour,
+            minute: prayerTimes.fajrStartTime!.minute - 5,
+            // preciseAlarm: true,
             allowWhileIdle: true));
 
     AwesomeNotifications().createNotification(
@@ -117,7 +122,7 @@ class test2 {
           body: 'حان الان موعد أذان صلاة الفجر',
           wakeUpScreen: true,
 
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: null,
           // autoDismissible: false,
         ),
@@ -134,11 +139,11 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 12,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الفجر',
           body: 'مضى على أذان صلاة الفجر 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -160,12 +165,12 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 20,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الظهر',
           body: 'بقي على أذان صلاة الظهر 10 دقائق',
           wakeUpScreen: true,
 
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           // autoDismissible: false,
         ),
@@ -187,7 +192,7 @@ class test2 {
           body: 'حان الان موعد أذان صلاة الظهر',
           wakeUpScreen: true,
 
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           // autoDismissible: false,
         ),
@@ -204,11 +209,11 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 22,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الظهر',
           body: 'مضى على أذان صلاة الفجر 10 الظهر',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -230,14 +235,13 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 30,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العصر',
           body: 'بقي على أذان صلاة العصر 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -256,10 +260,9 @@ class test2 {
           title: 'أذان العصر ',
           body: 'حان الان موعد أذان صلاة العصر',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -274,11 +277,11 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 32,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العصر',
           body: 'مضى على أذان صلاة العصر 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -297,17 +300,17 @@ class test2 {
 
 //////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
+
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 40,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
           body: 'بقي على أذان صلاة المغرب 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -326,10 +329,9 @@ class test2 {
           title: 'أذان المغرب ',
           body: 'حان الان موعد أذان صلاة المغرب',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -344,11 +346,11 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 42,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
           body: 'مضى على أذان صلاة المغرب 3 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -369,14 +371,13 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 50,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العشاء',
           body: 'بقي على أذان صلاة العشاء 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -395,10 +396,9 @@ class test2 {
           title: 'أذان العشاء ',
           body: 'حان الان موعد أذان صلاة العشاء',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -413,11 +413,11 @@ class test2 {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: 52,
-          channelKey: 'prayer_channel',
+          channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العشاء',
           body: 'مضى على أذان صلاة العشاء 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -443,10 +443,9 @@ class test2 {
           title: 'اقترب أذان الفجر',
           body: 'بقي على أذان صلاة الفجر 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -465,10 +464,9 @@ class test2 {
           title: 'أذان الفجر ',
           body: 'حان الان موعد أذان صلاة الفجر',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -487,7 +485,7 @@ class test2 {
           title: 'إقامة صلاة الفجر',
           body: 'مضى على أذان صلاة الفجر 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -513,10 +511,9 @@ class test2 {
           title: 'اقترب أذان الظهر',
           body: 'بقي على أذان صلاة الظهر 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -535,10 +532,9 @@ class test2 {
           title: 'أذان الظهر ',
           body: 'حان الان موعد أذان صلاة الظهر',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -557,7 +553,7 @@ class test2 {
           title: 'إقامة صلاة الظهر',
           body: 'مضى على أذان صلاة الفجر 10 الظهر',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -583,10 +579,9 @@ class test2 {
           title: 'اقترب أذان العصر',
           body: 'بقي على أذان صلاة العصر 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -605,10 +600,9 @@ class test2 {
           title: 'أذان العصر ',
           body: 'حان الان موعد أذان صلاة العصر',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -627,7 +621,7 @@ class test2 {
           title: 'إقامة صلاة العصر',
           body: 'مضى على أذان صلاة العصر 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -653,10 +647,9 @@ class test2 {
           title: 'اقترب أذان المغرب',
           body: 'بقي على أذان صلاة المغرب 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -675,10 +668,9 @@ class test2 {
           title: 'أذان المغرب ',
           body: 'حان الان موعد أذان صلاة المغرب',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -697,7 +689,7 @@ class test2 {
           title: 'إقامة صلاة المغرب',
           body: 'مضى على أذان صلاة المغرب 3 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
@@ -722,10 +714,9 @@ class test2 {
           title: 'اقترب أذان العشاء',
           body: 'بقي على أذان صلاة العشاء 10 دقائق',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -744,10 +735,9 @@ class test2 {
           title: 'أذان العشاء ',
           body: 'حان الان موعد أذان صلاة العشاء',
           wakeUpScreen: true,
-
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
+          autoDismissible: false,
         ),
         schedule: NotificationCalendar.fromDate(
             date: DateTime(
@@ -766,7 +756,7 @@ class test2 {
           title: 'إقامة صلاة العشاء',
           body: 'مضى على أذان صلاة العشاء 10 دقائق',
           wakeUpScreen: true,
-          // category: NotificationCategory.Reminder,
+          category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),

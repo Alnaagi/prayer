@@ -8,14 +8,6 @@ import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
-int time = 0;
-Timer? timer;
-Timer? timer2;
-Timer? timerazan;
-bool mainpage2 = false;
-
-bool timera = false;
-
 // class Refreshgood {
 //   static Future maingood() async {
 //     mainpage2 = true;
@@ -34,65 +26,64 @@ class PrayerWidget extends StatefulWidget {
 
 class _PrayerWidgetState extends State<PrayerWidget> {
   @override
-  void initState() {
-    _homepagerefresh();
-
-    // TODO: implement initState
-    super.initState();
-  }
-
-  // static Future testinggood() async {
-  //   mainpage2 = false;
-  //   print("good222");
-  // }
-
-  // void initState() {
-  //   _homepagerefresh();
-  //   _timercanceler();
-
-  //   super.initState();
-  // }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    timer?.cancel();
-    timer2?.cancel();
-  }
-
-  bool aftertext = false;
-  // bool changetimer = false;
-
-  void _homepagerefresh() {
-    // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(milliseconds: 100), (_) async {
-      // print("Refresh///////");
-
-      if (mounted) {
-        setState(() {
-          mainpage2 = false;
-          timer?.cancel();
-          _timercanceler();
-        });
-      }
-    });
-  }
-
-  void _timercanceler() async {
-    timer2 = Timer.periodic(Duration(seconds: 5), (_) async {
-      if (mounted) {
-        setState(() {
-          mainpage2 = false;
-          print("Canceled///////");
-          // timer2?.cancel();
-        });
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    int time = 0;
+    Timer? timer;
+    Timer? timer2;
+    Timer? timerazan;
+    bool mainpage2 = false;
+
+    bool timera = false;
+
+    // static Future testinggood() async {
+    //   mainpage2 = false;
+    //   print("good222");
+    // }
+
+    // void initState() {
+    //   _homepagerefresh();
+    //   _timercanceler();
+
+    //   super.initState();
+    // }
+
+    @override
+    void dispose() {
+      super.dispose();
+
+      timer?.cancel();
+      timer2?.cancel();
+    }
+
+    bool aftertext = false;
+    // bool changetimer = false;
+    void _timercanceler() async {
+      timer2 = Timer.periodic(Duration(seconds: 5), (_) async {
+        if (mounted) {
+          setState(() {
+            mainpage2 = false;
+            print("Canceled///////");
+            // timer2?.cancel();
+          });
+        }
+      });
+    }
+
+    void _homepagerefresh() {
+      // Location stream for continuous updates (if available)
+      timer = Timer.periodic(Duration(milliseconds: 100), (_) async {
+        // print("Refresh///////");
+
+        if (mounted) {
+          setState(() {
+            mainpage2 = false;
+            timer?.cancel();
+            _timercanceler();
+          });
+        }
+      });
+    }
+
     var _format = HijriCalendar.now();
     // print(_format.fullDate()); //Thulatha, Ramadan 14, 1439 h
     // print(_format.toFormat("mm dd yy")); //09 14 39
@@ -286,6 +277,13 @@ class _PrayerWidgetState extends State<PrayerWidget> {
 
     print("goodr65\\\\\\\\6");
     var media = MediaQuery.of(context).size;
+    @override
+    void initState() {
+      _homepagerefresh();
+
+      // TODO: implement initState
+      super.initState();
+    }
 
     return ListView.builder(
       physics: NeverScrollableScrollPhysics(),
