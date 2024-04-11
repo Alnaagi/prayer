@@ -1,9 +1,18 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:prayer/localization/locales.dart';
+import 'package:prayer/screens/home_bar.dart';
+import 'package:prayer/var/var.dart';
 
 void main() async {
+  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Permission.location.request();
+  await Permission.notification.request();
   await AwesomeNotifications().initialize(null, [
     NotificationChannel(
         importance: NotificationImportance.High,
@@ -62,7 +71,7 @@ void main() async {
         enableVibration: true,
         playSound: true,
         channelGroupKey: "prayer_channel_group",
-        channelKey: "prayer_channel",
+        channelKey: prayerchannelkey,
         channelName: "Prayer Notif",
         channelDescription: "Testing Notif for Prayer app")
   ], channelGroups: [
@@ -85,8 +94,6 @@ void main() async {
   //   AwesomeNotifications().requestPermissionToSendNotifications();
   // WidgetsFlutterBinding.ensureInitialized();
   // await LocalNotifications.init();
-
-  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -97,32 +104,37 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<void> _getLocation() async {
-    await Permission.location.request();
-    await Permission.notification.request();
-
-    // print(Permission.location.status);
-    // print(Permission.notification.status);
-  }
+  final FlutterLocalization localization = FlutterLocalization.instance;
 
   @override
   void initState() {
+    configureLocalization();
     super.initState();
-    _getLocation();
-  }
-
-  void didChangeDependencies() {
-    precacheImage(const AssetImage("assets/images/sand.png"), context);
-    precacheImage(const AssetImage("assets/images/rus4.png"), context);
-
-    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LocationAddress(),
+      supportedLocales: localization.supportedLocales,
+      localizationsDelegates: localization.localizationsDelegates,
+      home: HomeBar(),
     );
+  }
+
+  void configureLocalization() {
+    localization.init(mapLocales: LOCALES, initLanguageCode: "ar");
+    localization.onTranslatedLanguage = onTranslatedLanguage;
+  }
+
+  void onTranslatedLanguage(Locale? locale) {
+    setState(() {});
+  }
+
+  void hijri() {
+    setState(() {});
   }
 }

@@ -1,13 +1,44 @@
-DateTime testtimecurrent = DateTime.now();
+// ignore_for_file: dangling_library_doc_comments
 
+////// Prayer Time Notification Modify //////////
+
+int notifbeforeprayertime = 5;
+int notifafterprayertime = 10;
+
+////// Azan change //////////
+String reminderchannelkey = 'Prayer_reminder';
+String prayerchannelkey = 'prayer_channel';
+String igamachannelkey = 'Prayer_igama';
+String waterchannelkey = 'Prayer_Water';
+
+/////// Prayer Custom Time Modify ////////
+
+double fajr = -1;
+double sunrise = 0;
+double duhr = 0;
+double asr = 4;
+double maghrib = -1;
+double isha = 3;
+
+////// Notification Disable ////////
+
+bool Notif_disable = false;
+
+////// Hijri Date Modify ////////
+
+int hijri_date_mod = 0;
+
+///////////////////////////////////
+
+DateTime testtimecurrent = DateTime.now();
 bool isFetchingData3 = false;
 String test = "";
 bool changetimer = false;
-
 var headingtest;
 
 
 
+//////////////////////////////////////////////////
 
 //media size
 

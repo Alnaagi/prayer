@@ -3,74 +3,29 @@ import 'dart:ui';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/localization/locales.dart';
+import 'package:prayer/var/prayer_calculation_method.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
 int time = 0;
 Timer? timer;
 Timer? timer2;
-Timer? timerazan;
-bool mainpage2 = false;
+// Timer? timerazan;
+// bool mainpage2 = false;
 
-class PrayerWidgetRight extends StatefulWidget {
+class PrayerWidgetRight extends StatelessWidget {
   const PrayerWidgetRight({
     super.key,
   });
 
-  @override
-  State<PrayerWidgetRight> createState() => _PrayerWidgetRightState();
-}
-
-class _PrayerWidgetRightState extends State<PrayerWidgetRight> {
   // void initState() {
-  //   _homepagerefresh();
-  //   _timercanceler();
-
-  //   super.initState();
-  // }
-
-  // @override
-  // void dispose() {
-  //   super.dispose();
-
-  //   timer?.cancel();
-  //   timer2?.cancel();
-  // }
-
-  // bool aftertext = false;
-  // // bool changetimer = false;
-
-  // void _homepagerefresh() {
-  //   // Location stream for continuous updates (if available)
-  //   timer = Timer.periodic(Duration(microseconds: 1), (_) async {
-  //     // print("Refresh///////");
-
-  //     if (mounted) {
-  //       setState(() {
-  //         mainpage2 = false;
-  //         timer?.cancel();
-  //       });
-  //     }
-  //   });
-  // }
-
-  // void _timercanceler() async {
-  //   timer2 = Timer.periodic(Duration(seconds: 3), (_) async {
-  //     if (mounted) {
-  //       setState(() {
-  //         mainpage2 = false;
-  //         // print("Canceled///////");
-  //         // timer2?.cancel();
-  //       });
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    var _format = HijriCalendar.now();
+    // var _format = HijriCalendar.now();
     // print(_format.fullDate()); //Thulatha, Ramadan 14, 1439 h
     // print(_format.toFormat("mm dd yy")); //09 14 39
     // while (time <= 500) {
@@ -87,12 +42,12 @@ class _PrayerWidgetRightState extends State<PrayerWidgetRight> {
     PrayerCalculationParameters params = PrayerCalculationMethod.custom();
     params.madhab = PrayerMadhab.shafi;
 // Create a PrayerTimes instance for the specified location
-    PrayerTimes prayerTimes = PrayerTimes(
-      coordinates: coordinates,
-      calculationParameters: params,
-      precision: true,
-      locationName: timeZone,
-    );
+    // PrayerTimes prayerTimes = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
     final now = DateTime.now();
     DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
@@ -932,43 +887,43 @@ class _PrayerWidgetRightState extends State<PrayerWidgetRight> {
     //media size
     List listArr = [
       {
-        "Name": '\tالفجر',
+        "Name": LocalData.Fajr.getString(context),
         "Time": "${prayerTimes1.fajrStartTime!}",
         "activeColor": Colors.white70,
       },
       {
-        "Name": '\tالشروق',
+        "Name": LocalData.sunrise.getString(context),
         "Time": "\t${prayerTimes1.sunrise!}",
         "activeColor": Colors.white70,
       },
       {
-        "Name": '\tالظهر',
+        "Name": LocalData.Dhuhr.getString(context),
         "Time": "\t${prayerTimes1.dhuhrStartTime!}",
         "activeColor": Colors.white70,
       },
       {
-        "Name": '\tالعصر',
+        "Name": LocalData.Asr.getString(context),
         "Time": "\t${prayerTimes1.asrStartTime!}",
         "activeColor": Colors.white70,
       },
       {
-        "Name": '\tالمغرب',
+        "Name": LocalData.Maghrib.getString(context),
         "Time": "\t${prayerTimes1.maghribStartTime!}",
         "activeColor": Colors.white70,
       },
       {
-        "Name": '\tالعشاء',
+        "Name": LocalData.Isha.getString(context),
         "Time": "\t${prayerTimes1.ishaStartTime!}",
         "activeColor": Colors.white70,
       },
     ];
 
-    var media = MediaQuery.of(context).size;
+    // var media = MediaQuery.of(context).size;
 
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
-      padding: EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       shrinkWrap: true,
       itemCount: listArr.length,
       itemBuilder: (context, index) {
@@ -1008,7 +963,7 @@ class PrayerWidgetRight2 extends StatelessWidget {
                     blurRadius: 0,
                     color: obj["activeColor"],
                     spreadRadius: 5,
-                    offset: Offset(2, 4))
+                    offset: const Offset(2, 4))
               ],
             ),
             child: Row(

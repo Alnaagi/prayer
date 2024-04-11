@@ -1,11 +1,16 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
-import 'package:prayer/var/var.dart';
+import 'package:prayer/localization/locales.dart';
+import 'package:prayer/var/prayer_calculation_method.dart';
+
 import 'package:prayers_times/prayers_times.dart';
 
 // class Refreshgood {
@@ -14,6 +19,80 @@ import 'package:prayers_times/prayers_times.dart';
 //     print("goodr");
 //   }
 // }
+class PrayerWidget2 extends StatelessWidget {
+  const PrayerWidget2({super.key, required this.obj});
+  final Map obj;
+  @override
+  Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 4,
+            sigmaY: 4,
+          ),
+          child: Container(
+            height: media.height * 0.088,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              // border:
+              //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 0,
+                    color: obj["activeColor"],
+                    spreadRadius: 5,
+                    offset: const Offset(2, 4))
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Align(
+                  // alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 60),
+                    child: Text(
+                      obj["Time"],
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                      // textDirection: TextDirection.rtl,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    width: 1,
+                  ),
+                ),
+                Align(
+                  //  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 60),
+                    child: Text(
+                      obj["Name"],
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                      // textDirection: TextDirection.rtl,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class PrayerWidget extends StatefulWidget {
   const PrayerWidget({
@@ -25,66 +104,67 @@ class PrayerWidget extends StatefulWidget {
 }
 
 class _PrayerWidgetState extends State<PrayerWidget> {
+  int time = 0;
+  Timer? timer;
+  Timer? timer2;
+  Timer? timerazan;
+  bool mainpage2 = false;
+
+  bool timera = false;
+
+  // static Future testinggood() async {
+  //   mainpage2 = false;
+  //   print("good222");
+  // }
+
+  void initState() {
+    _homepagerefresh();
+    // _timercanceler();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    timer?.cancel();
+    timer2?.cancel();
+  }
+
+  bool aftertext = false;
+  // bool changetimer = false;
+
+  void _homepagerefresh() {
+    // Location stream for continuous updates (if available)
+    timer = Timer.periodic(const Duration(milliseconds: 100), (_) async {
+      // print("Refresh///////");
+
+      if (mounted) {
+        setState(() {
+          mainpage2 = false;
+          timer?.cancel();
+          _timercanceler();
+        });
+      }
+    });
+  }
+
+  void _timercanceler() async {
+    timer2 = Timer.periodic(const Duration(seconds: 5), (_) async {
+      if (mounted) {
+        setState(() {
+          mainpage2 = false;
+          print("Canceled///////");
+          // timer2?.cancel();
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    int time = 0;
-    Timer? timer;
-    Timer? timer2;
-    Timer? timerazan;
-    bool mainpage2 = false;
-
-    bool timera = false;
-
-    // static Future testinggood() async {
-    //   mainpage2 = false;
-    //   print("good222");
-    // }
-
-    // void initState() {
-    //   _homepagerefresh();
-    //   _timercanceler();
-
-    //   super.initState();
-    // }
-
-    @override
-    void dispose() {
-      super.dispose();
-
-      timer?.cancel();
-      timer2?.cancel();
-    }
-
-    bool aftertext = false;
-    // bool changetimer = false;
-    void _timercanceler() async {
-      timer2 = Timer.periodic(Duration(seconds: 5), (_) async {
-        if (mounted) {
-          setState(() {
-            mainpage2 = false;
-            print("Canceled///////");
-            // timer2?.cancel();
-          });
-        }
-      });
-    }
-
-    void _homepagerefresh() {
-      // Location stream for continuous updates (if available)
-      timer = Timer.periodic(Duration(milliseconds: 100), (_) async {
-        // print("Refresh///////");
-
-        if (mounted) {
-          setState(() {
-            mainpage2 = false;
-            timer?.cancel();
-            _timercanceler();
-          });
-        }
-      });
-    }
-
-    var _format = HijriCalendar.now();
+    // var _format = HijriCalendar.now();
     // print(_format.fullDate()); //Thulatha, Ramadan 14, 1439 h
     // print(_format.toFormat("mm dd yy")); //09 14 39
     // while (time <= 500) {
@@ -108,15 +188,15 @@ class _PrayerWidgetState extends State<PrayerWidget> {
       locationName: timeZone,
     );
 
-    final now = DateTime.now();
-    DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
-    PrayerTimes prayerTimes1 = PrayerTimes(
-      coordinates: coordinates,
-      calculationParameters: params,
-      dateTime: tomorrow,
-      precision: true,
-      locationName: timeZone,
-    );
+    // final now = DateTime.now();
+    // DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
+    // PrayerTimes prayerTimes1 = PrayerTimes(
+    //   coordinates: coordinates,
+    //   calculationParameters: params,
+    //   dateTime: tomorrow,
+    //   precision: true,
+    //   locationName: timeZone,
+    // );
 
 //     DateTime tomorrow2 = DateTime(now.year, now.month, now.day + 2);
 //     PrayerTimes prayerTimes2 = PrayerTimes(
@@ -240,55 +320,44 @@ class _PrayerWidgetState extends State<PrayerWidget> {
     //media size
     List listArr = [
       {
-        "Name": '\tالفجر',
+        "Name": LocalData.Fajr.getString(context),
         "Time": "${prayerTimes.fajrStartTime!}",
         "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
-        "Name": '\tالشروق',
+        "Name": LocalData.sunrise.getString(context),
         "Time": "\t${prayerTimes.sunrise!}",
         "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
-        "Name": '\tالظهر',
+        "Name": LocalData.Dhuhr.getString(context),
         "Time": "\t${prayerTimes.dhuhrStartTime!}",
         "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
-        "Name": '\tالعصر',
+        "Name": LocalData.Asr.getString(context),
         "Time": "\t${prayerTimes.asrStartTime!}",
         "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
-        "Name": '\tالمغرب',
+        "Name": LocalData.Maghrib.getString(context),
         "Time": "\t${prayerTimes.maghribStartTime!}",
         "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
       },
       {
-        "Name": '\tالعشاء',
+        "Name": LocalData.Isha.getString(context),
         "Time": "\t${prayerTimes.ishaStartTime!}",
         "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
       },
     ];
 
-    Future goodprint() async {
-      print("goodr656");
-    }
-
-    print("goodr65\\\\\\\\6");
+    print("goodr65\\\\\\\999\6");
     var media = MediaQuery.of(context).size;
-    @override
-    void initState() {
-      _homepagerefresh();
-
-      // TODO: implement initState
-      super.initState();
-    }
 
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
-      padding: EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       shrinkWrap: true,
       itemCount: listArr.length,
       itemBuilder: (context, index) {
@@ -297,70 +366,6 @@ class _PrayerWidgetState extends State<PrayerWidget> {
         //  PrayerWidget(obj: obj);
         return PrayerWidget2(obj: obj);
       },
-    );
-  }
-}
-
-class PrayerWidget2 extends StatelessWidget {
-  const PrayerWidget2({super.key, required this.obj});
-  final Map obj;
-  @override
-  Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 4,
-            sigmaY: 4,
-          ),
-          child: Container(
-            height: media.height * 0.088,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              // border:
-              //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
-
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 0,
-                    color: obj["activeColor"],
-                    spreadRadius: 5,
-                    offset: Offset(2, 4))
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    obj["Time"],
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    obj["Name"],
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

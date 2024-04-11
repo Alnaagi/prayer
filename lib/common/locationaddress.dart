@@ -6,7 +6,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:prayer/common/prayer_widget_refresh.dart';
-import 'package:prayer/controller/notif_schedule.dart';
+import 'package:prayer/Testing/notif_schedule.dart';
 import 'package:prayer/controller/test2.dart';
 import 'package:prayer/screens/home_bar.dart';
 
@@ -52,7 +52,7 @@ class _LocationAddressState extends State<LocationAddress> {
   void initState() {
     loadData();
 
-    _listenForLocationChanges();
+    // _listenForLocationChanges();
     // _listenForLocationChanges();
     // _getLocationData();
     // _listenForLocationChanges2();
@@ -96,7 +96,7 @@ class _LocationAddressState extends State<LocationAddress> {
 
   void _listenForLocationChanges() {
     // Location stream for continuous updates (if available)
-    timer = Timer.periodic(Duration(seconds: 5), (timer) async {
+    timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
       try {
         final position2 = await Geolocator.getCurrentPosition(
             // timeLimit: Duration(seconds: 10),
@@ -106,7 +106,7 @@ class _LocationAddressState extends State<LocationAddress> {
           longitudeloc = position2.longitude;
           updateLocation();
           _getLocationData();
-          _getTimeZoneFromLookupService_atlaunch();
+          // _getTimeZoneFromLookupService_atlaunch();
           // timer.cancel();
           // _listenForLocationChanges(); // Call your location data processing function here
         });
@@ -151,7 +151,7 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(Duration(seconds: 3), (timer) async {
+    timer2 = Timer.periodic(const Duration(seconds: 3), (timer) async {
       // print('Error fetching time zone*************:');
       try {
         final url =
@@ -307,6 +307,7 @@ class _LocationAddressState extends State<LocationAddress> {
   @override
   Widget build(BuildContext context) {
     // print(timeZone);
-    return const HomeBar();
+    return Scaffold(
+        backgroundColor: Colors.lightBlue.shade50, body: const HomeBar());
   }
 }

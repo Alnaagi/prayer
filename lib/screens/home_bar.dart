@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prayer/common/bottomappbar_widget.dart';
 import 'package:prayer/common/homepage_carousel.dart';
-import 'package:prayer/screens/home/azkar.dart';
+import 'package:prayer/Testing/azkar.dart';
 
 import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -29,9 +29,9 @@ class _HomeBarState extends State<HomeBar> {
 
   List<Widget> listArr = [
     const HomeCarousel(),
-    const AzkarCarousel(),
+    AzkarCarousel(),
     const QiblaPage(),
-    const SettingsPage()
+    SettingsPage()
   ];
   @override
   void initState() {
@@ -40,11 +40,12 @@ class _HomeBarState extends State<HomeBar> {
 
   @override
   Widget build(BuildContext context) {
-    // var media = MediaQuery.of(context).size;
+    ImageProvider logo = const AssetImage("assets/images/home1.jpg");
+    var media = MediaQuery.of(context).size;
 
     return Scaffold(
       extendBody: true,
-      // backgroundColor: Colors.transparent,
+      backgroundColor: Colors.blue.shade50,
       // extendBodyBehindAppBar: true,
       bottomNavigationBar: BottomAppBar(
         height: 90,
@@ -141,27 +142,38 @@ class _HomeBarState extends State<HomeBar> {
           ),
         ),
       ),
-      body: Row(
+      body: Stack(
         children: [
-          Expanded(
-            child: CarouselSlider(
-              carouselController: _controller,
-              items: listArr,
-              options: CarouselOptions(
-                scrollPhysics: const NeverScrollableScrollPhysics(),
-                enableInfiniteScroll: false,
-                aspectRatio: 0.1,
-                viewportFraction: 1,
-                // onScrolled: (value) {
-                //   setState(() {});
-                // },
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    selectTab = index;
-                  });
-                },
-              ),
+          Container(
+            height: media.height,
+            width: media.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: logo, fit: BoxFit.fill),
             ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CarouselSlider(
+                  carouselController: _controller,
+                  items: listArr,
+                  options: CarouselOptions(
+                    scrollPhysics: const NeverScrollableScrollPhysics(),
+                    enableInfiniteScroll: false,
+                    aspectRatio: 0.1,
+                    viewportFraction: 1,
+                    // onScrolled: (value) {
+                    //   setState(() {});
+                    // },
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        selectTab == index;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

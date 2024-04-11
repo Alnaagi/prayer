@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/locationaddress.dart';
-import 'package:prayer/screens/azkar/afterprayer.dart';
+import 'package:prayer/var/prayer_calculation_method.dart';
 
 import 'package:prayer/var/var.dart';
 import 'package:flutter/material.dart';
@@ -29,54 +28,9 @@ class CountTimerPrayer extends StatefulWidget {
 // bool midswitch = false;
 
 class _CountTimerPrayerState extends State<CountTimerPrayer> {
-  Timer? _timer;
-  // Flag to indicate data fetching state
-
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _startTimer() {
-    const refreshDuration = Duration(milliseconds: 1000);
-
-    _timer = Timer.periodic(refreshDuration, (_) async {
-      setState(() {
-        isFetchingData2 = true; // Show loading indicator
-      });
-      try {
-        await _fetchData(); // Fetch data asynchronously
-        setState(() {
-          isFetchingData2 = false; // Hide loading indicator
-        });
-      } catch (error) {
-        // Handle network errors gracefully (e.g., display an error message)
-        // print('Error fetching data: $error');
-      }
-    });
-  }
-
-  Future<void> _fetchData() async {
-    // Your code to fetch data asynchronously (e.g., using a network call)
-    // ...
-    // Update state variables based on fetched data (if applicable)
-    // ...
-  }
-
   @override
   Widget build(BuildContext context) {
     Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
-    @override
-    void initState() {
-      super.initState();
-    }
 
 // Specify the calculation parameters for prayer times
     PrayerCalculationParameters params = PrayerCalculationMethod.custom();
@@ -267,7 +221,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     var media = MediaQuery.of(context).size;
     // print(_format.toFormat("mm dd yy")); //09 14 39
     return isFetchingData2
-        ? CircularProgressIndicator()
+        ? const CircularProgressIndicator()
         : InkWell(
             onTap: () {
               MidnightActive = !MidnightActive;
@@ -285,18 +239,20 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                   child: SizedBox(
                     height: media.height / 20,
                     child: TextButton.icon(
-                      onPressed: () {},
-                      icon: Icon(
+                      onPressed: () async {
+                        await Permission.location.request();
+                      },
+                      icon: const Icon(
                         Icons.location_on_outlined,
                         color: Colors.black54,
                       ),
                       label: Text(
-                        "${locationName}-${locationName2}-${locationName3}",
+                        "$locationName-$locationName2-$locationName3",
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         softWrap: false,
                         style: TextStyle(
-                            color: Colors.black, fontSize: media.height / 50),
+                            color: Colors.black87, fontSize: media.height / 50),
                       ),
                     ),
                   ),
@@ -309,15 +265,15 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 ? Column(
                                     children: [
                                       Text(
-                                        "مضى على صلاة ${current}",
-                                        style: TextStyle(
+                                        "مضى على $current",
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,
                                         ),
                                       ),
                                       Text(
                                         "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 50,
                                         ),
@@ -327,7 +283,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 : Column(
                                     children: [
                                       Text(
-                                        "بقي على صلاة ${next}",
+                                        "بقي على $next",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: media.height / 30,
@@ -351,7 +307,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 ? Column(
                                     children: [
                                       Text(
-                                        "مضى على صلاة ${current}",
+                                        "مضى على $current",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: media.height / 30,
@@ -360,7 +316,8 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                       Padding(
                                         padding: const EdgeInsets.all(12.0),
                                         child: Text(
-                                          "${durationToString(difference.inSeconds).substring(0, 8)}",
+                                          durationToString(difference.inSeconds)
+                                              .substring(0, 8),
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: media.height / 16,
@@ -372,15 +329,15 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 : Column(
                                     children: [
                                       Text(
-                                        "بقي على صلاة ${next}",
-                                        style: TextStyle(
+                                        "بقي على $next",
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,
                                         ),
                                       ),
                                       Text(
                                         "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 50,
                                         ),
@@ -392,13 +349,54 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                 ),
                 Text(
                   _format.fullDate(),
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.normal),
                 ),
               ],
             ),
           );
+  }
+
+  Timer? _timer;
+  // Flag to indicate data fetching state
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    const refreshDuration = Duration(milliseconds: 1000);
+
+    _timer = Timer.periodic(refreshDuration, (_) async {
+      setState(() {
+        isFetchingData2 = true; // Show loading indicator
+      });
+      try {
+        await _fetchData(); // Fetch data asynchronously
+        setState(() {
+          isFetchingData2 = false; // Hide loading indicator
+        });
+      } catch (error) {
+        // Handle network errors gracefully (e.g., display an error message)
+        // print('Error fetching data: $error');
+      }
+    });
+  }
+
+  Future<void> _fetchData() async {
+    // Your code to fetch data asynchronously (e.g., using a network call)
+    // ...
+    // Update state variables based on fetched data (if applicable)
+    // ...
   }
 }

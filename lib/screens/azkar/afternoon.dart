@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:prayer/common/azkar_widget.dart';
 
-class AfternoonPage extends StatefulWidget {
-  const AfternoonPage({super.key});
+class AfternoonPage extends StatelessWidget {
+  AfternoonPage({super.key});
 
-  @override
-  State<AfternoonPage> createState() => _AfternoonPageState();
-}
-
-class _AfternoonPageState extends State<AfternoonPage> {
   List listArr = [
     {
       "basmala": "",
@@ -107,7 +102,7 @@ class _AfternoonPageState extends State<AfternoonPage> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      physics: ScrollPhysics(),
+      physics: const ScrollPhysics(),
       child: Column(
         children: [
           SizedBox(

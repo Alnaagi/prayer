@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AzkarWidget extends StatefulWidget {
@@ -20,10 +19,11 @@ class _AzkarWidgetState extends State<AzkarWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 13.5, vertical: 3),
       child: InkWell(
         onTap: () {
-          if (widget.obj["int"] > 0)
+          if (widget.obj["int"] > 0) {
             setState(() {
               widget.obj["int"] = widget.obj["int"] - 1;
             });
+          }
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
@@ -66,7 +66,7 @@ class _AzkarWidgetState extends State<AzkarWidget> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Padding(
-                          padding: EdgeInsets.all(19),
+                          padding: const EdgeInsets.all(19),
                           // padding: const EdgeInsets.only(left: 25, right: 10),
                           child: Text(
                             widget.obj["Alzikr"],
@@ -93,16 +93,17 @@ class _AzkarWidgetState extends State<AzkarWidget> {
                   ),
                   InkWell(
                     onTap: () {
-                      if (widget.obj["int"] > 0)
+                      if (widget.obj["int"] > 0) {
                         setState(() {
                           widget.obj["int"] = widget.obj["int"] - 1;
                         });
+                      }
                     },
                     child: Container(
-                      margin: EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
                       width: media.width * 0.12,
                       height: media.height * 0.055,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(15),
                           bottomLeft: Radius.circular(15),
@@ -116,7 +117,7 @@ class _AzkarWidgetState extends State<AzkarWidget> {
                         // Some languages like French use comma as decimal separator
 
                         // padding: const EdgeInsets.all(0),
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
