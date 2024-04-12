@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/common/prayer_time.dart';
+import 'package:prayer/common/sunnah_insights.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
 
 import 'package:prayers_times/prayers_times.dart';

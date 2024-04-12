@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
-
+import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/var.dart';
 import 'package:flutter/material.dart';
 
@@ -265,7 +267,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 ? Column(
                                     children: [
                                       Text(
-                                        "مضى على $current",
+                                        "${LocalData.passed.getString(context)} $current",
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,
@@ -283,7 +285,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 : Column(
                                     children: [
                                       Text(
-                                        "بقي على $next",
+                                        "${LocalData.remaining.getString(context)}${next.getString(context)}",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: media.height / 30,

@@ -2,10 +2,9 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:prayer/common/locationaddress.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:prayer/localization/locales.dart';
-import 'package:prayer/screens/home_bar.dart';
+import 'package:prayer/screens/home/home_bar.dart';
 import 'package:prayer/var/var.dart';
 
 void main() async {

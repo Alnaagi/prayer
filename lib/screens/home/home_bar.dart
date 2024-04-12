@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:prayer/common/bottomappbar_widget.dart';
-import 'package:prayer/common/homepage_carousel.dart';
+import 'package:prayer/screens/home/homepage_carousel.dart';
 import 'package:prayer/Testing/azkar.dart';
 
 import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:prayer/screens/home/azkarcarousel.dart';
+import 'package:prayer/screens/azkar/azkarcarousel.dart';
 import 'package:prayer/screens/home/settings.dart';
 
 class HomeBar extends StatefulWidget {

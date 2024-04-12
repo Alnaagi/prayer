@@ -6,6 +6,7 @@ import 'package:flutter_localization/flutter_localization.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
 import 'package:prayer/var/var.dart';
@@ -90,7 +91,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -116,42 +117,37 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.fajrStartTime!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value: prayerTimes.fajrStartTime!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -220,7 +216,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -233,7 +229,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    sunrise = sunrise - 1;
+                                    fajr = fajr - 1;
                                   });
                                 },
                                 child: Padding(
@@ -246,49 +242,44 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.sunrise!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value: prayerTimes.sunrise!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    sunrise = sunrise + 1;
+                                    fajr = fajr + 1;
                                   });
                                 },
                                 child: Padding(
@@ -306,7 +297,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: Text(
-                                LocalData.sunrise.getString(context),
+                                LocalData.Fajr.getString(context),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -350,7 +341,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -363,7 +354,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    duhr = duhr - 1;
+                                    fajr = fajr - 1;
                                   });
                                 },
                                 child: Padding(
@@ -376,49 +367,44 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.dhuhrStartTime!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value: prayerTimes.dhuhrStartTime!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    duhr = duhr + 1;
+                                    fajr = fajr + 1;
                                   });
                                 },
                                 child: Padding(
@@ -436,7 +422,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: Text(
-                                LocalData.Dhuhr.getString(context),
+                                LocalData.Fajr.getString(context),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -480,7 +466,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -493,7 +479,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    asr = asr - 1;
+                                    fajr = fajr - 1;
                                   });
                                 },
                                 child: Padding(
@@ -506,49 +492,44 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.asrStartTime!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value: prayerTimes.asrStartTime!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    asr = asr + 1;
+                                    fajr = fajr + 1;
                                   });
                                 },
                                 child: Padding(
@@ -566,7 +547,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: Text(
-                                LocalData.Asr.getString(context),
+                                LocalData.Fajr.getString(context),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -610,7 +591,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -623,7 +604,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    maghrib = maghrib - 1;
+                                    fajr = fajr - 1;
                                   });
                                 },
                                 child: Padding(
@@ -636,50 +617,44 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.maghribStartTime!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value:
-                                          prayerTimes.maghribStartTime!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    maghrib = maghrib + 1;
+                                    fajr = fajr + 1;
                                   });
                                 },
                                 child: Padding(
@@ -697,7 +672,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: Text(
-                                LocalData.Maghrib.getString(context),
+                                LocalData.Fajr.getString(context),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
@@ -741,7 +716,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                         ),
                         child: Center(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             // Text(
                             //   prayerTimes.fajrStartTime!.toString(),
@@ -754,7 +729,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    isha = isha - 1;
+                                    fajr = fajr - 1;
                                   });
                                 },
                                 child: Padding(
@@ -767,49 +742,44 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 )),
+                            Text(
+                              "${prayerTimes.fajrStartTime!.hour.toString()}:",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: const EdgeInsets.all(5),
-                                width: media.width * 0.20,
-                                height: media.height * 0.055,
+                                // margin: const EdgeInsets.all(1),
+                                width: media.width * 0.10,
+                                height: media.height * 0.042,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Colors.black38,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${prayerTimes.ishaStartTime!.hour.toString()}:",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    AnimatedFlipCounter(
-                                      value: prayerTimes.ishaStartTime!.minute,
-                                      // Use "infix" to show a value between negative sign and number
+                                child: AnimatedFlipCounter(
+                                  value: prayerTimes.fajrStartTime!.minute,
+                                  // Use "infix" to show a value between negative sign and number
 
-                                      // Some languages like French use comma as decimal separator
+                                  // Some languages like French use comma as decimal separator
 
-                                      // padding: const EdgeInsets.all(0),
-                                      textStyle: const TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                  // padding: const EdgeInsets.all(0),
+                                  textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    isha = isha + 1;
+                                    fajr = fajr + 1;
                                   });
                                 },
                                 child: Padding(
@@ -827,7 +797,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: Text(
-                                LocalData.Isha.getString(context),
+                                LocalData.Fajr.getString(context),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,

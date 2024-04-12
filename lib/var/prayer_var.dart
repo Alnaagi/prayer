@@ -1,4 +1,5 @@
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/common/prayer_types.dart';
 import 'package:prayers_times/src/calculation/celestial_time_calculation.dart';
 import 'package:prayers_times/src/calculation/prayer_calculation_parameters.dart';
 import 'package:prayers_times/src/celestial/celestial_math.dart';

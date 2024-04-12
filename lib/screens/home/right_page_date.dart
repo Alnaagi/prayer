@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
+import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
 import 'package:prayer/var/var.dart';

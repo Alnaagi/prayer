@@ -13,6 +13,13 @@ mixin LocalData {
   static const String Maghrib = "Maghrib";
   static const String Isha = "Isha";
 
+  static const String Fajrprayer = "Fajrprayer";
+
+  static const String Dhuhrprayer = "Dhuhrprayer";
+  static const String Asrprayer = "Asrprayer";
+  static const String Maghribprayer = "Maghribprayer";
+  static const String Ishaprayer = "Ishaprayer";
+
   static const String Update_Location = "Update_Location";
   static const String change_athan = "change_athan";
   static const String disable_athan = "disable_athan";
@@ -29,6 +36,9 @@ mixin LocalData {
   static const String istigfar = "istigfar";
   static const String igama = "igama";
 
+  static const String remaining = "remaining";
+  static const String passed = "passed";
+
   static const Map<String, dynamic> EN = {
     ///// prayers /////
     Fajr: "Fajr",
@@ -37,6 +47,14 @@ mixin LocalData {
     Asr: "Asr",
     Maghrib: "Maghrib",
     Isha: "Isha",
+//////////////////
+
+    Fajrprayer: "Fajr",
+    Dhuhrprayer: "Dhuhr",
+    Asrprayer: "Asr",
+    Maghribprayer: "Maghrib",
+    Ishaprayer: "Isha",
+
     ////// settings /////
     Update_Location: "Update Location",
     change_athan: "Change azan",
@@ -53,6 +71,10 @@ mixin LocalData {
     igama: "igama",
     istigfar: "istigfar",
     water: "water",
+
+    /////// timer ///////
+    passed: "time passed ",
+    remaining: "remaining to "
   };
   static const Map<String, dynamic> AR = {
     ////////// الصلاوات ////////
@@ -62,6 +84,14 @@ mixin LocalData {
     Asr: "العصر",
     Maghrib: "المغرب",
     Isha: "العشاء",
+
+    ////////// الصلاوات ////////
+    Fajrprayer: "صلاة الفجر",
+
+    Dhuhrprayer: "صلاة الظهر",
+    Asrprayer: "صلاة العصر",
+    Maghribprayer: "صلاة المغرب",
+    Ishaprayer: "صلاة العشاء",
 
     /////////  الإعدادات ////////
     Update_Location: "تحديث الموقع",
@@ -81,5 +111,8 @@ mixin LocalData {
     igama: "إقامة",
     istigfar: "استغفار",
     water: "ماء",
+///////////// timer /////////
+    passed: "مضى على ",
+    remaining: "بقي على"
   };
 }

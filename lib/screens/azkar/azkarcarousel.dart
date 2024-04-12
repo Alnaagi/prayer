@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:prayer/common/homepage_carousel.dart';
+import 'package:prayer/screens/home/homepage_carousel.dart';
 import 'package:prayer/controller/test3.dart';
 import 'package:prayer/screens/azkar/afternoon.dart';
 import 'package:prayer/screens/azkar/afterprayer.dart';
@@ -49,7 +49,7 @@ class AzkarCarousel extends StatelessWidget {
                     child: TabBarView(
                       children: [
                         MorningPage(),
-                        HomePageCopy(),
+                        AfternoonPage(),
                         AfterPrayerPage(),
                       ],
                     ),

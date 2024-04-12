@@ -4,7 +4,7 @@ import 'package:hijri/hijri_calendar.dart';
 
 import 'package:prayer/Testing/next_date.dart';
 
-import 'package:prayer/common/right_page_date.dart';
+import 'package:prayer/screens/home/right_page_date.dart';
 
 // int time = 0;
 // Timer? timer;
