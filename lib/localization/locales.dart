@@ -74,7 +74,7 @@ mixin LocalData {
 
     /////// timer ///////
     passed: "time passed ",
-    remaining: "remaining to "
+    remaining: "remaining to"
   };
   static const Map<String, dynamic> AR = {
     ////////// الصلاوات ////////
