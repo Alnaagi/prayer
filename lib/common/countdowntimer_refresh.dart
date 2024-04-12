@@ -285,7 +285,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 : Column(
                                     children: [
                                       Text(
-                                        "${LocalData.remaining.getString(context)}${next.getString(context)}",
+                                        "${LocalData.remaining.getString(context)} ${next.getString(context)}",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: media.height / 30,
