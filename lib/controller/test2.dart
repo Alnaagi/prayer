@@ -446,7 +446,7 @@ class test2 {
 //         content: NotificationContent(
 //           id: 110,
 //           channelKey: 'prayer_channel',
-//           title: 'اقترب أذان الفجر',
+//           title: 'اقترب أذان الفجر',S
 //           body: 'بقي على أذان صلاة الفجر 10 دقائق',
 //           wakeUpScreen: true,
 //           category: NotificationCategory.Reminder,
