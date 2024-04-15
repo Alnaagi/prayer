@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'dart:async';
@@ -91,7 +93,7 @@ class test2 {
 /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: 10,
+          id: Random().nextInt(300),
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الفجر',
           body: 'بقي على أذان صلاة الفجر 5 دقائق',
@@ -103,42 +105,49 @@ class test2 {
           // autoDismissible: false,
         ),
         schedule: NotificationCalendar(
-            timeZone: timeZone,
-            // repeats: true,
-
             year: date.year,
             month: date.month,
             day: date.day,
             hour: prayerTimes.fajrStartTime!.hour,
-            minute: prayerTimes.fajrStartTime!.minute - notifbeforeprayertime,
-            // preciseAlarm: true,
-            allowWhileIdle: true));
-
-    AwesomeNotifications().createNotification(
-        content: NotificationContent(
-          id: 11,
-          channelKey: 'prayer_channel',
-          title: 'أذان الفجر ',
-          body: 'حان الان موعد أذان صلاة الفجر',
-          wakeUpScreen: true,
-          criticalAlert: true,
-          category: NotificationCategory.Reminder,
-          payload: {'uuid': 'uuid-test'},
-          // autoDismissible: false,
-        ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.fajrStartTime!.hour,
-                prayerTimes.fajrStartTime!.minute),
+            minute:
+                prayerTimes.fajrStartTime!.minute - fajrnotif_beforeprayertime,
             preciseAlarm: true,
             allowWhileIdle: true));
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: 12,
+          id: Random().nextInt(300),
+          channelKey: 'prayer_channel',
+          title: 'أذان الفجر ',
+          body: 'حان الان موعد أذان صلاة الفجر',
+          wakeUpScreen: true,
+          criticalAlert: true,
+
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          // autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.fajrStartTime!.hour,
+            minute: prayerTimes.fajrStartTime!.minute,
+            preciseAlarm: true,
+            allowWhileIdle: true)
+
+        //  NotificationCalendar.fromDate(
+        //     // repeats: true,
+        //     date: DateTime(prayerTimes.fajrStartTime!.hour,
+        //         prayerTimes.fajrStartTime!.minute),
+        //     preciseAlarm: true,
+        //     allowWhileIdle: true)
+
+        );
+
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الفجر',
           body: 'مضى على أذان صلاة الفجر 10 دقائق',
@@ -148,13 +157,13 @@ class test2 {
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.fajrStartTime!.hour,
-                prayerTimes.fajrStartTime!.minute + notifafterprayertime),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.fajrStartTime!.hour,
+            minute:
+                prayerTimes.fajrStartTime!.minute + fajrnotif_afterprayertime,
             preciseAlarm: true,
             allowWhileIdle: true));
 
@@ -165,29 +174,29 @@ class test2 {
 /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: 20,
+          id: Random().nextInt(300),
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الظهر',
-          body: 'بقي على أذان صلاة الظهر 10 دقائق',
+          body: 'بقي على أذان صلاة الظهر 5 دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
           // autoDismissible: false,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.dhuhrStartTime!.hour,
-                prayerTimes.dhuhrStartTime!.minute - 10),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.dhuhrStartTime!.hour,
+            minute:
+                prayerTimes.dhuhrStartTime!.minute - duhrnotif_beforeprayertime,
             preciseAlarm: true,
             allowWhileIdle: true));
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: 21,
+          id: Random().nextInt(300),
           channelKey: 'prayer_channel',
           title: 'أذان الظهر ',
           body: 'حان الان موعد أذان صلاة الظهر',
@@ -197,19 +206,18 @@ class test2 {
           payload: {'uuid': 'uuid-test'},
           // autoDismissible: false,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.dhuhrStartTime!.hour,
-                prayerTimes.dhuhrStartTime!.minute),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.dhuhrStartTime!.hour,
+            minute: prayerTimes.dhuhrStartTime!.minute,
             preciseAlarm: true,
             allowWhileIdle: true));
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: 22,
+          id: Random().nextInt(300),
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الظهر',
           body: 'مضى على أذان صلاة الفجر 10 الظهر',
@@ -219,13 +227,13 @@ class test2 {
           payload: {'uuid': 'uuid-test'},
           autoDismissible: false,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: DateTime(
-                date.year,
-                date.month,
-                date.day,
-                prayerTimes.dhuhrStartTime!.hour,
-                prayerTimes.dhuhrStartTime!.minute + 10),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.dhuhrStartTime!.hour,
+            minute:
+                prayerTimes.dhuhrStartTime!.minute + duhrnotif_afterprayertime,
             preciseAlarm: true,
             allowWhileIdle: true));
 
@@ -234,204 +242,200 @@ class test2 {
 
 // //////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 30,
-//           channelKey: 'Prayer_reminder',
-//           title: 'اقترب أذان العصر',
-//           body: 'بقي على أذان صلاة العصر 10 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.asrStartTime!.hour,
-//                 prayerTimes.asrStartTime!.minute - 10),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_reminder',
+          title: 'اقترب أذان العصر',
+          body: 'بقي على أذان صلاة العصر 10 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.asrStartTime!.hour,
+            minute:
+                prayerTimes.asrStartTime!.minute - asrnotif_beforeprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 31,
-//           channelKey: 'prayer_channel',
-//           title: 'أذان العصر ',
-//           body: 'حان الان موعد أذان صلاة العصر',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.asrStartTime!.hour,
-//                 prayerTimes.asrStartTime!.minute),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'prayer_channel',
+          title: 'أذان العصر ',
+          body: 'حان الان موعد أذان صلاة العصر',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.asrStartTime!.hour,
+            minute: prayerTimes.asrStartTime!.minute,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 32,
-//           channelKey: 'Prayer_igama',
-//           title: 'إقامة صلاة العصر',
-//           body: 'مضى على أذان صلاة العصر 10 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.asrStartTime!.hour,
-//                 prayerTimes.asrStartTime!.minute + 10),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_igama',
+          title: 'إقامة صلاة العصر',
+          body: 'مضى على أذان صلاة العصر 10 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.asrStartTime!.hour,
+            minute: prayerTimes.asrStartTime!.minute + asrnotif_afterprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-// //////////////////////////////////////////////////////////////////////
-//     ////////////////////////////////////////////////////////////////////
+// // //////////////////////////////////////////////////////////////////////
+// //     ////////////////////////////////////////////////////////////////////
 
-// //////////////////////////////////////////////////////////
-// /////////////////////////////////////////////////////////
+// // //////////////////////////////////////////////////////////
+// // /////////////////////////////////////////////////////////
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 40,
-//           channelKey: 'Prayer_reminder',
-//           title: 'اقترب أذان المغرب',
-//           body: 'بقي على أذان صلاة المغرب 10 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.maghribStartTime!.hour,
-//                 prayerTimes.maghribStartTime!.minute - 10),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_reminder',
+          title: 'اقترب أذان المغرب',
+          body: 'بقي على أذان صلاة المغرب 5 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.maghribStartTime!.hour,
+            minute: prayerTimes.maghribStartTime!.minute -
+                maghribnotif_beforeprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 41,
-//           channelKey: 'prayer_channel',
-//           title: 'أذان المغرب ',
-//           body: 'حان الان موعد أذان صلاة المغرب',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.maghribStartTime!.hour,
-//                 prayerTimes.maghribStartTime!.minute),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'prayer_channel',
+          title: 'أذان المغرب ',
+          body: 'حان الان موعد أذان صلاة المغرب',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.maghribStartTime!.hour,
+            minute: prayerTimes.maghribStartTime!.minute,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 42,
-//           channelKey: 'Prayer_igama',
-//           title: 'إقامة صلاة المغرب',
-//           body: 'مضى على أذان صلاة المغرب 3 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.maghribStartTime!.hour,
-//                 prayerTimes.maghribStartTime!.minute + 3),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_igama',
+          title: 'إقامة صلاة المغرب',
+          body: 'مضى على أذان صلاة المغرب 3 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.maghribStartTime!.hour,
+            minute: prayerTimes.maghribStartTime!.minute +
+                maghribnotif_afterprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-// //////////////////////////////////////////////////////////////////////
-//     ////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////
-// /////////////////////////////////////////////////////////
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 50,
-//           channelKey: 'Prayer_reminder',
-//           title: 'اقترب أذان العشاء',
-//           body: 'بقي على أذان صلاة العشاء 10 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.ishaStartTime!.hour,
-//                 prayerTimes.ishaStartTime!.minute - 10),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+// // //////////////////////////////////////////////////////////////////////
+// //     ////////////////////////////////////////////////////////////////////
+// // //////////////////////////////////////////////////////////
+// // /////////////////////////////////////////////////////////
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_reminder',
+          title: 'اقترب أذان العشاء',
+          body: 'بقي على أذان صلاة العشاء 10 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.ishaStartTime!.hour,
+            minute:
+                prayerTimes.ishaStartTime!.minute - ishanotif_beforeprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 51,
-//           channelKey: 'prayer_channel',
-//           title: 'أذان العشاء ',
-//           body: 'حان الان موعد أذان صلاة العشاء',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.ishaStartTime!.hour,
-//                 prayerTimes.ishaStartTime!.minute),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'prayer_channel',
+          title: 'أذان العشاء ',
+          body: 'حان الان موعد أذان صلاة العشاء',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.ishaStartTime!.hour,
+            minute: prayerTimes.ishaStartTime!.minute,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
-//     AwesomeNotifications().createNotification(
-//         content: NotificationContent(
-//           id: 52,
-//           channelKey: 'Prayer_igama',
-//           title: 'إقامة صلاة العشاء',
-//           body: 'مضى على أذان صلاة العشاء 10 دقائق',
-//           wakeUpScreen: true,
-//           category: NotificationCategory.Reminder,
-//           payload: {'uuid': 'uuid-test'},
-//           autoDismissible: false,
-//         ),
-//         schedule: NotificationCalendar.fromDate(
-//             date: DateTime(
-//                 date.year,
-//                 date.month,
-//                 date.day,
-//                 prayerTimes.maghribStartTime!.hour,
-//                 prayerTimes.maghribStartTime!.minute + 10),
-//             preciseAlarm: true,
-//             allowWhileIdle: true));
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: Random().nextInt(300),
+          channelKey: 'Prayer_igama',
+          title: 'إقامة صلاة العشاء',
+          body: 'مضى على أذان صلاة العشاء 10 دقائق',
+          wakeUpScreen: true,
+          category: NotificationCategory.Reminder,
+          payload: {'uuid': 'uuid-test'},
+          autoDismissible: false,
+        ),
+        schedule: NotificationCalendar(
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hour: prayerTimes.ishaStartTime!.hour,
+            minute:
+                prayerTimes.ishaStartTime!.minute + ishanotif_afterprayertime,
+            preciseAlarm: true,
+            allowWhileIdle: true));
 
 // //////////////////////////////////////////////////////////////////////
 //     ////////////////////////////////////////////////////////////////////

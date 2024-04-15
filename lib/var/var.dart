@@ -1,9 +1,22 @@
 // ignore_for_file: dangling_library_doc_comments
 
+import 'package:prayer/common/hijri_calendar.dart';
+
+late String Hijrilang = "ar";
+
 ////// Prayer Time Notification Modify //////////
 
-int notifbeforeprayertime = 5;
-int notifafterprayertime = 10;
+int fajrnotif_beforeprayertime = 5;
+int duhrnotif_beforeprayertime = 5;
+int asrnotif_beforeprayertime = 5;
+int maghribnotif_beforeprayertime = 5;
+int ishanotif_beforeprayertime = 5;
+
+int fajrnotif_afterprayertime = 10;
+int duhrnotif_afterprayertime = 10;
+int asrnotif_afterprayertime = 10;
+int maghribnotif_afterprayertime = 10;
+int ishanotif_afterprayertime = 10;
 
 ////// Azan change //////////
 String reminderchannelkey = 'Prayer_reminder';
@@ -13,12 +26,12 @@ String waterchannelkey = 'Prayer_Water';
 
 /////// Prayer Custom Time Modify ////////
 
-double fajr = -1;
+double fajr = -2;
 double sunrise = 0;
-double duhr = 0;
-double asr = 4;
-double maghrib = -1;
-double isha = 3;
+double duhr = 4;
+double asr = -1;
+double maghrib = 3;
+double isha = 0;
 
 ////// Notification Disable ////////
 
@@ -32,11 +45,12 @@ int hijri_date_mod = 0;
 
 DateTime testtimecurrent = DateTime.now();
 bool isFetchingData3 = false;
+bool notifbool = false;
 String test = "";
 bool changetimer = false;
 var headingtest;
 
-
+int hijritest = 0;
 
 //////////////////////////////////////////////////
 

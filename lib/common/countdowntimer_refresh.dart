@@ -4,6 +4,7 @@ import 'package:flutter_localization/flutter_localization.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:prayer/common/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
@@ -267,7 +268,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 ? Column(
                                     children: [
                                       Text(
-                                        "${LocalData.passed.getString(context)} $current",
+                                        "${LocalData.passed.getString(context)} ${current.getString(context)}",
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,
@@ -309,7 +310,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 ? Column(
                                     children: [
                                       Text(
-                                        "مضى على $current",
+                                        "${LocalData.passed.getString(context)} ${current.getString(context)}",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: media.height / 30,
@@ -331,7 +332,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                 : Column(
                                     children: [
                                       Text(
-                                        "بقي على $next",
+                                        "${LocalData.remaining.getString(context)} ${next.getString(context)}",
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,

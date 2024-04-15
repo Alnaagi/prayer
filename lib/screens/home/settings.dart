@@ -353,16 +353,23 @@
 
 import 'dart:ui';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/add_time_prayer.dart';
 import 'package:prayer/common/add_prayer_time_page.dart';
+import 'package:prayer/common/change_alert_time_for_prayer.dart';
+import 'package:prayer/common/hijri_adj.dart';
+import 'package:prayer/common/hijri_calendar.dart';
+import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/controller/test3.dart';
 import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/var.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({
@@ -408,264 +415,70 @@ class _SettingsPageState extends State<SettingsPage> {
                     sigmaY: 4,
                   ),
                   child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: media.height * 0.088,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        // border:
-                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      showDialog(
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.grey.shade50,
+                          title: Center(
+                              child: Text(
+                            LocalData.Language.getString(context),
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          )),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Fluttertoast.showToast(
+                                      msg: LocalData.toast.getString(context));
+                                  setState(() {
+                                    Hijrilang = "en";
 
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white70,
-                              spreadRadius: 5,
-                              offset: const Offset(2, 4))
-                        ],
-                      ),
-                      child: Center(
-                          child: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            useSafeArea: true,
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              backgroundColor: Colors.grey.shade50,
-                              title: Center(
+                                    updateHijriLang();
+                                  });
+                                  _flutterLocalization.translate("en");
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                LocalData.Language.getString(context),
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )),
-                              actions: [
-                                TextButton(
-                                    onPressed: () {
-                                      Fluttertoast.showToast(
-                                          msg: LocalData.toast
-                                              .getString(context));
-                                      HijriCalendar.language = "en";
-                                      _flutterLocalization.translate("en");
-                                      Navigator.pop(context);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "English",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                    )),
-                                Container(
-                                  height: 50,
-                                  width: 1,
-                                  color: Colors.black,
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Fluttertoast.showToast(
-                                          msg: LocalData.toast
-                                              .getString(context));
-                                      HijriCalendar.language = "ar";
-                                      _flutterLocalization.translate("ar");
-                                      Navigator.pop(context);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "العربية",
-                                        style: TextStyle(
-                                            fontSize: 30, color: Colors.black),
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          );
-                        },
-                        child: Text(
-                          LocalData.Language.getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 4,
-                    sigmaY: 4,
-                  ),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: media.height * 0.088,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        // border:
-                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
-
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white70,
-                              spreadRadius: 5,
-                              offset: const Offset(2, 4))
-                        ],
-                      ),
-                      child: Center(
-                          child: TextButton(
-                        onPressed: () async {
-                          await Permission.location.request();
-                        },
-                        child: Text(
-                          LocalData.Update_Location.getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 4,
-                    sigmaY: 4,
-                  ),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: media.height * 0.088,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        // border:
-                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
-
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white70,
-                              spreadRadius: 5,
-                              offset: const Offset(2, 4))
-                        ],
-                      ),
-                      child: Center(
-                          child: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            useSafeArea: true,
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              backgroundColor: Colors.grey.shade50,
-                              title: Center(
-                                  child: Text(
-                                LocalData.change_athan.getString(context),
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )),
-                              actions: [
-                                Divider(
-                                  color: Colors.black,
-                                  thickness: 1.5,
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      LocalData.water.getString(context),
-                                      style: TextStyle(
+                                    "English",
+                                    style: TextStyle(
                                         fontSize: 25,
                                         color: Colors.black,
-                                      ),
-                                    )),
-                                // Container(
-                                //   height: 50,
-                                //   width: 1,
-                                //   color: Colors.black,
-                                // ),
-                                Divider(),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      LocalData.istigfar.getString(context),
-                                      style: TextStyle(
-                                          fontSize: 25, color: Colors.black),
-                                    )),
-                                Divider(),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      LocalData.Azan.getString(context),
-                                      style: TextStyle(
-                                          fontSize: 25, color: Colors.black),
-                                    )),
-                                Divider(),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      LocalData.igama.getString(context),
-                                      style: TextStyle(
-                                          fontSize: 25, color: Colors.black),
-                                    )),
-                              ],
-                            ),
-                          );
-                        },
-                        child: Text(
-                          LocalData.change_athan.getString(context),
-                          style: const TextStyle(
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                )),
+                            Container(
+                              height: 50,
+                              width: 1,
                               color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Fluttertoast.showToast(
+                                      msg: LocalData.toast.getString(context));
+                                  setState(() {
+                                    Hijrilang = "ar";
+                                    updateHijriLang();
+                                  });
+                                  _flutterLocalization.translate("ar");
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "العربية",
+                                    style: TextStyle(
+                                        fontSize: 30, color: Colors.black),
+                                  ),
+                                )),
+                          ],
                         ),
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 4,
-                    sigmaY: 4,
-                  ),
-                  child: InkWell(
-                    onTap: () {},
+                      );
+                    },
                     child: Container(
                       height: media.height * 0.088,
                       decoration: BoxDecoration(
@@ -682,16 +495,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                       child: Center(
-                          child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          LocalData.disable_athan.getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
+                          child: Text(
+                        LocalData.Language.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
                       )),
                     ),
                   ),
@@ -709,6 +519,236 @@ class _SettingsPageState extends State<SettingsPage> {
                     sigmaY: 4,
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () async {
+                      await Permission.location.request();
+                      try {
+                        final position2 = await Geolocator.getCurrentPosition(
+                            // timeLimit: Duration(seconds: 10),
+                            desiredAccuracy: LocationAccuracy.best);
+                        setState(() {
+                          latitudeloc = position2.latitude;
+                          longitudeloc = position2.longitude;
+
+                          // _getTimeZoneFromLookupService_atlaunch();
+                          // timer.cancel();
+                          // _listenForLocationChanges(); // Call your location data processing function here
+                        });
+                      } catch (e) {
+                        setState(() {
+                          Fluttertoast.showToast(
+                              msg: "Error getting location: $e");
+                          print("Error getting location: $e");
+                        });
+                      }
+                      Fluttertoast.showToast(msg: "Updating Location...");
+                    },
+                    child: Container(
+                      height: media.height * 0.088,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        // border:
+                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 0,
+                              color: Colors.white70,
+                              spreadRadius: 5,
+                              offset: const Offset(2, 4))
+                        ],
+                      ),
+                      child: Center(
+                          child: Text(
+                        LocalData.Update_Location.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
+                      )),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 4,
+                    sigmaY: 4,
+                  ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      showDialog(
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.grey.shade50,
+                          title: Center(
+                              child: Text(
+                            LocalData.change_athan.getString(context),
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          )),
+                          actions: [
+                            Divider(
+                              color: Colors.black,
+                              thickness: 1.5,
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  LocalData.water.getString(context),
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                  ),
+                                )),
+                            // Container(
+                            //   height: 50,
+                            //   width: 1,
+                            //   color: Colors.black,
+                            // ),
+                            Divider(),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  LocalData.istigfar.getString(context),
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.black),
+                                )),
+                            Divider(),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  LocalData.Azan.getString(context),
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.black),
+                                )),
+                            Divider(),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  LocalData.igama.getString(context),
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.black),
+                                )),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: media.height * 0.088,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        // border:
+                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 0,
+                              color: Colors.white70,
+                              spreadRadius: 5,
+                              offset: const Offset(2, 4))
+                        ],
+                      ),
+                      child: Center(
+                          child: Text(
+                        LocalData.change_athan.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
+                      )),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 4,
+                    sigmaY: 4,
+                  ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () async {
+                      final AwesomeNotifications awesomeNotifications =
+                          AwesomeNotifications();
+                      List<NotificationModel> scheduledNotifications =
+                          await awesomeNotifications
+                              .listScheduledNotifications();
+                      print(scheduledNotifications);
+                      // setState(() {
+                      //   notifbool = !notifbool;
+                      // });
+                      // if (notifbool == false) {
+                      //   Fluttertoast.showToast(msg: "Notification Disabled");
+                      // } else if (notifbool == true) {
+                      //   Fluttertoast.showToast(msg: "Notification Enabled");
+                      // }
+                    },
+                    child: Container(
+                      height: media.height * 0.088,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        // border:
+                        //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
+
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 0,
+                              color: Colors.white70,
+                              spreadRadius: 5,
+                              offset: const Offset(2, 4))
+                        ],
+                      ),
+                      child: Center(
+                          child: Text(
+                        LocalData.disable_athan.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
+                      )),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 13.8, vertical: 2),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 4,
+                    sigmaY: 4,
+                  ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -756,7 +796,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     sigmaY: 4,
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChangeAlertTimeForPrayer(),
+                          ));
+                    },
                     child: Container(
                       height: media.height * 0.088,
                       decoration: BoxDecoration(
@@ -773,17 +820,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                       child: Center(
-                          child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          LocalData.change_alert_time_for_prayer
-                              .getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
+                          child: Text(
+                        LocalData.change_alert_time_for_prayer
+                            .getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
                       )),
                     ),
                   ),
@@ -801,7 +845,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     sigmaY: 4,
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HijriAdjPage(),
+                          ));
+                    },
                     child: Container(
                       height: media.height * 0.088,
                       decoration: BoxDecoration(
@@ -818,16 +869,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                       child: Center(
-                          child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          LocalData.Hijri_Date_diffrence.getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
+                          child: Text(
+                        LocalData.Hijri_Date_diffrence.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
                       )),
                     ),
                   ),
@@ -845,7 +893,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     sigmaY: 4,
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Fluttertoast.showToast(msg: "Time Format has changed");
+                    },
                     child: Container(
                       height: media.height * 0.088,
                       decoration: BoxDecoration(
@@ -862,22 +913,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                       child: Center(
-                          child: TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => Time12_24page(),
-                          //     ));
-                        },
-                        child: Text(
-                          LocalData.Time_12_24h.getString(context),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                          // textDirection: TextDirection.rtl,
-                        ),
+                          child: Text(
+                        LocalData.Time_12_24h.getString(context),
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                        // textDirection: TextDirection.rtl,
                       )),
                     ),
                   ),
@@ -888,6 +930,13 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+  }
+
+  void updateHijriLang() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setString("Hijrilang", Hijrilang);
+    });
   }
 }
 

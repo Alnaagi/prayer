@@ -20,14 +20,14 @@ String apikey = "";
 String timeZoneLookupUrl_BackUp =
     "https://api.opencagedata.com/geocode/v1/json?f098de6d8d1444fd965b9ba0fa3b1e62";
 
-late double latitudeloc = 32.8877;
-late double longitudeloc = 13.1872;
-late String timeZone = "Africa/Tripoli";
-late String locationName = "";
-late String locationName1 = "";
-late String locationName2 = "";
-late String locationName3 = "";
-late String locationName4 = "";
+double latitudeloc = 32.8877;
+double longitudeloc = 13.1872;
+String timeZone = "Africa/Tripoli";
+String locationName = "";
+String locationName1 = "";
+String locationName2 = "";
+String locationName3 = "";
+String locationName4 = "";
 
 class LocationAddress extends StatefulWidget {
   @override
@@ -52,7 +52,7 @@ class _LocationAddressState extends State<LocationAddress> {
   void initState() {
     loadData();
 
-    // _listenForLocationChanges();
+    _listenForLocationChanges();
     // _listenForLocationChanges();
     // _getLocationData();
     // _listenForLocationChanges2();
@@ -151,7 +151,7 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(const Duration(seconds: 3), (timer) async {
+    timer2 = Timer.periodic(const Duration(seconds: 10), (timer) async {
       // print('Error fetching time zone*************:');
       try {
         final url =
@@ -160,15 +160,16 @@ class _LocationAddressState extends State<LocationAddress> {
 
         if (response.statusCode == 200) {
           final timeZoneData = jsonDecode(response.body);
-          setState(() {
+          setState(() async {
             timeZone = timeZoneData["zoneName"];
             print("Good");
             // Refreshgood.maingood();
 
             updateTimeZone();
+            await test2.Notif2();
             timer.cancel();
-            timer2
-                ?.cancel(); // Assuming the API returns time zone ID in 'timeZoneId' key
+            timer2?.cancel();
+            // Assuming the API returns time zone ID in 'timeZoneId' key
           });
 
           updateTimeZone();
@@ -288,7 +289,6 @@ class _LocationAddressState extends State<LocationAddress> {
     setState(() {
       prefs.setString("timeZone", timeZone);
     });
-    await Notifgood();
   }
 
   void updateLocationName() async {
@@ -297,17 +297,13 @@ class _LocationAddressState extends State<LocationAddress> {
       prefs.setString("locationName", locationName);
       prefs.setString("locationName2", locationName2);
       prefs.setString("locationName3", locationName3);
+      // timer?.cancel();
     });
-  }
-
-  Future Notifgood() async {
-    await test2.Notif2();
   }
 
   @override
   Widget build(BuildContext context) {
     // print(timeZone);
-    return Scaffold(
-        backgroundColor: Colors.lightBlue.shade50, body: const HomeBar());
+    return HomeBar();
   }
 }
