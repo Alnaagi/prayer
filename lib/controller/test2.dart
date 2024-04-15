@@ -93,7 +93,7 @@ class test2 {
 /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 10,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الفجر',
           body: 'بقي على أذان صلاة الفجر 5 دقائق',
@@ -116,7 +116,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 11,
           channelKey: 'prayer_channel',
           title: 'أذان الفجر ',
           body: 'حان الان موعد أذان صلاة الفجر',
@@ -147,7 +147,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 12,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الفجر',
           body: 'مضى على أذان صلاة الفجر 10 دقائق',
@@ -174,7 +174,7 @@ class test2 {
 /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 13,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الظهر',
           body: 'بقي على أذان صلاة الظهر 5 دقائق',
@@ -196,7 +196,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 14,
           channelKey: 'prayer_channel',
           title: 'أذان الظهر ',
           body: 'حان الان موعد أذان صلاة الظهر',
@@ -217,7 +217,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 15,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الظهر',
           body: 'مضى على أذان صلاة الفجر 10 الظهر',
@@ -244,7 +244,7 @@ class test2 {
 // /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 16,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العصر',
           body: 'بقي على أذان صلاة العصر 10 دقائق',
@@ -265,7 +265,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 17,
           channelKey: 'prayer_channel',
           title: 'أذان العصر ',
           body: 'حان الان موعد أذان صلاة العصر',
@@ -285,7 +285,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 18,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العصر',
           body: 'مضى على أذان صلاة العصر 10 دقائق',
@@ -311,7 +311,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 19,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
           body: 'بقي على أذان صلاة المغرب 5 دقائق',
@@ -332,7 +332,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 20,
           channelKey: 'prayer_channel',
           title: 'أذان المغرب ',
           body: 'حان الان موعد أذان صلاة المغرب',
@@ -352,7 +352,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 21,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
           body: 'مضى على أذان صلاة المغرب 3 دقائق',
@@ -377,7 +377,7 @@ class test2 {
 // // /////////////////////////////////////////////////////////
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 22,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العشاء',
           body: 'بقي على أذان صلاة العشاء 10 دقائق',
@@ -398,7 +398,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 23,
           channelKey: 'prayer_channel',
           title: 'أذان العشاء ',
           body: 'حان الان موعد أذان صلاة العشاء',
@@ -418,7 +418,7 @@ class test2 {
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: Random().nextInt(300),
+          id: 24,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العشاء',
           body: 'مضى على أذان صلاة العشاء 10 دقائق',
