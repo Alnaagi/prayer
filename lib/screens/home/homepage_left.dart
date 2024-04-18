@@ -1,11 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/common/sunnah_insights.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
-
+import 'package:prayer/localization/locales.dart';
 import 'package:prayers_times/prayers_times.dart';
 
 class HomePageleft extends StatelessWidget {
@@ -78,8 +79,8 @@ class HomePageleft extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Sunnah Times',
+                          Text(
+                            LocalData.SunnahTimes.getString(context),
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 25,
@@ -89,21 +90,24 @@ class HomePageleft extends StatelessWidget {
                             height: 15,
                           ),
                           Text(
-                            'Middle of the Night:\t${sunnahInsights.middleOfTheNight}',
+                            '${LocalData.middlenight.getString(context)}:  ${sunnahInsights.middleOfTheNight}',
+                            textDirection: TextDirection.rtl,
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal),
                           ),
                           Text(
-                            'Last Third of the Night:\t${sunnahInsights.lastThirdOfTheNight}',
+                            '${LocalData.lastnight.getString(context)}:  ${sunnahInsights.lastThirdOfTheNight}',
+                            textDirection: TextDirection.rtl,
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal),
                           ),
                           Text(
-                            'Qibla Direction:\t${(qiblaDirection).round()} degrees',
+                            '${LocalData.qibla.getString(context)}:  ${(qiblaDirection).round()}°',
+                            textDirection: TextDirection.rtl,
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,

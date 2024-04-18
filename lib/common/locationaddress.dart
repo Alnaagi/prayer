@@ -151,7 +151,7 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(const Duration(seconds: 10), (timer) async {
+    timer2 = Timer.periodic(const Duration(seconds: 5), (timer) async {
       // print('Error fetching time zone*************:');
       try {
         final url =

@@ -102,102 +102,120 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                           ],
                         ),
                         child: Center(
-                            child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Radio(
-                              activeColor: Colors.brown,
-                              value: -2,
-                              groupValue: hijritest,
-                              onChanged: (value) {
-                                setState(() {
-                                  hijritest = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "-2",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Radio(
-                              activeColor: Colors.brown,
-                              value: -1,
-                              groupValue: hijritest,
-                              onChanged: (value) {
-                                setState(() {
-                                  hijritest = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "-1",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Radio(
-                              activeColor: Colors.brown,
-                              value: 0,
-                              groupValue: hijritest,
-                              onChanged: (value) {
-                                setState(() {
-                                  hijritest = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "0",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Radio(
-                              activeColor: Colors.brown,
-                              value: 1,
-                              groupValue: hijritest,
-                              onChanged: (value) {
-                                setState(() {
-                                  hijritest = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "+1",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Radio(
-                              activeColor: Colors.brown,
-                              value: 2,
-                              groupValue: hijritest,
-                              onChanged: (value) {
-                                setState(() {
-                                  hijritest = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "+2",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            // Text(
-                            //   prayerTimes.fajrStartTime!.toString(),
-                            //   style: const TextStyle(
-                            //       color: Colors.black,
-                            //       fontSize: 25,
-                            //       fontWeight: FontWeight.bold),
-                            // ),
-                          ],
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SizedBox(
+                                width: 30,
+                                child: Radio(
+                                  activeColor: Colors.brown,
+                                  value: -2,
+                                  groupValue: hijritest,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hijritest = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                "-2",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 30,
+                                child: Radio(
+                                  activeColor: Colors.brown,
+                                  value: -1,
+                                  groupValue: hijritest,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hijritest = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                "-1",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 30,
+                                child: Radio(
+                                  activeColor: Colors.brown,
+                                  value: 0,
+                                  groupValue: hijritest,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hijritest = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                "0",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 30,
+                                child: Radio(
+                                  activeColor: Colors.brown,
+                                  value: 1,
+                                  groupValue: hijritest,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hijritest = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                "+1",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 30,
+                                child: Radio(
+                                  activeColor: Colors.brown,
+                                  value: 2,
+                                  groupValue: hijritest,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hijritest = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                "+2",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              // Text(
+                              //   prayerTimes.fajrStartTime!.toString(),
+                              //   style: const TextStyle(
+                              //       color: Colors.black,
+                              //       fontSize: 25,
+                              //       fontWeight: FontWeight.bold),
+                              // ),
+                            ],
+                          ),
                         )),
                       ),
                     ),

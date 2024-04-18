@@ -54,12 +54,12 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   LocalData.change_alert_time_for_prayer.getString(context),
                   style: const TextStyle(
                       color: Colors.white70,
-                      fontSize: 30,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold),
                   // textDirection: TextDirection.rtl,
                 ),

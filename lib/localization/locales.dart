@@ -40,6 +40,10 @@ mixin LocalData {
   static const String passed = "passed";
   static const String beforenotif = "beforenotif";
   static const String afternotif = "afternotif";
+  static const String SunnahTimes = "SunnahTimes";
+  static const String middlenight = "middlenight";
+  static const String lastnight = "lastnight";
+  static const String qibla = "qibla";
 
   static const Map<String, dynamic> EN = {
     ///// prayers /////
@@ -80,7 +84,12 @@ mixin LocalData {
 
     ////// notif ////
     beforenotif: "Before Azan",
-    afternotif: "After Azan"
+    afternotif: "After Azan",
+    /////sunna times /////
+    SunnahTimes: "Additional Info",
+    middlenight: "Middle of the Night",
+    lastnight: "Last Third of the Night",
+    qibla: "Qibla Direction"
   };
   static const Map<String, dynamic> AR = {
     ////////// الصلاوات ////////
@@ -122,6 +131,11 @@ mixin LocalData {
     remaining: "بقي على",
     ////// notif ////
     beforenotif: "قبل الأذان",
-    afternotif: "بعد الأذان"
+    afternotif: "بعد الأذان",
+    /////sunna times /////
+    SunnahTimes: "معلومات اضافية",
+    middlenight: "منتصف الليل",
+    lastnight: "الثّلث الأخير من اللّيل",
+    qibla: "اتجاه القبلة"
   };
 }
