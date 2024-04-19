@@ -79,7 +79,7 @@
 
 ## About the Muslim Prayer Reminder App
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[](images/logo.jpg)
 
 This app was created with the intention of helping Muslims stay connected to their faith and fulfill the important duty of prayer.
 
