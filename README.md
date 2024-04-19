@@ -1,16 +1,30 @@
-# prayer
+# Prayer Reminder
 
-A new Flutter project.
+**Never miss a prayer again!**
 
-## Getting Started
+**Features:**
 
-This project is a starting point for a Flutter application.
+- **Prayer Times:**
+  - Automatic prayer times based on location (GPS).
+  - See the remaining time for each prayer with a countdown clock ⏳
+- **Hijri Date:**
+  - Display the current Hijri date.
+- **Azkar:**
+  - Access a collection of essential Azkar for daily recitation.
+- **Qibla Direction:**
+  - Use the built-in compass to accurately locate the Qibla direction.
+- **Notifications:**
+  - Customizable notifications for each prayer time, including Athan option.
+  - Set additional reminder notifications before or after prayer times (e.g., 10 minutes before Dhuhr).
+- **Settings:**
 
-A few resources to get you started if this is your first Flutter project:
+  - Modify the app language for a personalized experience.
+  - Adjust prayer time .
+  - Customize notification preferences.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  Share prayer times with friends and family to help them stay on top of their Salah!
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  **We hope this Muslim Prayer Reminder app helps you stay connected to your Prayer and fulfill your religious obligations with ease.**
+
+  **Contribute Section:** (If open-source) Help us grow! We welcome contributions from the Islamic community to make this app even better. (Add emoji for code contribution, if available)
+  **Screenshots/Video Demo:**
