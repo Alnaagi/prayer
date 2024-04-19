@@ -54,9 +54,9 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#About the Muslim Prayer Reminder App">About the Muslim Prayer Reminder App</a>
+      <a href="#About-the-Muslim-Prayer-Reminder-App">About the Muslim Prayer Reminder App</a>
     </li>
-    <li><a href="#Built With ❤️">Built With ❤️</a></li>
+    <li><a href="#Built-With-❤️">Built With ❤️</a></li>
     <li><a href="#Setup">Setup</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
