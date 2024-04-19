@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Alnaagi/prayer">
-    <img src="images/logo.jpeg" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpeg" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Prayer Reminder App</h3>
@@ -69,7 +69,7 @@
 
 ## About the Muslim Prayer Reminder App
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![logo](images/logo.jpg)
 
 This app was created with the intention of helping Muslims stay connected to their faith and fulfill the important duty of prayer.
 
