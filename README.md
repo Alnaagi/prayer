@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Alnaagi/prayer">
-    <img src="images/logo.jpg" alt="Logo" width="1000" height="500">
+    <img src="images/logo.jpeg" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Prayer Reminder App</h3>
