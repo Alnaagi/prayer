@@ -56,7 +56,7 @@
     <li>
       <a href="#About-the-Muslim-Prayer-Reminder-App">About the Muslim Prayer Reminder App</a>
     </li>
-    <li><a href="#Built-With-❤️">Built With ❤️</a></li>
+    <li><a href="#Built-With-<3">Built With ❤️</a></li>
     <li><a href="#Setup">Setup</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
