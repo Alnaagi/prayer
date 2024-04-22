@@ -151,7 +151,7 @@ class _LocationAddressState extends State<LocationAddress> {
   }
 
   Future<void> _getTimeZoneFromLookupService() async {
-    timer2 = Timer.periodic(const Duration(seconds: 5), (timer) async {
+    timer2 = Timer.periodic(const Duration(seconds: 2), (timer2) async {
       // print('Error fetching time zone*************:');
       try {
         final url =
@@ -162,19 +162,19 @@ class _LocationAddressState extends State<LocationAddress> {
           final timeZoneData = jsonDecode(response.body);
           setState(() async {
             timeZone = timeZoneData["zoneName"];
-            print("Good");
+            // print("Good");
             // Refreshgood.maingood();
 
             updateTimeZone();
             await test2.Notif2();
-            timer.cancel();
-            timer2?.cancel();
+            timer?.cancel();
+            timer2.cancel();
             // Assuming the API returns time zone ID in 'timeZoneId' key
           });
 
           updateTimeZone();
         } else {
-          _getTimeZoneFromLookupService_BackUp();
+          // _getTimeZoneFromLookupService_BackUp();
           // Handle API request failure
           // _getTimeZoneFromLookupService_BackUp();
           // print('Error fetching time zone: ${response.statusCode}');
@@ -187,24 +187,24 @@ class _LocationAddressState extends State<LocationAddress> {
     });
   }
 
-  Future<void> _getTimeZoneFromLookupService_atlaunch() async {
-    final url =
-        Uri.parse('$timeZoneLookupUrl&lat=$latitudeloc&lng=$longitudeloc');
-    final response = await http.get(url);
+  // Future<void> _getTimeZoneFromLookupService_atlaunch() async {
+  //   final url =
+  //       Uri.parse('$timeZoneLookupUrl&lat=$latitudeloc&lng=$longitudeloc');
+  //   final response = await http.get(url);
 
-    if (response.statusCode == 200) {
-      final timeZoneData = jsonDecode(response.body);
-      setState(() {
-        timeZone = timeZoneData["zoneName"];
-        updateTimeZone(); // Assuming the API returns time zone ID in 'timeZoneId' key
-      });
-    } else {
-      // Handle A
-      //PI request failure
-      // _getTimeZoneFromLookupService_BackUp();
-      // print('Error fetching time zone: ${response.statusCode}');
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     final timeZoneData = jsonDecode(response.body);
+  //     setState(() {
+  //       timeZone = timeZoneData["zoneName"];
+  //       updateTimeZone(); // Assuming the API returns time zone ID in 'timeZoneId' key
+  //     });
+  //   } else {
+  //     // Handle A
+  //     //PI request failure
+  //     // _getTimeZoneFromLookupService_BackUp();
+  //     // print('Error fetching time zone: ${response.statusCode}');
+  //   }
+  // }
 
   Future<void> _getTimeZoneFromLookupService_BackUp() async {
     final url =

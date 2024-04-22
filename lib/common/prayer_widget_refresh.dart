@@ -119,8 +119,8 @@ class _PrayerWidgetState extends State<PrayerWidget> {
   // }
 
   void initState() {
-    _homepagerefresh();
-    // _timercanceler();
+    // _homepagerefresh();
+    _timercanceler();
 
     super.initState();
   }
@@ -139,7 +139,7 @@ class _PrayerWidgetState extends State<PrayerWidget> {
   void _homepagerefresh() {
     // Location stream for continuous updates (if available)
     timer = Timer.periodic(const Duration(milliseconds: 100), (_) async {
-      // print("Refresh///////");
+      print("Refresh///////");
 
       if (mounted) {
         setState(() {
@@ -152,12 +152,12 @@ class _PrayerWidgetState extends State<PrayerWidget> {
   }
 
   void _timercanceler() async {
-    timer2 = Timer.periodic(const Duration(seconds: 5), (_) async {
+    timer2 = Timer.periodic(const Duration(seconds: 10), (timer2) async {
       if (mounted) {
         setState(() {
           mainpage2 = false;
           print("Canceled///////");
-          // timer2?.cancel();
+          timer2.cancel();
         });
       }
     });
@@ -352,7 +352,7 @@ class _PrayerWidgetState extends State<PrayerWidget> {
       },
     ];
 
-    print("goodr65\\\\\\\999\6");
+    // print("goodr65\\\\\\\999\6");
     var media = MediaQuery.of(context).size;
 
     return ListView.builder(

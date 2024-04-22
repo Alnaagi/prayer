@@ -227,7 +227,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
         ? const CircularProgressIndicator()
         : InkWell(
             onTap: () {
-              MidnightActive = !MidnightActive;
+              // MidnightActive = !MidnightActive;
               // if (MidnightActive == true) setState(() {});
               // if (differenceActive == true) {}
               // setState(() {});
@@ -263,7 +263,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                 Stack(
                   children: [
                     MidnightActive
-                        ? Container(
+                        ? SizedBox(
                             child: middiffActive
                                 ? Column(
                                     children: [
@@ -305,7 +305,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                     ],
                                   ),
                           )
-                        : Container(
+                        : SizedBox(
                             child: differenceActive
                                 ? Column(
                                     children: [
@@ -378,7 +378,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
   }
 
   void _startTimer() {
-    const refreshDuration = Duration(milliseconds: 1000);
+    const refreshDuration = Duration(seconds: 1);
 
     _timer = Timer.periodic(refreshDuration, (_) async {
       setState(() {

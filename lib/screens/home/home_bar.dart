@@ -45,7 +45,7 @@ class _HomeBarState extends State<HomeBar> {
 
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.blue.shade50,
+
       // extendBodyBehindAppBar: true,
       bottomNavigationBar: BottomAppBar(
         height: 90,
