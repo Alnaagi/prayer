@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:prayer/common/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/localization/locales.dart';
-import 'package:prayer/screens/home/home_bar.dart';
 import 'package:prayer/var/var.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:prayer/controller/test2.dart';
 
 void main() async {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Permission.location.request();
   await Permission.notification.request();
-  await AwesomeNotifications.localTimeZoneIdentifier;
+  AwesomeNotifications.localTimeZoneIdentifier;
   await AwesomeNotifications().initialize(null, [
     NotificationChannel(
         importance: NotificationImportance.High,
@@ -128,7 +125,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
-      home: LocationAddress(),
+      home: const LocationAddress(),
     );
   }
 

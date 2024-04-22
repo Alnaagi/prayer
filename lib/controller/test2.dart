@@ -1,18 +1,10 @@
-import 'dart:math';
 
-import 'package:flutter/material.dart';
 
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter/material.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
-import 'package:prayer/common/prayer_widget_refresh.dart';
-import 'package:prayer/screens/home/homepage_middle.dart';
-import 'package:prayer/screens/home/home_bar.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
@@ -156,7 +148,7 @@ class test2 {
           id: 10,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الفجر',
-          body: 'بقي على أذان صلاة الفجر ${fajrnotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة الفجر $fajrnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
 
@@ -209,7 +201,7 @@ class test2 {
           id: 12,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الفجر',
-          body: 'مضى على أذان صلاة الفجر ${fajrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة الفجر $fajrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -235,7 +227,7 @@ class test2 {
           id: 13,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الظهر',
-          body: 'بقي على أذان صلاة الظهر ${duhrnotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة الظهر $duhrnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -277,7 +269,7 @@ class test2 {
           id: 15,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الظهر',
-          body: 'مضى على أذان صلاة الظهر ${duhrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة الظهر $duhrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -303,7 +295,7 @@ class test2 {
           id: 16,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العصر',
-          body: 'بقي على أذان صلاة العصر ${asrnotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة العصر $asrnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -343,7 +335,7 @@ class test2 {
           id: 18,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العصر',
-          body: 'مضى على أذان صلاة العصر ${asrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة العصر $asrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -370,7 +362,7 @@ class test2 {
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
           body:
-              'بقي على أذان صلاة المغرب ${maghribnotif_beforeprayertime} دقائق',
+              'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -411,7 +403,7 @@ class test2 {
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
           body:
-              'مضى على أذان صلاة المغرب ${maghribnotif_afterprayertime} دقائق',
+              'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -435,7 +427,7 @@ class test2 {
           id: 22,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العشاء',
-          body: 'بقي على أذان صلاة العشاء ${ishanotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة العشاء $ishanotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -475,7 +467,7 @@ class test2 {
           id: 24,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العشاء',
-          body: 'مضى على أذان صلاة العشاء ${ishanotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة العشاء $ishanotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -498,7 +490,7 @@ class test2 {
           id: 25,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الفجر',
-          body: 'بقي على أذان صلاة الفجر ${fajrnotif_afterprayertime} دقائق',
+          body: 'بقي على أذان صلاة الفجر $fajrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
 
@@ -551,7 +543,7 @@ class test2 {
           id: 27,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الفجر',
-          body: 'مضى على أذان صلاة الفجر ${fajrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة الفجر $fajrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -577,7 +569,7 @@ class test2 {
           id: 28,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان الظهر',
-          body: 'بقي على أذان صلاة الظهر ${duhrnotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة الظهر $duhrnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -619,7 +611,7 @@ class test2 {
           id: 30,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة الظهر',
-          body: 'مضى على أذان صلاة الظهر ${duhrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة الظهر $duhrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           criticalAlert: true,
           category: NotificationCategory.Reminder,
@@ -645,7 +637,7 @@ class test2 {
           id: 31,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العصر',
-          body: 'بقي على أذان صلاة العصر ${asrnotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة العصر $asrnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -685,7 +677,7 @@ class test2 {
           id: 33,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العصر',
-          body: 'مضى على أذان صلاة العصر ${asrnotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة العصر $asrnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -712,7 +704,7 @@ class test2 {
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
           body:
-              'بقي على أذان صلاة المغرب ${maghribnotif_beforeprayertime} دقائق',
+              'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -753,7 +745,7 @@ class test2 {
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
           body:
-              'مضى على أذان صلاة المغرب ${maghribnotif_afterprayertime} دقائق',
+              'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -777,7 +769,7 @@ class test2 {
           id: 37,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان العشاء',
-          body: 'بقي على أذان صلاة العشاء ${ishanotif_beforeprayertime} دقائق',
+          body: 'بقي على أذان صلاة العشاء $ishanotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -817,7 +809,7 @@ class test2 {
           id: 39,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة العشاء',
-          body: 'مضى على أذان صلاة العشاء ${ishanotif_afterprayertime} دقائق',
+          body: 'مضى على أذان صلاة العشاء $ishanotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},

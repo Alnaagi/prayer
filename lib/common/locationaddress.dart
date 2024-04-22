@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:prayer/common/prayer_widget_refresh.dart';
-import 'package:prayer/Testing/notif_schedule.dart';
 import 'package:prayer/controller/test2.dart';
 import 'package:prayer/screens/home/home_bar.dart';
 
@@ -28,8 +27,11 @@ String locationName1 = "";
 String locationName2 = "";
 String locationName3 = "";
 String locationName4 = "";
+bool status = false;
 
 class LocationAddress extends StatefulWidget {
+  const LocationAddress({super.key});
+
   @override
   _LocationAddressState createState() => _LocationAddressState();
 }
@@ -57,8 +59,11 @@ class _LocationAddressState extends State<LocationAddress> {
     // _getLocationData();
     // _listenForLocationChanges2();
     // _getTimeZoneFromLookupService_atlaunch();
-    super.initState();
 
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showLocationAndBatteryDialog();
+    });
     // _listenForLocationChanges();
   }
 
@@ -263,6 +268,82 @@ class _LocationAddressState extends State<LocationAddress> {
   //   });
   // }
 
+  void _showLocationAndBatteryDialog() {
+    // loadData();
+    // Check for battery optimization
+    // Note: Direct disabling of battery optimization is not possible due to security restrictions
+    // Instead, guide the user to the battery optimization settings
+    // bool isIgnoringBatteryOptimizations =
+    //     await location.isIgnoringBatteryOptimizations();
+    // if (!isIgnoringBatteryOptimizations) {
+    //   // Show dialog to navigate to battery optimization settings
+    timer3 = Timer.periodic(const Duration(seconds: 2), (timer3) {
+      if (!status) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text(
+              'Disable Battery Optimization',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            content: const SizedBox(
+              height: 185,
+              child: Column(
+                children: [
+                  Text(
+                    'Please to ensure the app functions correctly.\fFollow these steps:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    '1-Open Settings. \f2-Change "Not optimized" to \f "All Apps". \f3-Find the app. \f4-Choose "Dont optimize".',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              OutlinedButton(
+                onPressed: () {
+                  AppSettings.openAppSettings(
+                      type: AppSettingsType.batteryOptimization);
+                  Navigator.of(context).pop();
+                  setState(() {
+                    status = !status;
+                    updatedata2();
+                    print(status);
+                  });
+                },
+                child: const Text(
+                  'Open Settings',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        );
+        // setState(() {
+        //   status = !status;
+        // });
+
+        timer3.cancel();
+      } else {
+        // print(status);
+      }
+
+      // print("hello");
+    });
+  }
+
+  void updatedata2() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setBool("status", status);
+    });
+  }
+
   void loadData() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -273,6 +354,7 @@ class _LocationAddressState extends State<LocationAddress> {
       locationName = prefs.getString("locationName") ?? "";
       locationName3 = prefs.getString("locationName3") ?? "";
       locationName2 = prefs.getString("locationName2") ?? "";
+      status = prefs.getBool("status") ?? false;
     });
   }
 
@@ -304,6 +386,6 @@ class _LocationAddressState extends State<LocationAddress> {
   @override
   Widget build(BuildContext context) {
     // print(timeZone);
-    return HomeBar();
+    return const HomeBar();
   }
 }

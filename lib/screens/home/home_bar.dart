@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prayer/common/bottomappbar_widget.dart';
 import 'package:prayer/screens/home/homepage_carousel.dart';
-import 'package:prayer/Testing/azkar.dart';
 
 import 'package:prayer/screens/home/qibla.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -31,7 +30,7 @@ class _HomeBarState extends State<HomeBar> {
     const HomeCarousel(),
     AzkarCarousel(),
     const QiblaPage(),
-    SettingsPage()
+    const SettingsPage()
   ];
   @override
   void initState() {

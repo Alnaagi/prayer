@@ -1,12 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/localization/locales.dart';
@@ -67,7 +63,7 @@ class PrayerWidget2 extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: SizedBox(
                     width: 1,
                   ),
@@ -118,6 +114,7 @@ class _PrayerWidgetState extends State<PrayerWidget> {
   //   print("good222");
   // }
 
+  @override
   void initState() {
     // _homepagerefresh();
     _timercanceler();
@@ -286,36 +283,36 @@ class _PrayerWidgetState extends State<PrayerWidget> {
 //     String current = prayerTimes.currentPrayer();
 //     String next = prayerTimes.nextPrayer();
 
-    bool isha_ActiveColor = false;
-    bool maghrib_ActiveColor = false;
-    bool asr_ActiveColor = false;
-    bool dhuhr_ActiveColor = false;
-    bool sunrise_ActiveColor = false;
-    bool fajr_ActiveColor = false;
+    bool ishaActivecolor = false;
+    bool maghribActivecolor = false;
+    bool asrActivecolor = false;
+    bool dhuhrActivecolor = false;
+    bool sunriseActivecolor = false;
+    bool fajrActivecolor = false;
 
     // if prayer time is now the function will output
     DateTime date = DateTime.now();
     if (date.isAfter(prayerTimes.ishaStartTime!)) {
       // print("isha");
-      isha_ActiveColor = !isha_ActiveColor;
+      ishaActivecolor = !ishaActivecolor;
     } else if (date.isAfter(prayerTimes.maghribStartTime!)) {
       // print("maghrib");
-      maghrib_ActiveColor = !maghrib_ActiveColor;
+      maghribActivecolor = !maghribActivecolor;
     } else if (date.isAfter(prayerTimes.asrStartTime!)) {
       // print("asr");
-      asr_ActiveColor = !asr_ActiveColor;
+      asrActivecolor = !asrActivecolor;
     } else if (date.isAfter(prayerTimes.dhuhrStartTime!)) {
       // print("dhuhr");
-      dhuhr_ActiveColor = !dhuhr_ActiveColor;
+      dhuhrActivecolor = !dhuhrActivecolor;
     } else if (date.isAfter(prayerTimes.sunrise!)) {
       // print("sunrise");
-      sunrise_ActiveColor = !sunrise_ActiveColor;
+      sunriseActivecolor = !sunriseActivecolor;
     } else if (date.isAfter(prayerTimes.fajrStartTime!)) {
       // print("fajr");
-      fajr_ActiveColor = !fajr_ActiveColor;
+      fajrActivecolor = !fajrActivecolor;
     } else if (date.isAfter(prayerTimes.ishaEndTime!)) {
       // print("isha");
-      isha_ActiveColor = false;
+      ishaActivecolor = false;
     }
 
     //media size
@@ -323,32 +320,32 @@ class _PrayerWidgetState extends State<PrayerWidget> {
       {
         "Name": LocalData.Fajr.getString(context),
         "Time": "${prayerTimes.fajrStartTime!}",
-        "activeColor": fajr_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": fajrActivecolor ? Colors.amber : Colors.white70,
       },
       {
         "Name": LocalData.sunrise.getString(context),
         "Time": "\t${prayerTimes.sunrise!}",
-        "activeColor": sunrise_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": sunriseActivecolor ? Colors.amber : Colors.white70,
       },
       {
         "Name": LocalData.Dhuhr.getString(context),
         "Time": "\t${prayerTimes.dhuhrStartTime!}",
-        "activeColor": dhuhr_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": dhuhrActivecolor ? Colors.amber : Colors.white70,
       },
       {
         "Name": LocalData.Asr.getString(context),
         "Time": "\t${prayerTimes.asrStartTime!}",
-        "activeColor": asr_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": asrActivecolor ? Colors.amber : Colors.white70,
       },
       {
         "Name": LocalData.Maghrib.getString(context),
         "Time": "\t${prayerTimes.maghribStartTime!}",
-        "activeColor": maghrib_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": maghribActivecolor ? Colors.amber : Colors.white70,
       },
       {
         "Name": LocalData.Isha.getString(context),
         "Time": "\t${prayerTimes.ishaStartTime!}",
-        "activeColor": isha_ActiveColor ? Colors.amber : Colors.white70,
+        "activeColor": ishaActivecolor ? Colors.amber : Colors.white70,
       },
     ];
 

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prayer/common/hijri_calendar.dart';
@@ -20,6 +19,8 @@ bool differenceActive = false;
 bool isFetchingData2 = false;
 
 class CountTimerPrayer extends StatefulWidget {
+  const CountTimerPrayer({super.key});
+
   @override
   _CountTimerPrayerState createState() => _CountTimerPrayerState();
 }
@@ -64,7 +65,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //////////// current prayer /////// مضى
     String Currentprayer =
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
-    intl.DateFormat format2 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    intl.DateFormat format2 = intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime PrayerCurrentTime = format2.parse(Currentprayer);
 
     testtimecurrent = PrayerCurrentTime;
@@ -78,7 +79,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //////////// Next prayer ////////// بقي
     String Nextprayer =
         "${now.year}-${now.month}-${now.day + 1} ${prayerTimes1.timeForPrayer(next)}:00.000";
-    intl.DateFormat format3 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    intl.DateFormat format3 = intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime PrayerNextTime = format3.parse(Nextprayer);
 
     final timenowafter = DateTime.now();
@@ -88,26 +89,26 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //////// if after midnight /////  مضى امس
     String yesterdayprayer =
         "${now.year}-${now.month}-${now.day - 1} ${prayerTimes.timeForPrayer(current)}:00.000";
-    intl.DateFormat format4 = new intl.DateFormat('yyyy-MM-dd hh:mm');
-    DateTime yesterday_prayer = format4.parse(yesterdayprayer);
+    intl.DateFormat format4 = intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime yesterdayPrayer = format4.parse(yesterdayprayer);
 
     final nowww = DateTime.now();
-    final Beforemidnight = nowww.difference(yesterday_prayer);
+    final Beforemidnight = nowww.difference(yesterdayPrayer);
 
     ////////////////////////////////
 //////// if after midnight to fajr /////  بقي غدا
     String tomorrowprayer =
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(next)}:00.000";
-    intl.DateFormat format5 = new intl.DateFormat('yyyy-MM-dd hh:mm');
-    DateTime tomorrow_prayer = format5.parse(tomorrowprayer);
+    intl.DateFormat format5 = intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime tomorrowPrayer = format5.parse(tomorrowprayer);
 
     final nowwww = DateTime.now();
-    final Aftermidnight = tomorrow_prayer.difference(nowwww);
+    final Aftermidnight = tomorrowPrayer.difference(nowwww);
 
     String tomorrowprayer2 =
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
-    intl.DateFormat format6 = new intl.DateFormat('yyyy-MM-dd hh:mm');
-    DateTime tomorrow_prayer2 = format6.parse(tomorrowprayer2);
+    intl.DateFormat format6 = intl.DateFormat('yyyy-MM-dd hh:mm');
+    DateTime tomorrowPrayer2 = format6.parse(tomorrowprayer2);
 
     // final nowwww2 = DateTime.now();
     // final Aftermidnight2 = DateTime.now()
@@ -123,7 +124,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //////////// current prayer2 /////// مضى
     String Currentprayer2 =
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(current)}:00.000";
-    intl.DateFormat format8 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    intl.DateFormat format8 = intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime PrayerCurrentTime22 = format8.parse(Currentprayer2);
 
     final timenowago2 = DateTime.now();
@@ -133,7 +134,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
 //////////// Next prayer2 ////////// بقي
     String Nextprayer2 =
         "${now.year}-${now.month}-${now.day} ${prayerTimes.timeForPrayer(next)}:00.000";
-    intl.DateFormat format9 = new intl.DateFormat('yyyy-MM-dd hh:mm');
+    intl.DateFormat format9 = intl.DateFormat('yyyy-MM-dd hh:mm');
     DateTime PrayerNextTime2 = format9.parse(Nextprayer2);
 
     final timenowafter2 = DateTime.now();
@@ -220,7 +221,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
     // print(PrayerNextTime);
     // print(PrayerCurrentTime);
 
-    var _format = HijriCalendar.now();
+    var format = HijriCalendar.now();
     var media = MediaQuery.of(context).size;
     // print(_format.toFormat("mm dd yy")); //09 14 39
     return isFetchingData2
@@ -275,7 +276,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                         ),
                                       ),
                                       Text(
-                                        "${durationToString(Beforemidnight.inSeconds).substring(1, 9)}",
+                                        durationToString(Beforemidnight.inSeconds).substring(1, 9),
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 50,
@@ -295,7 +296,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                       Padding(
                                         padding: const EdgeInsets.all(12.0),
                                         child: Text(
-                                          "${durationToString(Aftermidnight.inSeconds).substring(0, 8)}",
+                                          durationToString(Aftermidnight.inSeconds).substring(0, 8),
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: media.height / 16,
@@ -339,7 +340,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                                         ),
                                       ),
                                       Text(
-                                        "${durationToString(afterdifference.inSeconds).substring(0, 8)}",
+                                        durationToString(afterdifference.inSeconds).substring(0, 8),
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 50,
@@ -351,7 +352,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
                   ],
                 ),
                 Text(
-                  _format.fullDate(),
+                  format.fullDate(),
                   style: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,

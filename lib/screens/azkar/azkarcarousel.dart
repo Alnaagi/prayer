@@ -1,15 +1,11 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:prayer/screens/home/homepage_carousel.dart';
-import 'package:prayer/controller/test3.dart';
 import 'package:prayer/screens/azkar/afternoon.dart';
 import 'package:prayer/screens/azkar/afterprayer.dart';
 import 'package:prayer/screens/azkar/morning.dart';
-import 'package:prayer/screens/home/homepage_middle.dart';
 
 class AzkarCarousel extends StatelessWidget {
   AzkarCarousel({
@@ -18,7 +14,7 @@ class AzkarCarousel extends StatelessWidget {
 
   final CarouselController _controller = CarouselController();
 
-  int _current = 0;
+  final int _current = 0;
 
   List<Widget> imgList = [
     AfternoonPage(),

@@ -1,10 +1,7 @@
 import 'dart:ui';
 
-import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
@@ -14,7 +11,7 @@ import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
 
 class HijriAdjPage extends StatefulWidget {
-  HijriAdjPage({super.key});
+  const HijriAdjPage({super.key});
 
   @override
   State<HijriAdjPage> createState() => _HijriAdjPageState();
@@ -93,12 +90,12 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -120,9 +117,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                                   },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "-2",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
@@ -140,9 +137,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                                   },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "-1",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
@@ -160,9 +157,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                                   },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "0",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
@@ -180,9 +177,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                                   },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "+1",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
@@ -200,9 +197,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                                   },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "+2",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
@@ -243,12 +240,12 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -256,9 +253,9 @@ class _HijriAdjPageState extends State<HijriAdjPage> {
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              child: Text(
+                              child: const Text(
                                 "Back",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),

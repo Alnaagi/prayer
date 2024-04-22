@@ -5,7 +5,6 @@ import 'package:prayers_times/src/calculation/prayer_calculation_parameters.dart
 import 'package:prayers_times/src/celestial/celestial_math.dart';
 import 'package:prayers_times/src/celestial/stellar_moment.dart';
 import 'package:prayers_times/src/prayers/prayer_time_converter.dart';
-import 'package:prayers_times/src/prayers/prayer_types.dart';
 import 'package:prayers_times/src/utils/constant.dart';
 import 'package:prayers_times/src/utils/coordinates.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -76,7 +75,6 @@ PrayerTimes({bool precision = false, DateTime? dateTime}) {
   tz.initializeTimeZones();
   final location = tz.getLocation(timeZone);
   DateTime date = tz.TZDateTime.from(dateTime ?? DateTime.now(), location);
-  ;
 
   // Calculate StellarMoment objects for the current date and adjacent days
   DateTime dateBefore = date.subtract(const Duration(days: 1));

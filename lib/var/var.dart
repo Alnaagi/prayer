@@ -1,8 +1,7 @@
 // ignore_for_file: dangling_library_doc_comments
 
-import 'package:prayer/common/hijri_calendar.dart';
 
-late String Hijrilang = "ar";
+String Hijrilang = "ar";
 
 ////// Prayer Time Notification Modify //////////
 

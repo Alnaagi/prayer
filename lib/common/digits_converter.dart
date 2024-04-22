@@ -15,10 +15,10 @@ class DigitsConverter {
   static String convertWesternNumberToEastern(int? easternNumber) {
     String englishNumber = easternNumber.toString();
     StringBuffer stringBuffer = StringBuffer();
-    englishNumber.runes.forEach((rune) {
+    for (var rune in englishNumber.runes) {
       String character = String.fromCharCode(rune);
       stringBuffer.write(easternArabicNumerals[int.parse(character)]);
-    });
+    }
     return stringBuffer.toString();
   }
 }

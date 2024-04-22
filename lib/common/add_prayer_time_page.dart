@@ -1,20 +1,16 @@
 import 'dart:ui';
 
-import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
 import 'package:prayer/common/prayer_time.dart';
 import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/prayer_calculation_method.dart';
 import 'package:prayer/var/var.dart';
 import 'package:prayers_times/prayers_times.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Add_prayer_time_page extends StatefulWidget {
-  Add_prayer_time_page({super.key});
+  const Add_prayer_time_page({super.key});
 
   @override
   State<Add_prayer_time_page> createState() => _Add_prayer_time_pageState();
@@ -82,12 +78,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -108,11 +104,11 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     fajr = fajr - 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     " - ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -133,7 +129,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${prayerTimes.fajrStartTime!.toString()}",
+                                    prayerTimes.fajrStartTime!.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -148,12 +144,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     fajr = fajr + 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
                                     " + ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -197,12 +193,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -223,11 +219,11 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     duhr = duhr - 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     " - ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -248,7 +244,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${prayerTimes.dhuhrStartTime!.toString()}",
+                                    prayerTimes.dhuhrStartTime!.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -263,12 +259,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     duhr = duhr + 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
                                     " + ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -312,12 +308,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -338,11 +334,11 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     asr = asr - 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     " - ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -363,7 +359,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${prayerTimes.asrStartTime!.toString()}",
+                                    prayerTimes.asrStartTime!.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -378,12 +374,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     asr = asr + 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
                                     " + ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -427,12 +423,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -453,11 +449,11 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     maghrib = maghrib - 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     " - ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -478,7 +474,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${prayerTimes.maghribStartTime!.toString()}",
+                                    prayerTimes.maghribStartTime!.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -493,12 +489,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     maghrib = maghrib + 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
                                     " + ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -542,12 +538,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -568,11 +564,11 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     isha = isha - 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Text(
                                     " - ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -593,7 +589,7 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${prayerTimes.ishaStartTime!.toString()}",
+                                    prayerTimes.ishaStartTime!.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
@@ -608,12 +604,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                                     isha = isha + 1;
                                   });
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
                                     " + ",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold),
@@ -659,12 +655,12 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                           // border:
                           //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 blurRadius: 0,
                                 color: Colors.white70,
                                 spreadRadius: 5,
-                                offset: const Offset(2, 4))
+                                offset: Offset(2, 4))
                           ],
                         ),
                         child: Center(
@@ -672,9 +668,9 @@ class _Add_prayer_time_pageState extends State<Add_prayer_time_page> {
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              child: Text(
+                              child: const Text(
                                 "Back",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),

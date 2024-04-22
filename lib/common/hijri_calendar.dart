@@ -1,6 +1,5 @@
 library hijri;
 
-import 'package:hijri/digits_converter.dart';
 import 'package:prayer/common/digits_converter.dart';
 import 'package:prayer/var/var.dart';
 
@@ -46,7 +45,7 @@ class HijriCalendar {
   }
 
   HijriCalendar.now() {
-    this._now();
+    _now();
   }
 
   HijriCalendar.addMonth(int year, int month) {
@@ -77,7 +76,7 @@ class HijriCalendar {
 
   int lengthOfYear({int? year = 0}) {
     int total = 0;
-    if (year == 0) year = this.hYear;
+    if (year == 0) year = hYear;
     for (int m = 0; m <= 11; m++) {
       total += getDaysInMonth(year!, m);
     }
@@ -190,17 +189,17 @@ class HijriCalendar {
   }
 
   String hDate(int year, int month, int day) {
-    this.hYear = year;
-    this.hMonth = month;
-    this.longMonthName = _local[language]!['long']![month]!;
-    this.dayWeName = _local[language]!['days']![wkDay]!;
-    this.shortMonthName = _local[language]!['short']![month]!;
-    this.hDay = day;
-    return format(this.hYear, this.hMonth, this.hDay, "dd/mm/yyyy");
+    hYear = year;
+    hMonth = month;
+    longMonthName = _local[language]!['long']![month]!;
+    dayWeName = _local[language]!['days']![wkDay]!;
+    shortMonthName = _local[language]!['short']![month]!;
+    hDay = day;
+    return format(hYear, hMonth, hDay, "dd/mm/yyyy");
   }
 
   String toFormat(String format) {
-    return this.format(this.hYear, this.hMonth, this.hDay, format);
+    return this.format(hYear, hMonth, hDay, format);
   }
 
   String format(year, month, day, format) {
@@ -320,8 +319,8 @@ class HijriCalendar {
   }
 
   bool isValid() {
-    if (validateHijri(this.hYear, this.hMonth, this.hDay)) {
-      if (this.hDay <= getDaysInMonth(this.hYear, this.hMonth)) {
+    if (validateHijri(hYear, hMonth, hDay)) {
+      if (hDay <= getDaysInMonth(hYear, hMonth)) {
         return true;
       } else {
         return false;

@@ -358,21 +358,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:hijri/hijri_calendar.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:prayer/common/add_time_prayer.dart';
 import 'package:prayer/common/add_prayer_time_page.dart';
 import 'package:prayer/common/change_alert_time_for_prayer.dart';
 import 'package:prayer/common/hijri_adj.dart';
-import 'package:prayer/common/hijri_calendar.dart';
 import 'package:prayer/common/locationaddress.dart';
-import 'package:prayer/controller/test3.dart';
 import 'package:prayer/localization/locales.dart';
 import 'package:prayer/var/var.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
-  SettingsPage({
+  const SettingsPage({
     super.key,
   });
 
@@ -425,7 +421,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           title: Center(
                               child: Text(
                             LocalData.Language.getString(context),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )),
                           actions: [
@@ -441,8 +437,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                   _flutterLocalization.translate("en");
                                   Navigator.pop(context);
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text(
                                     "English",
                                     style: TextStyle(
@@ -467,8 +463,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                   _flutterLocalization.translate("ar");
                                   Navigator.pop(context);
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text(
                                     "العربية",
                                     style: TextStyle(
@@ -486,12 +482,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -550,12 +546,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -593,11 +589,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           title: Center(
                               child: Text(
                             LocalData.change_athan.getString(context),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )),
                           actions: [
-                            Divider(
+                            const Divider(
                               color: Colors.black,
                               thickness: 1.5,
                             ),
@@ -607,7 +603,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 },
                                 child: Text(
                                   LocalData.water.getString(context),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 25,
                                     color: Colors.black,
                                   ),
@@ -617,34 +613,34 @@ class _SettingsPageState extends State<SettingsPage> {
                             //   width: 1,
                             //   color: Colors.black,
                             // ),
-                            Divider(),
+                            const Divider(),
                             TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                                 child: Text(
                                   LocalData.istigfar.getString(context),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 25, color: Colors.black),
                                 )),
-                            Divider(),
+                            const Divider(),
                             TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                                 child: Text(
                                   LocalData.Azan.getString(context),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 25, color: Colors.black),
                                 )),
-                            Divider(),
+                            const Divider(),
                             TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                                 child: Text(
                                   LocalData.igama.getString(context),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 25, color: Colors.black),
                                 )),
                           ],
@@ -658,12 +654,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -715,12 +711,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -753,7 +749,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Add_prayer_time_page(),
+                            builder: (context) => const Add_prayer_time_page(),
                           ));
                     },
                     child: Container(
@@ -763,12 +759,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -801,7 +797,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ChangeAlertTimeForPrayer(),
+                            builder: (context) => const ChangeAlertTimeForPrayer(),
                           ));
                     },
                     child: Container(
@@ -811,12 +807,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -850,7 +846,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HijriAdjPage(),
+                            builder: (context) => const HijriAdjPage(),
                           ));
                     },
                     child: Container(
@@ -860,12 +856,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(
@@ -904,12 +900,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         // border:
                         //     Border.symmetric(horizontal: BorderSide(color: Colors.black)),
 
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 0,
                               color: Colors.white70,
                               spreadRadius: 5,
-                              offset: const Offset(2, 4))
+                              offset: Offset(2, 4))
                         ],
                       ),
                       child: Center(

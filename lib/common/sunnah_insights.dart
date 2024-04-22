@@ -1,6 +1,5 @@
 import 'package:prayer/common/prayer_time.dart';
 import 'package:prayers_times/src/calculation/celestial_time_calculation.dart';
-import 'package:prayers_times/src/prayers/prayer_time.dart';
 
 /// The `SunnahInsights` class provides calculations for middle of the night and last third of the night times.
 ///

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:prayer/common/prayer_widget_refresh.dart';
-import 'package:prayer/Testing/notif_schedule.dart';
 import 'package:prayer/controller/test2.dart';
 import 'package:prayer/screens/home/home_bar.dart';
 
@@ -20,16 +18,18 @@ String apikey = "";
 String timeZoneLookupUrl_BackUp =
     "https://api.opencagedata.com/geocode/v1/json?f098de6d8d1444fd965b9ba0fa3b1e62";
 
-late double latitudeloc = 32.8877;
-late double longitudeloc = 13.1872;
-late String timeZone = "Africa/Tripoli";
-late String locationName = "";
-late String locationName1 = "";
-late String locationName2 = "";
-late String locationName3 = "";
-late String locationName4 = "";
+double latitudeloc = 32.8877;
+double longitudeloc = 13.1872;
+String timeZone = "Africa/Tripoli";
+String locationName = "";
+String locationName1 = "";
+String locationName2 = "";
+String locationName3 = "";
+String locationName4 = "";
 
 class LocationAddress extends StatefulWidget {
+  const LocationAddress({super.key});
+
   @override
   _LocationAddressState createState() => _LocationAddressState();
 }

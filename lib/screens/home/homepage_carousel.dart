@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:prayer/screens/home/homepage_left.dart';
 import 'package:prayer/screens/home/homepage_middle.dart';
@@ -20,7 +19,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
 
   List<Widget> pageList = [
     const HomePageleft(),
-    HomePageCopy(),
+    const HomePageCopy(),
     const HomePageRight(),
   ];
 
