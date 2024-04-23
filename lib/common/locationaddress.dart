@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:app_settings/app_settings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -277,8 +278,10 @@ class _LocationAddressState extends State<LocationAddress> {
     //     await location.isIgnoringBatteryOptimizations();
     // if (!isIgnoringBatteryOptimizations) {
     //   // Show dialog to navigate to battery optimization settings
-    timer3 = Timer.periodic(const Duration(seconds: 2), (timer3) {
-      if (!status) {
+    timer3 = Timer.periodic(const Duration(seconds: 5), (timer3) {
+      if (kIsWeb) {
+        print("web");
+      } else if (!status) {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -329,7 +332,7 @@ class _LocationAddressState extends State<LocationAddress> {
         // });
 
         timer3.cancel();
-      } else {
+
         // print(status);
       }
 
