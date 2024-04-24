@@ -122,11 +122,10 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      supportedLocales: localization.supportedLocales,
-      localizationsDelegates: localization.localizationsDelegates,
-      home: const LocationAddress(),
-    );
+        debugShowCheckedModeBanner: false,
+        supportedLocales: localization.supportedLocales,
+        localizationsDelegates: localization.localizationsDelegates,
+        home: const LocationAddress());
   }
 
   void configureLocalization() {
