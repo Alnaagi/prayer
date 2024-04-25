@@ -168,13 +168,15 @@ class _LocationAddressState extends State<LocationAddress> {
           final timeZoneData = jsonDecode(response.body);
           setState(() async {
             timeZone = timeZoneData["zoneName"];
-            // print("Good");
+            print(timeZone);
+            print(longitudeloc);
+            print(latitudeloc);
             // Refreshgood.maingood();
 
             updateTimeZone();
             await test2.Notif2();
-            timer?.cancel();
-            timer2.cancel();
+            // timer?.cancel();
+            // timer2.cancel();
             // Assuming the API returns time zone ID in 'timeZoneId' key
           });
 
@@ -234,43 +236,7 @@ class _LocationAddressState extends State<LocationAddress> {
     }
   }
 
-  // void _listenForLocationChanges2() {
-  //   // Location stream for continuous updates (if available)
-  //   timer3 = Timer.periodic(Duration(seconds: 1), (timer3) async {
-  //     LocationPermission permission = await Geolocator.checkPermission();
-  //     if (permission == LocationPermission.denied) {
-  //       permission = await Geolocator.requestPermission();
-
-  //       if (permission == LocationPermission.deniedForever) {
-  //         Geolocator.openAppSettings();
-  //         // Permission denied forever, handle error
-  //         errorMessage =
-  //             "Location permissions are permanently denied. Please enable them from app settings.";
-  //         return;
-  //       }
-  //     }
-  //     try {
-  //       final position2 = await Geolocator.getCurrentPosition(
-  //           // timeLimit: Duration(seconds: 10),
-  //           desiredAccuracy: LocationAccuracy.best);
-  //       setState(() {
-  //         latitudeloc = position2.latitude;
-  //         longitudeloc = position2.longitude;
-
-  //         _getLocationData();
-  //         // _listenForLocationChanges(); // Call your location data processing function here
-  //         timer3.cancel();
-  //       });
-  //     } catch (e) {
-  //       setState(() {
-  //         errorMessage = "Error getting location: $e";
-  //       });
-  //     }
-  //   });
-  // }
-
   void _showLocationAndBatteryDialog() {
-    // loadData();
     // Check for battery optimization
     // Note: Direct disabling of battery optimization is not possible due to security restrictions
     // Instead, guide the user to the battery optimization settings
@@ -285,23 +251,32 @@ class _LocationAddressState extends State<LocationAddress> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text(
-              'Disable Battery Optimization',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            title: Directionality(
+              textDirection: TextDirection.ltr,
+              child: const Text(
+                'Disable Battery Optimization',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             content: const SizedBox(
               height: 185,
-              child: Column(
-                children: [
-                  Text(
-                    'Please to ensure the app functions correctly.\fFollow these steps:',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '1-Open Settings. \f2-Change "Not optimized" to \f "All Apps". \f3-Find the app. \f4-Choose "Dont optimize".',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Column(
+                  children: [
+                    Text(
+                      'Please to ensure the app functions correctly.\fFollow these steps:',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      '1-Open Settings. \f2-Change "Not optimized" to \f "All Apps". \f3-Find the app. \f4-Choose "Dont optimize".',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
               ),
             ),
             actions: <Widget>[
@@ -389,6 +364,7 @@ class _LocationAddressState extends State<LocationAddress> {
   @override
   Widget build(BuildContext context) {
     // print(timeZone);
-    return const HomeBar();
+    return Directionality(
+        textDirection: TextDirection.ltr, child: const HomeBar());
   }
 }

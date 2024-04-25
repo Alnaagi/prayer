@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -106,10 +104,10 @@ class test2 {
     DateTime afterishanotif = prayerTimes.ishaStartTime!
         .add(Duration(minutes: ishanotif_afterprayertime));
 
-    print(beforefajrnotif.hour);
-    print(beforefajrnotif.minute);
-    print(afterfajrnotif.hour);
-    print(afterfajrnotif.minute);
+    // print(beforefajrnotif.hour);
+    // print(beforefajrnotif.minute);
+    // print(afterfajrnotif.hour);
+    // print(afterfajrnotif.minute);
 // //////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////
     DateTime beforefajrnotif1 = prayerTimes1.fajrStartTime!
@@ -361,8 +359,7 @@ class test2 {
           id: 19,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
-          body:
-              'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
+          body: 'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -402,8 +399,7 @@ class test2 {
           id: 21,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
-          body:
-              'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
+          body: 'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -703,8 +699,7 @@ class test2 {
           id: 34,
           channelKey: 'Prayer_reminder',
           title: 'اقترب أذان المغرب',
-          body:
-              'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
+          body: 'بقي على أذان صلاة المغرب $maghribnotif_beforeprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},
@@ -744,8 +739,7 @@ class test2 {
           id: 36,
           channelKey: 'Prayer_igama',
           title: 'إقامة صلاة المغرب',
-          body:
-              'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
+          body: 'مضى على أذان صلاة المغرب $maghribnotif_afterprayertime دقائق',
           wakeUpScreen: true,
           category: NotificationCategory.Reminder,
           payload: {'uuid': 'uuid-test'},

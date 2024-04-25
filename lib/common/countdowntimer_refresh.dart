@@ -150,20 +150,21 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       return '${parts[0].padLeft(2, '0')}:${parts[1].padLeft(2, '0')}:${parts[2].padLeft(2, '0')}';
     }
 
-    // print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
-    // print(
-    //     "${durationToString(difference.inSeconds).substring(0, 8)} difference");
-    // print(
-    //     "${durationToString(afterdifference.inSeconds).substring(0, 8)} afterdifference");
-    // print(
-    //     "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
-    // print(
-    //     "${durationToString(Aftermidnight.inSeconds).substring(1, 9)} Aftermidnight");
-    // print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+    print(
+        "${durationToString(difference.inSeconds).substring(0, 8)} difference");
+    print(
+        "${durationToString(afterdifference.inSeconds).substring(0, 8)} afterdifference");
+    print(
+        "${durationToString(Beforemidnight.inSeconds).substring(0, 8)} Beforemidnight");
+    print(
+        "${durationToString(Aftermidnight.inSeconds).substring(1, 9)} Aftermidnight");
+    print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
 
-    // print(durationToString(afterdifference.inSeconds));
-    // print(durationToString(Beforemidnight.inSeconds));
-    // print(durationToString(Aftermidnight.inSeconds));
+    print(durationToString(difference.inSeconds));
+    print(durationToString(afterdifference.inSeconds));
+    print(durationToString(Beforemidnight.inSeconds));
+    print(durationToString(Aftermidnight.inSeconds));
 
     // print("difference${difference.inMinutes}");
     // print("afterdifference${afterdifference.inMinutes}");
@@ -212,6 +213,7 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
       MidnightActive = true;
       middiffActive = false;
 
+      print(now.hour);
       // print("finish1");
     } else {
       MidnightActive = false;
@@ -233,132 +235,142 @@ class _CountTimerPrayerState extends State<CountTimerPrayer> {
               // if (differenceActive == true) {}
               // setState(() {});
             },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Icon(Icons.location_on_outlined),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: SizedBox(
-                    height: media.height / 20,
-                    child: TextButton.icon(
-                      onPressed: () async {
-                        await Permission.location.request();
-                      },
-                      icon: const Icon(
-                        Icons.location_on_outlined,
-                        color: Colors.black54,
-                      ),
-                      label: Text(
-                        "$locationName-$locationName2-$locationName3",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        softWrap: false,
-                        style: TextStyle(
-                            color: Colors.black87, fontSize: media.height / 50),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Icon(Icons.location_on_outlined),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: SizedBox(
+                      height: media.height / 20,
+                      child: TextButton.icon(
+                        onPressed: () async {
+                          await Permission.location.request();
+                        },
+                        icon: const Icon(
+                          Icons.location_on_outlined,
+                          color: Colors.black54,
+                        ),
+                        label: Text(
+                          "$locationName-$locationName2-$locationName3",
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: media.height / 50),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Stack(
-                  children: [
-                    MidnightActive
-                        ? SizedBox(
-                            child: middiffActive
-                                ? Column(
-                                    children: [
-                                      Text(
-                                        "${LocalData.passed.getString(context)} ${current.getString(context)}",
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 25,
-                                        ),
-                                      ),
-                                      Text(
-                                        durationToString(Beforemidnight.inSeconds).substring(1, 9),
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 50,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : Column(
-                                    children: [
-                                      Text(
-                                        "${LocalData.remaining.getString(context)} ${next.getString(context)}",
-                                        style: TextStyle(
+                  Stack(
+                    children: [
+                      MidnightActive
+                          ? SizedBox(
+                              child: middiffActive
+                                  ? Column(
+                                      children: [
+                                        Text(
+                                          "${LocalData.passed.getString(context)} ${current.getString(context)}",
+                                          style: const TextStyle(
                                             color: Colors.black,
-                                            fontSize: media.height / 30,
-                                            height: media.height * 0.0011),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Text(
-                                          durationToString(Aftermidnight.inSeconds).substring(0, 8),
+                                            fontSize: 25,
+                                          ),
+                                        ),
+                                        Text(
+                                          durationToString(
+                                                  Beforemidnight.inSeconds)
+                                              .substring(1, 9),
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 50,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Column(
+                                      children: [
+                                        Text(
+                                          "${LocalData.remaining.getString(context)} ${next.getString(context)}",
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: media.height / 16,
-                                              height: media.height * 0.0010),
+                                              fontSize: media.height / 30,
+                                              height: media.height * 0.0011),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                          )
-                        : SizedBox(
-                            child: differenceActive
-                                ? Column(
-                                    children: [
-                                      Text(
-                                        "${LocalData.passed.getString(context)} ${current.getString(context)}",
-                                        style: TextStyle(
+                                        Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Text(
+                                            durationToString(
+                                                    Aftermidnight.inSeconds)
+                                                .substring(0, 8),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: media.height / 16,
+                                                height: media.height * 0.0010),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                            )
+                          : SizedBox(
+                              child: differenceActive
+                                  ? Column(
+                                      children: [
+                                        Text(
+                                          "${LocalData.passed.getString(context)} ${current.getString(context)}",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: media.height / 30,
+                                              height: media.height * 0.0011),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Text(
+                                            durationToString(
+                                                    difference.inSeconds)
+                                                .substring(0, 8),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: media.height / 16,
+                                                height: media.height * 0.0010),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Column(
+                                      children: [
+                                        Text(
+                                          "${LocalData.remaining.getString(context)} ${next.getString(context)}",
+                                          style: const TextStyle(
                                             color: Colors.black,
-                                            fontSize: media.height / 30,
-                                            height: media.height * 0.0011),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Text(
-                                          durationToString(difference.inSeconds)
+                                            fontSize: 25,
+                                          ),
+                                        ),
+                                        Text(
+                                          durationToString(
+                                                  afterdifference.inSeconds)
                                               .substring(0, 8),
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: media.height / 16,
-                                              height: media.height * 0.0010),
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 50,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  )
-                                : Column(
-                                    children: [
-                                      Text(
-                                        "${LocalData.remaining.getString(context)} ${next.getString(context)}",
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 25,
-                                        ),
-                                      ),
-                                      Text(
-                                        durationToString(afterdifference.inSeconds).substring(0, 8),
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 50,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                          ),
-                  ],
-                ),
-                Text(
-                  format.fullDate(),
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                ),
-              ],
+                                      ],
+                                    ),
+                            ),
+                    ],
+                  ),
+                  Text(
+                    format.fullDate(),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: media.width * 0.05,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ],
+              ),
             ),
           );
   }

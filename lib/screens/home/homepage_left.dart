@@ -69,44 +69,48 @@ class HomePageleft extends StatelessWidget {
                         offset: Offset(2, 4))
                   ],
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      LocalData.SunnahTimes.getString(context),
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          LocalData.SunnahTimes.getString(context),
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: media.height * 0.008,
+                        ),
+                        Text(
+                          '${LocalData.middlenight.getString(context)}:  ${sunnahInsights.middleOfTheNight}',
+                          textDirection: TextDirection.rtl,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        Text(
+                          '${LocalData.lastnight.getString(context)}:  ${sunnahInsights.lastThirdOfTheNight}',
+                          textDirection: TextDirection.rtl,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        Text(
+                          '${LocalData.qibla.getString(context)}:  ${(qiblaDirection).round()}°',
+                          textDirection: TextDirection.rtl,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: media.height * 0.015,
-                    ),
-                    Text(
-                      '${LocalData.middlenight.getString(context)}:  ${sunnahInsights.middleOfTheNight}',
-                      textDirection: TextDirection.rtl,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    Text(
-                      '${LocalData.lastnight.getString(context)}:  ${sunnahInsights.lastThirdOfTheNight}',
-                      textDirection: TextDirection.rtl,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    Text(
-                      '${LocalData.qibla.getString(context)}:  ${(qiblaDirection).round()}°',
-                      textDirection: TextDirection.rtl,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -116,34 +120,3 @@ class HomePageleft extends StatelessWidget {
     );
   }
 }
-
-// void _openAnimatedDialog(BuildContext context) {
-//   showGeneralDialog(
-//     barrierLabel: "",
-//     barrierDismissible: true,
-//     context: context,
-//     pageBuilder: (context, animation, secondaryAnimation) {
-//       return BackdropFilter(
-//           filter: ImageFilter.blur(
-//             sigmaX: 4,
-//             sigmaY: 4,
-//           ),
-//           child: Container());
-//     },
-//     transitionDuration: const Duration(milliseconds: 250),
-//     transitionBuilder: (context, a1, a2, child) {
-//       return ScaleTransition(
-//           scale: Tween(begin: 0.5, end: 1.0).animate(a1),
-//           child: FadeTransition(
-//             opacity: Tween(begin: 0.5, end: 1.0).animate(a1),
-//             child: AlertDialog(
-//               title: const Text("Hello"),
-//               content: const Text("Hello"),
-//               shape: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(16),
-//                   borderSide: BorderSide.none),
-//             ),
-//           ));
-//     },
-//   );
-// }

@@ -93,7 +93,7 @@ class AzkarCarousel extends StatelessWidget {
                             "أذكار الصباح",
                             style: TextStyle(
                                 color: Colors.black87,
-                                fontSize: media.width * 0.048,
+                                fontSize: media.width * 0.045,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -103,7 +103,7 @@ class AzkarCarousel extends StatelessWidget {
                             "أذكار المساء",
                             style: TextStyle(
                                 color: Colors.black87,
-                                fontSize: media.width * 0.048,
+                                fontSize: media.width * 0.045,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),

@@ -45,6 +45,8 @@ mixin LocalData {
   static const String lastnight = "lastnight";
   static const String qibla = "qibla";
 
+  static const String updating_location = "updating_location";
+
   static const Map<String, dynamic> EN = {
     ///// prayers /////
     Fajr: "Fajr",
@@ -79,7 +81,7 @@ mixin LocalData {
     water: "water",
 
     /////// timer ///////
-    passed: "time passed ",
+    passed: "time passed",
     remaining: "remaining to",
 
     ////// notif ////
@@ -89,7 +91,9 @@ mixin LocalData {
     SunnahTimes: "Additional Info",
     middlenight: "Middle of the Night",
     lastnight: "Last Third of the Night",
-    qibla: "Qibla Direction"
+    qibla: "Qibla Direction",
+    ///////
+    updating_location: "Updating Location..."
   };
   static const Map<String, dynamic> AR = {
     ////////// الصلاوات ////////
@@ -136,6 +140,8 @@ mixin LocalData {
     SunnahTimes: "معلومات اضافية",
     middlenight: "منتصف الليل",
     lastnight: "الثّلث الأخير من اللّيل",
-    qibla: "اتجاه القبلة"
+    qibla: "اتجاه القبلة",
+    ///////////////
+    updating_location: "جارٍ تحديث الموقع...",
   };
 }

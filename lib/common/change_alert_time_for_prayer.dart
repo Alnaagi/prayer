@@ -56,7 +56,7 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                   LocalData.change_alert_time_for_prayer.getString(context),
                   style: const TextStyle(
                       color: Colors.white70,
-                      fontSize: 25,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                   // textDirection: TextDirection.rtl,
                 ),
@@ -136,9 +136,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -155,8 +154,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -185,9 +184,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -268,9 +266,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -287,8 +284,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -317,9 +314,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -400,9 +396,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -419,8 +414,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -449,9 +444,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -532,9 +526,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -551,8 +544,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -581,9 +574,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -664,9 +656,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -683,8 +674,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -713,9 +704,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -808,9 +798,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -827,8 +816,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -857,9 +846,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -940,9 +928,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -959,8 +946,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -989,9 +976,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -1072,9 +1058,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -1091,8 +1076,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -1121,9 +1106,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -1204,9 +1188,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -1223,8 +1206,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -1253,9 +1236,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(
@@ -1336,9 +1318,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " - ",
                                                 style: TextStyle(
@@ -1355,8 +1336,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                           },
                                           child: Container(
                                             // margin: const EdgeInsets.all(1),
-                                            width: media.width * 0.15,
-                                            height: media.height * 0.042,
+                                            width: media.width * 0.11,
+                                            height: media.height * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
@@ -1385,9 +1366,8 @@ class _ChangeAlertTimeForPrayerState extends State<ChangeAlertTimeForPrayer> {
                                               });
                                             },
                                             child: const Padding(
-                                              padding:
-                                                  EdgeInsets.symmetric(
-                                                      horizontal: 8),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 8),
                                               child: Text(
                                                 " + ",
                                                 style: TextStyle(

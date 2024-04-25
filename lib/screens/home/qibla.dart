@@ -9,7 +9,7 @@ class QiblaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    // ImageProvider logo = const AssetImage("assets/images/rus4.jpg");
+
     bool compcolor = false;
     return Scaffold(
         backgroundColor: Colors.transparent,

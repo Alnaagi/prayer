@@ -14,28 +14,14 @@ import 'package:prayers_times/prayers_times.dart';
 int time = 0;
 Timer? timer;
 Timer? timer2;
-// Timer? timerazan;
-// bool mainpage2 = false;
 
 class PrayerWidgetRight extends StatelessWidget {
   const PrayerWidgetRight({
     super.key,
   });
 
-  // void initState() {
   @override
   Widget build(BuildContext context) {
-    // var _format = HijriCalendar.now();
-    // print(_format.fullDate()); //Thulatha, Ramadan 14, 1439 h
-    // print(_format.toFormat("mm dd yy")); //09 14 39
-    // while (time <= 500) {
-    //   print("object");
-    //   setState(() {
-    //     time++;
-    //     print("object");
-    //   });
-    // }
-
     Coordinates coordinates = Coordinates(latitudeloc, longitudeloc);
 
 // Specify the calculation parameters for prayer times

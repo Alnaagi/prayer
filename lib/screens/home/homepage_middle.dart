@@ -4,44 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:prayer/common/prayer_widget_refresh.dart';
 import 'package:prayer/common/countdowntimer_refresh.dart';
 
-
-// var _today = HijriCalendar.now();
-// int time = 0;
-// Timer? timer;
-// Timer? timer2;
-// bool mainpage = false;
-
 class HomePageCopy extends StatelessWidget {
   const HomePageCopy({super.key});
 
-  // Future<void> _showLocationAndBatteryDialog() async {
   @override
   Widget build(BuildContext context) {
-    // if (prayerTimes.ishaStartTime!.isAfter(testtimecurrent)) {
-    //   AwesomeNotifications().createNotification(
-    //       content: NotificationContent(
-    //           id: 1,
-    //           channelKey: "prayer_channel",
-    //           title: "اذان صلاة ${current}",
-    //           body: "حان الان الوقت لأذان صلاة ${current}"));
-
-    //   AwesomeNotifications().createNotification(
-    //       content: NotificationContent(
-    //           id: 2,
-    //           channelKey: 'prayer_channel',
-    //           title: 'اذانaaaa صلاة ${current}',
-    //           body: 'حان الان الوقت لأذان صلاة ${current}'),
-    //       schedule: NotificationCalendar(
-    //           hour: 03, minute: 03, second: 00, repeats: true));
-    // }
-    // final _controller = PageController(
-    //   initialPage: 1,
-    // );
-    // int selectTab = 0;
-    // int _selectedIndex = 0;
-
     var media = MediaQuery.of(context).size;
-    // ImageProvider logo = const AssetImage("assets/images/home1.jpg");
+
     return SingleChildScrollView(
       child: Column(
         children: [
